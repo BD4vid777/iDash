@@ -1,2 +1,17 @@
-THIS IS WORKING
-<router-outlet></router-outlet>
+<div class="dashboard-main-container">
+  <span class="material-symbols-outlined background-refresh bg-blur">photo_frame</span>
+  <nav class="bg-blur">
+    <span class="material-symbols-outlined">account_circle</span>
+    <mat-divider></mat-divider>
+    <h1>iDash</h1>
+    <div class="nav-buttons">
+      <span class="material-symbols-outlined" [matTooltip]="'TODOS'">fact_check</span>
+      <span class="material-symbols-outlined" [matTooltip]="'NOTES'">text_snippet</span>
+    </div>
+  </nav>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
+
