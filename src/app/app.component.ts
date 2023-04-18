@@ -20,5 +20,11 @@ export class AppComponent {
     }
 
     this.bgPhoto = bgPhotoData
+
+    // Check dta from localStorage and save new bg to ls
+  }
+
+  resetBackground() {
+    this.bgPhoto = this.bgPrimary
   }
 }
