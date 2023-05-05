@@ -1,25 +1,39 @@
 <div
   class="dashboard-main-container"
-  [ngStyle]="{'background-image': 'url(' + bgPhoto + ')'}"
+  [ngStyle]="{'background-image': 'url(' + bgPhoto.photoLink + ')'}"
 >
-  <span
-    class="material-symbols-outlined background-refresh bg-blur"
-    [matTooltip]="'Change Background Photo'"
-    matTooltipPosition="left"
-    (click)="changeBackground()"
-  >photo_frame</span>
+  <div class="background-refresh bg-blur">
+    <div class="background-header">
+      <p>Change Background Photo</p>
+      <span class="material-symbols-outlined">photo_frame</span>
+    </div>
+    <div class="background-options">
+      <span
+        *ngFor="let bg of bgArray; let i = index"
+        [ngStyle]="{'background-image': 'url(' + bg.photoLink + ')'}"
+        (click)="changeBackground(bg.photoLink, bg.photoAuthor, bg.photoIndex)"
+      ></span>
+    </div>
+    <span class="material-symbols-outlined reset-image"
+     (click)="resetBackground()"
+     [matTooltip]="'Reset background'" matTooltipPosition="right"
+    >reset_image</span>
+  </div>
   <nav class="bg-blur">
-    <span class="material-symbols-outlined">account_circle</span>
+    <span class="material-symbols-outlined" routerLink="user-settings" routerLinkActive="active">account_circle</span>
     <mat-divider></mat-divider>
-    <h1>iD</h1>
+    <span class="material-symbols-outlined" routerLink="home" routerLinkActive="active" [matTooltip]="'iD Home'" matTooltipPosition="right">dashboard</span>
+    <mat-divider></mat-divider>
     <div class="nav-buttons">
-      <span class="material-symbols-outlined" [matTooltip]="'TODOS'" matTooltipPosition="right">fact_check</span>
-      <span class="material-symbols-outlined" [matTooltip]="'NOTES'" matTooltipPosition="right">text_snippet</span>
+      <span class="material-symbols-outlined" routerLink="todos" routerLinkActive="active" [matTooltip]="'Todos'" matTooltipPosition="right">fact_check</span>
+      <span class="material-symbols-outlined" routerLink="notes" routerLinkActive="active" [matTooltip]="'Notes'" matTooltipPosition="right">text_snippet</span>
+      <span class="material-symbols-outlined" routerLink="budget" routerLinkActive="active" [matTooltip]="'Budget'" matTooltipPosition="right">account_balance_wallet</span>
     </div>
   </nav>
   <main>
     <router-outlet></router-outlet>
   </main>
+  <footer [innerHTML]="bgPhoto.photoAuthor"></footer>
 </div>
 
 
