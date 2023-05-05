@@ -6,10 +6,18 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDividerModule } from "@angular/material/divider";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { TodosComponent } from './pages/todos/todos.component';
+import { NotesComponent } from './pages/notes/notes.component';
+import { BudgetComponent } from './pages/budget/budget.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TodosComponent,
+    NotesComponent,
+    BudgetComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

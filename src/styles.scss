@@ -2,6 +2,7 @@
 @import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+$active: #4580ee;
 
 $smooth: all .5s ease-in-out;
 
@@ -27,9 +28,9 @@ body {
   position: relative;
   height: 100%;
   display: grid;
-  grid-template-columns: 4rem auto;
+  grid-template-columns: 4rem auto 4rem;
   gap: 2rem;
-  padding: 1rem;
+  padding: 1rem 1rem 2.5rem;
   background-image: url("https://images.unsplash.com/photo-1612383401597-cdfb8bdfa0d9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80");
   background-position: center;
   background-size: cover;
@@ -38,6 +39,7 @@ body {
   .bg-blur {
     background-color: rgba(255,255,255, 0.15);
     backdrop-filter: blur(5px);
+    border-radius: 5px;
   }
 
   .background-refresh {
@@ -46,7 +48,7 @@ body {
     right: 1rem;
     top: 1rem;
     border-radius: 5px;
-    //color: rgba(255, 255, 255, .3);
+    z-index: 1;
     transition: $smooth;
     cursor: pointer;
 
@@ -149,6 +151,10 @@ body {
       gap: .5rem;
     }
   }
+
+  main {
+    padding: 10px;
+  }
 }
 
 footer {
@@ -163,7 +169,20 @@ footer {
     color: white;
 
     &:hover {
-      color: #4580ee;
+      color: $active;
     }
   }
+}
+
+.active {
+  color: $active;
+  position: relative;
+  &:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+    margin-right: .2rem;
+  }
+
 }

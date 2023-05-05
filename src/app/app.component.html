@@ -22,7 +22,7 @@
   <nav class="bg-blur">
     <span class="material-symbols-outlined" routerLink="user-settings" routerLinkActive="active">account_circle</span>
     <mat-divider></mat-divider>
-    <span class="material-symbols-outlined" routerLink="home" routerLinkActive="active" [matTooltip]="'iD Home'" matTooltipPosition="right">dashboard</span>
+    <span class="material-symbols-outlined" routerLink="dashboard" routerLinkActive="active" [matTooltip]="'iD Home'" matTooltipPosition="right">dashboard</span>
     <mat-divider></mat-divider>
     <div class="nav-buttons">
       <span class="material-symbols-outlined" routerLink="todos" routerLinkActive="active" [matTooltip]="'Todos'" matTooltipPosition="right">fact_check</span>
@@ -30,7 +30,7 @@
       <span class="material-symbols-outlined" routerLink="budget" routerLinkActive="active" [matTooltip]="'Budget'" matTooltipPosition="right">account_balance_wallet</span>
     </div>
   </nav>
-  <main>
+  <main class="bg-blur">
     <router-outlet></router-outlet>
   </main>
   <footer [innerHTML]="bgPhoto.photoAuthor"></footer>
