@@ -1,1 +1,19 @@
-<p>dashboard works!</p>
+<main class="content-wrapper">
+  <div class="time-container">
+    <h1>{{time.slice(0,5)}}</h1>
+    <h4>{{date}}</h4>
+  </div>
+
+  <div class="bookmarks-container">
+    <a class="bookmark-tile" *ngFor="let tile of bookmarks" [href]="tile.src" [target]="tile.target">
+      <img [src]="tile.src + 'favicon.ico'" [alt]="tile.title">
+      <p>{{tile.title}}</p>
+    </a>
+    <div class="btn">
+      <span class="material-symbols-outlined"
+            (click)="addNewBookmark()"
+            [matTooltip]="'Add Bookmark'" matTooltipPosition="below"
+      >add</span>
+    </div>
+  </div>
+</main>
