@@ -44,5 +44,10 @@ export const tmpBookmarks: IBookmark[] = [
     title: 'GitHub',
     src: 'https://www.github.com/',
     target: '_blank'
+  },
+  {
+    title: 'Wikipedia',
+    src: 'https://www.wikipedia.com/',
+    target: '_blank'
   }
 ]

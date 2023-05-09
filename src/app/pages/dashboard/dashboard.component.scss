@@ -1,3 +1,5 @@
+@import "src/app/styles/variables.scss";
+
 .content-wrapper {
   display: flex;
   flex-direction: column;
@@ -5,7 +7,7 @@
   height: 100%;
   width: 100%;
 
-  gap: 20px;
+  gap: $gap-primary;
 
   margin-top: 20px;
 
@@ -24,6 +26,61 @@
       font-weight: 300;
       margin: 0;
       color: white;
+    }
+  }
+
+  .bookmarks-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: $gap-secondary;
+    padding: $padding-primary;
+
+    .bookmarks-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: $padding-primary;
+
+      gap: $gap-secondary;
+
+      max-width: 470px;
+      min-height: 90px;
+      max-height: 200px;
+
+      overflow: hidden;
+      overflow-y: auto;
+
+
+
+      .bookmark-tile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: $gap-secondary;
+        padding: $padding-secondary $padding-primary;
+
+        text-decoration: none;
+        color: $primary-black;
+
+        transition: $smooth;
+        cursor: pointer;
+
+        width: 80px;
+        height: 70px;
+
+        img {
+          height: 25px;
+          width: 25px;
+        }
+
+        &:hover {
+          color: $primary-white;
+          transform: scale(1.1);
+        }
+      }
+
     }
   }
 }

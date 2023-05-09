@@ -4,16 +4,18 @@
     <h4>{{date}}</h4>
   </div>
 
-  <div class="bookmarks-container">
-    <a class="bookmark-tile" *ngFor="let tile of bookmarks" [href]="tile.src" [target]="tile.target">
-      <img [src]="tile.src + 'favicon.ico'" [alt]="tile.title">
-      <p>{{tile.title}}</p>
-    </a>
-    <div class="btn">
+  <div class="bookmarks-wrapper">
+    <div class="bookmarks-container dash-scrollbar">
+      <a class="bookmark-tile bg-blur" *ngFor="let tile of bookmarks" [href]="tile.src" [target]="tile.target">
+        <img [src]="tile.src + 'favicon.ico'" [alt]="tile.title">
+        <p>{{tile.title}}</p>
+      </a>
+    </div>
+    <div class="btn hidden-text">
       <span class="material-symbols-outlined"
             (click)="addNewBookmark()"
-            [matTooltip]="'Add Bookmark'" matTooltipPosition="below"
       >add</span>
+      <p>Add New Bookmark</p>
     </div>
   </div>
 </main>
