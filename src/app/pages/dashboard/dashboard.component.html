@@ -3,19 +3,10 @@
     <h1>{{time.slice(0,5)}}</h1>
     <h4>{{date}}</h4>
   </div>
-
-  <div class="bookmarks-wrapper">
-    <div class="bookmarks-container dash-scrollbar">
-      <a class="bookmark-tile bg-blur" *ngFor="let tile of bookmarks" [href]="tile.src" [target]="tile.target">
-        <img [src]="tile.src + 'favicon.ico'" [alt]="tile.title">
-        <p>{{tile.title}}</p>
-      </a>
-    </div>
-    <div class="btn hidden-text">
-      <span class="material-symbols-outlined"
-            (click)="addNewBookmark()"
-      >add</span>
-      <p>Add New Bookmark</p>
-    </div>
+  <id-bookmarks [bookmarks]="bookmarks"></id-bookmarks>
+  <div class="dashboard-standalones">
+    <id-dash-notes class="bg-blur primary-padding standalones"></id-dash-notes>
+    <id-dash-todos class="bg-blur primary-padding standalones"></id-dash-todos>
+    <id-dash-budget class="bg-blur primary-padding standalones"></id-dash-budget>
   </div>
 </main>

@@ -10,6 +10,10 @@ import { TodosComponent } from './pages/todos/todos.component';
 import { NotesComponent } from './pages/notes/notes.component';
 import { BudgetComponent } from './pages/budget/budget.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { BookmarksComponent } from "./standalone/bookmarks/bookmarks.component";
+import { DashNotesComponent } from "./standalone/dash-notes/dash-notes.component";
+import { DashTodosComponent } from "./standalone/dash-todos/dash-todos.component";
+import { DashBudgetComponent } from "./standalone/dash-budget/dash-budget.component";
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatDividerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    BookmarksComponent,
+    DashNotesComponent,
+    DashTodosComponent,
+    DashBudgetComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

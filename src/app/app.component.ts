@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { backgroundImages, primaryBG } from "./utils/internal-data";
+import { IBackground } from "./utils/interfaces";
 
 @Component({
   selector: 'app-root',
@@ -7,21 +8,19 @@ import { backgroundImages, primaryBG } from "./utils/internal-data";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public title = 'iDash';
-  private bgPrimary = primaryBG
-  public bgPhoto = primaryBG
-  public bgArray = backgroundImages
+  public title: string = 'iDash';
+  private bgPrimary: IBackground = primaryBG
+  public bgPhoto: IBackground = primaryBG
+  public bgArray: IBackground[] = backgroundImages
 
   changeBackground(photoLink: string, photoAuthor: string, photoIndex: number) {
-    let bgPhotoData = {
+    this.bgPhoto = {
       photoLink: photoLink,
       photoAuthor: photoAuthor,
       photoIndex: photoIndex
     }
 
-    this.bgPhoto = bgPhotoData
-
-    // Check dta from localStorage and save new bg to ls
+    // TODO: Check data from localStorage and save new bg to ls
   }
 
   resetBackground() {

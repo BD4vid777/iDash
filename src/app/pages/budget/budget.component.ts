@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-budget',
+  selector: 'id-budget',
   templateUrl: './budget.component.html',
   styleUrls: ['./budget.component.scss']
 })
