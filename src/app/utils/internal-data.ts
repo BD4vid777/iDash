@@ -1,4 +1,5 @@
 import { IBookmark } from "./interfaces";
+import { v4 as uuid } from 'uuid'
 
 export const primaryBG = {
   photoLink: '../assets/bgImg/christian-lue-unsplash.jpg',
@@ -33,21 +34,25 @@ export const tmpBookmarks: IBookmark[] = [
   {
     title: 'Google',
     src: 'https://www.google.com/',
-    target: '_blank'
+    target: '_blank',
+    uid: uuid()
   },
   {
     title: 'YouTube',
     src: 'https://www.youtube.com/',
-    target: '_blank'
+    target: '_blank',
+    uid: uuid()
   },
   {
     title: 'GitHub',
     src: 'https://www.github.com/',
-    target: '_blank'
+    target: '_blank',
+    uid: uuid()
   },
   {
     title: 'Wikipedia',
     src: 'https://www.wikipedia.com/',
-    target: '_blank'
+    target: '_blank',
+    uid: uuid()
   }
 ]
