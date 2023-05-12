@@ -31,6 +31,13 @@ body {
   }
 }
 
+.dash-box-wrapper {
+  padding: $padding-primary;
+  margin-top: 65px;
+  height: 100%;
+  width: 100%;
+}
+
 .dash-scrollbar {
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
   scrollbar-width: none; /* for Firefox */
