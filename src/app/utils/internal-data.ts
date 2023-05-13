@@ -1,4 +1,4 @@
-import { IBookmark } from "./interfaces";
+import { IBookmark, INote, ITodo } from "./interfaces";
 import { v4 as uuid } from 'uuid'
 
 export const primaryBG = {
@@ -55,4 +55,12 @@ export const tmpBookmarks: IBookmark[] = [
     target: '_blank',
     uid: uuid()
   }
+]
+
+export const tmpTodos: ITodo[] = [
+
+]
+
+export const tmpNotes: INote[] = [
+
 ]
