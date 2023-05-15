@@ -54,7 +54,7 @@ export const tmpBookmarks: IBookmark[] = [
     uid: uuid4()
   },
   {
-    title: 'Wikipedia',
+    title: 'Wikipedia Long hehehe',
     src: new URL('https://www.wikipedia.com/'),
     target: '_blank',
     uid: uuid4()

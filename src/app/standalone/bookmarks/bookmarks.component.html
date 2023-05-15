@@ -2,7 +2,9 @@
   <div class="bookmarks-container dash-scrollbar">
     <a class="bookmark-tile bg-blur" *ngFor="let tile of bookmarks" [href]="tile.src" [target]="tile.target">
       <img [src]="tile.src + 'favicon.ico'" [alt]="tile.title">
-      <p>{{tile.title}}</p>
+      <p *ngIf="tile.title.length > 8" >{{tile.title}}</p>
+      <p *ngIf="tile.title.length <= 8">{{tile.title}}</p>
+
       <span class="material-symbols-outlined delete" (click)="$event.preventDefault(); deleteBookmark(tile.uid)">delete</span>
       <span class="material-symbols-outlined edit" (click)="$event.preventDefault(); editBookmark(tile.uid)">stylus</span>
 
