@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { IBookmark } from "../../utils/interfaces";
 import { Bookmark, BookmarksService } from "../../shared/bookmarks.service";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { CheckImageDirective } from "../../directives/check-image.directive";
 
 
 @Component({
   selector: 'id-bookmarks',
   standalone: true,
-  imports: [CommonModule, MatTooltipModule],
+  imports: [CommonModule, MatTooltipModule, CheckImageDirective],
   templateUrl: './bookmarks.component.html',
   styleUrls: ['./bookmarks.component.scss']
 })
