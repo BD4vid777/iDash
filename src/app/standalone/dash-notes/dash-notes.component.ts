@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleHeaderComponent } from "../title-header/title-header.component";
-import { ITodo } from "../../utils/interfaces";
 
 @Component({
   selector: 'id-dash-notes',
@@ -11,7 +10,5 @@ import { ITodo } from "../../utils/interfaces";
   styleUrls: ['./dash-notes.component.scss']
 })
 export class DashNotesComponent {
-  @Input() notes: ITodo[] = [];
-
 
 }

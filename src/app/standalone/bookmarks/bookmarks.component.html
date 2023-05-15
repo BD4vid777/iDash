@@ -3,12 +3,17 @@
     <a class="bookmark-tile bg-blur" *ngFor="let tile of bookmarks" [href]="tile.src" [target]="tile.target">
       <img [src]="tile.src + 'favicon.ico'" [alt]="tile.title">
       <p>{{tile.title}}</p>
+      <span class="material-symbols-outlined delete" (click)="$event.preventDefault(); deleteBookmark(tile.uid)">delete</span>
+      <span class="material-symbols-outlined edit" (click)="$event.preventDefault(); editBookmark(tile.uid)">stylus</span>
+
     </a>
   </div>
-  <div class="btn hidden-text">
-      <span class="material-symbols-outlined"
-            (click)="addNewBookmark()"
-      >add</span>
-    <p>Add New Bookmark</p>
+  <div
+    class="btn"
+    [ngClass]="bookmarks.length == 0 ? '' : 'hidden-text'"
+    (click)="addNewBookmark('Onet', 'https://www.onet.pl')"
+  >
+    <span class="material-symbols-outlined">add</span>
+    <p>{{bookmarks.length == 0 ? 'Add First Bookmark' : 'Add New Bookmark'}}</p>
   </div>
 </div>

@@ -15,9 +15,9 @@
 
     gap: $gap-secondary;
 
-    max-width: 470px;
+    max-width: 600px;
     min-height: 90px;
-    max-height: 200px;
+    max-height: 110px;
 
     overflow: hidden;
     overflow-y: auto;
@@ -25,6 +25,7 @@
 
 
     .bookmark-tile {
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -46,9 +47,40 @@
         width: 25px;
       }
 
+      span {
+        position: absolute;
+        top: 5px;
+        opacity: 0;
+        transition: $smooth;
+        font-size: 0.8rem;
+        color: $primary-white;
+      }
+
+      span.delete {
+        right: 5px;
+      }
+
+      span.edit {
+        left: 5px;
+      }
+
       &:hover {
         color: $primary-white;
         transform: scale(1.1);
+
+        span {
+          opacity: 1;
+        }
+
+        span.delete:hover {
+          color: $delete;
+          transform: scale(1.5);
+        }
+
+        span.edit:hover {
+          color: $success;
+          transform: scale(1.5);
+        }
       }
     }
 

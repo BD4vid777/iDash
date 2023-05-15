@@ -1,11 +1,13 @@
-export interface IDashData {
-  userLogin?: string,
-  userDevices?: string[],
-  userBookmarks?: IBookmark[],
-  userTodos?: any[], // TODO: Create interface for todos
-  userNotes?: any[], // TODO: Create interface for notes
-  userBudget?: any[], // TODO: Create interface for budget
-  userBackground?: IBackground
+export interface IUserStorageData {
+  userName: string,
+  userLogin: string,
+  userDevices: string[],
+  userBookmarks: IBookmark[],
+  userTodos: ITodo[],
+  userNotes: INote[],
+  userBudget: IBudgetValue[],
+  userBackground: IBackground,
+  showWelcomeMsg: boolean
 }
 
 export interface IBackground {
@@ -16,7 +18,7 @@ export interface IBackground {
 
 export interface IBookmark {
   title: string,
-  src: string,
+  src: URL,
   target: '_blank' | '_self',
   uid: string
 }
@@ -40,6 +42,7 @@ export interface ITodo {
 export interface IBudgetValue {
   title: string,
   value: number,
+  content: string,
   createdAt: Date,
   createdBy: string,
   type: 'income' | 'expense',
