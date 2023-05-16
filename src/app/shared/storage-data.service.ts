@@ -43,7 +43,8 @@ export class StorageDataService {
       userNotes: tmpNotes,
       userBudget: [],
       userBackground: this.bgPrimary,
-      showWelcomeMsg: true
+      showWelcomeMsg: true,
+      homePageQuestion: true
     }
   }
 }

@@ -7,7 +7,8 @@ export interface IUserStorageData {
   userNotes: INote[],
   userBudget: IBudgetValue[],
   userBackground: IBackground,
-  showWelcomeMsg: boolean
+  showWelcomeMsg: boolean,
+  homePageQuestion: boolean
 }
 
 export interface IBackground {
