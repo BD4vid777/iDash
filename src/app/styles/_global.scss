@@ -114,11 +114,18 @@
     border-radius: 0;
     border-width: 0;
     outline: none;
-    border-bottom: 1px solid $gray-100;
+    border-bottom: 2px solid $gray-100;
     transition: $smooth;
     font-family: 'Rajdhani', sans-serif;
     &:focus {
       border-bottom: 2px solid $active;
+    }
+    &::placeholder {
+      opacity: .5;
+    }
+    &.error {
+      color: $delete;
+      border-bottom: 2px solid $delete;
     }
   }
 }

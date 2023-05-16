@@ -5,14 +5,29 @@
   <form class="id-flex-col id-gap-medium" [formGroup]="bookmarkForm">
     <div class="id-form-control id-flex-col">
       <label for="titleInput" class="id-label">Bookmark Name</label>
-      <input type="text" name="titleInput" id="titleInput" placeholder="'e.g. Google'" formControlName="titleInput">
+      <input
+        type="text"
+        name="titleInput"
+        id="titleInput"
+        placeholder="'e.g. Google'"
+        formControlName="titleInput"
+        [ngClass]="bookmarkForm.controls.titleInput.touched && bookmarkForm.controls.titleInput.invalid ? 'error' : ''"
+      >
       <div *ngIf="bookmarkForm.controls.titleInput.touched && bookmarkForm.controls.titleInput.invalid" class="id-form-alert">
         <span *ngIf="bookmarkForm.controls.titleInput.errors?.['required']">Please provide name</span>
       </div>
     </div>
     <div class="id-form-control id-flex-col">
       <label for="srcInput" class="id-label">Bookmark url</label>
-      <input type="url" name="srcInput" id="srcInput" placeholder="'e.g. https://google.com'" formControlName="srcInput">
+      <input
+        type="url"
+        name="srcInput"
+        id="srcInput"
+        placeholder="'e.g. https://google.com'"
+        formControlName="srcInput"
+        [ngClass]="bookmarkForm.controls.srcInput.touched && bookmarkForm.controls.srcInput.invalid ? 'error' : ''"
+
+      >
       <div *ngIf="bookmarkForm.controls.srcInput.touched && bookmarkForm.controls.srcInput.invalid" class="id-form-alert">
         <span *ngIf="bookmarkForm.controls.srcInput.errors?.['required']">Please provide url</span>
         <span *ngIf="bookmarkForm.controls.srcInput.errors?.['pattern']">Please provide valid url starting with https://</span>
