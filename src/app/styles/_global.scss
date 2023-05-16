@@ -1,0 +1,142 @@
+@import "variables.scss";
+
+.bg-blur {
+  background-color: rgba(255,255,255, 0.15);
+  backdrop-filter: blur(5px);
+  border-radius: $border-radius-primary;
+  &.primary-padding {
+    padding: $padding-primary;
+  }
+}
+
+.btn {
+  display: flex;
+  gap: $gap-secondary;
+  align-items: center;
+  justify-content: center;
+  padding: $padding-secondary $padding-primary;
+
+  cursor: pointer;
+
+  width: max-content;
+
+  background-color: $gray-300;
+  border-radius: $border-radius-primary;
+
+  border: 1px solid rgba(0, 0, 0, .01);
+  box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.3), -3px -3px 10px -5px rgba(255, 255, 255, 0.3);
+  transition: $smooth;
+
+  span {
+    font-size: 1.2rem;
+  }
+
+  &.hidden-text {
+    gap: unset;
+    p {
+      max-width: 0;
+      max-height: 0;
+      overflow: hidden;
+    }
+
+    &:hover {
+      gap: $gap-secondary;
+      p {
+        max-width: max-content;
+        max-height: max-content;
+      }
+    }
+  }
+
+  &.btn-no, &.btn-yes {
+    opacity: .7;
+    min-width: 50px;
+    font-size: 1rem;
+    text-align: center;
+    color: $primary-white;
+  }
+
+  &.btn-no {
+    background-color: $delete;
+  }
+
+  &.btn-yes {
+    background-color: $success;
+  }
+
+  &:hover {
+    color: $primary-white;
+    transform: scale(1.05);
+
+    &.btn-no, &.btn-yes {
+      opacity: 1;
+      transform: scale(1.15);
+    }
+  }
+
+  &:disabled {
+    opacity: .5;
+    background-color: $disabled;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.active {
+  color: $active;
+  position: relative;
+  &:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+    margin-right: .2rem;
+  }
+}
+
+.id-form-alert {
+  color: $delete;
+  letter-spacing: 2px;
+  text-align: end;
+  span {
+    font-size: .8rem;
+  }
+}
+
+.id-form-control {
+  label {
+    margin-bottom: .2rem;
+  }
+  input {
+    width: 100%;
+    height: 28px;
+    padding: $padding-secondary;
+    border-radius: 0;
+    border-width: 0;
+    outline: none;
+    border-bottom: 1px solid $gray-100;
+    transition: $smooth;
+    font-family: 'Rajdhani', sans-serif;
+    &:focus {
+      border-bottom: 2px solid $active;
+    }
+  }
+}
+
+.id-flex-col {
+  display: flex;
+  flex-direction: column;
+
+  &.id-gap {
+    &-small {
+      gap: $gap-secondary;
+    }
+    &-medium {
+      gap: $gap-primary;
+    }
+    &-big {
+      gap: $gap-double;
+    }
+  }
+}
+

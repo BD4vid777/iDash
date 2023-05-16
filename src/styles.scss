@@ -2,6 +2,7 @@
 @import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "app/styles/variables.scss";
+@import "app/styles/global.scss";
 @import "app/styles/dialog.scss";
 
 
@@ -21,15 +22,6 @@ body {
   font-size: 16px;
   font-family: 'Rajdhani', sans-serif;
   line-height: 1.2;
-}
-
-.bg-blur {
-  background-color: rgba(255,255,255, 0.15);
-  backdrop-filter: blur(5px);
-  border-radius: $border-radius-primary;
-  &.primary-padding {
-    padding: $padding-primary;
-  }
 }
 
 .dash-box-wrapper {
@@ -62,73 +54,6 @@ body {
   &::-webkit-scrollbar-thumb:hover {
     background-color: $gray-300;
   }
-}
-
-.btn {
-  display: flex;
-  gap: $gap-secondary;
-  align-items: center;
-  justify-content: center;
-  padding: $padding-secondary $padding-primary;
-
-  cursor: pointer;
-
-  width: max-content;
-
-  background-color: $gray-300;
-  border-radius: $border-radius-primary;
-
-  border: 1px solid rgba(0, 0, 0, .01);
-  box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.3), -3px -3px 10px -5px rgba(255, 255, 255, 0.3);
-  transition: $smooth;
-
-  span {
-    font-size: 1.2rem;
-  }
-
-  &.hidden-text {
-    gap: unset;
-    p {
-      max-width: 0;
-      max-height: 0;
-      overflow: hidden;
-    }
-
-    &:hover {
-      gap: $gap-secondary;
-      p {
-        max-width: max-content;
-        max-height: max-content;
-      }
-    }
-  }
-
-  &.btn-no, &.btn-yes {
-    opacity: .7;
-    min-width: 50px;
-    font-size: 1rem;
-    text-align: center;
-    color: $primary-white;
-  }
-
-  &.btn-no {
-    background-color: $delete;
-  }
-
-  &.btn-yes {
-    background-color: $success;
-  }
-
-  &:hover {
-    color: $primary-white;
-    transform: scale(1.05);
-
-    &.btn-no, &.btn-yes {
-      opacity: 1;
-      transform: scale(1.15);
-    }
-  }
-
 }
 
 .dashboard-main-container {
@@ -297,17 +222,4 @@ footer {
       color: $active;
     }
   }
-}
-
-.active {
-  color: $active;
-  position: relative;
-  &:before {
-    position: absolute;
-    left: 0;
-    top: 0;
-    content: "";
-    margin-right: .2rem;
-  }
-
 }

@@ -1,14 +1,40 @@
 <h2 mat-dialog-title>{{title}}</h2>
 <span class="material-symbols-outlined close-btn" (click)="close()">close</span>
 <mat-dialog-content>
-  <div>{{type}}</div>
+
+  <form class="id-flex-col id-gap-medium" [formGroup]="bookmarkForm">
+    <div class="id-form-control id-flex-col">
+      <label for="titleInput" class="id-label">Bookmark Name</label>
+      <input type="text" name="titleInput" id="titleInput" placeholder="'e.g. Google'" formControlName="titleInput">
+      <div *ngIf="bookmarkForm.controls.titleInput.touched && bookmarkForm.controls.titleInput.invalid" class="id-form-alert">
+        <span *ngIf="bookmarkForm.controls.titleInput.errors?.['required']">Please provide name</span>
+      </div>
+    </div>
+    <div class="id-form-control id-flex-col">
+      <label for="srcInput" class="id-label">Bookmark url</label>
+      <input type="url" name="srcInput" id="srcInput" placeholder="'e.g. https://google.com'" formControlName="srcInput">
+      <div *ngIf="bookmarkForm.controls.srcInput.touched && bookmarkForm.controls.srcInput.invalid" class="id-form-alert">
+        <span *ngIf="bookmarkForm.controls.srcInput.errors?.['required']">Please provide url</span>
+        <span *ngIf="bookmarkForm.controls.srcInput.errors?.['pattern']">Please provide valid url starting with https://</span>
+      </div>
+    </div>
+  </form>
+
 </mat-dialog-content>
 <mat-dialog-actions [align]="'end'" [ngStyle]="{display: 'flex', gap: '.75rem', 'margin-right': '.5rem'}">
   <button class="btn btn-no" (click)="close()">Cancel</button>
   <ng-container *ngIf="type == 'add'; else editBookmarkBtn">
-    <button class="btn btn-yes" (click)="addNewBookmark()">Add New</button>
+    <button
+      class="btn btn-yes"
+      [disabled]="!bookmarkForm.valid"
+      (click)="addNewBookmark()"
+    >Add New</button>
   </ng-container>
   <ng-template #editBookmarkBtn>
-    <button class="btn btn-yes" (click)="editBookmark()">Save changes</button>
+    <button
+      class="btn btn-yes"
+      [disabled]="!bookmarkForm.valid"
+      (click)="editBookmark()"
+    >Save changes</button>
   </ng-template>
 </mat-dialog-actions>
