@@ -223,3 +223,14 @@ footer {
     }
   }
 }
+
+.mdc-tooltip.id-tooltip {
+  div {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+
+    background-color: rgba(0,0,0, 0.35);
+    backdrop-filter: blur(5px);
+    border-radius: $border-radius-primary;
+  }
+}

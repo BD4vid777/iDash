@@ -16,18 +16,18 @@
     </div>
     <span class="material-symbols-outlined reset-image"
      (click)="resetBackground()"
-     [matTooltip]="'Reset background'" matTooltipPosition="right"
+     [matTooltip]="'Reset background'" matTooltipPosition="right" matTooltipClass="id-tooltip"
     >reset_image</span>
   </div>
   <nav class="bg-blur">
-    <span class="material-symbols-outlined" routerLink="user-settings" routerLinkActive="active" [matTooltip]="'User login UNAVAILABLE in current version'" matTooltipPosition="right" [style.cursor]="'default'">account_circle</span>
+    <span class="material-symbols-outlined" routerLink="user-settings" routerLinkActive="active" [matTooltip]="'User login UNAVAILABLE in current version'" matTooltipPosition="right" matTooltipClass="id-tooltip" [style.cursor]="'default'">account_circle</span>
     <mat-divider></mat-divider>
-    <span class="material-symbols-outlined" routerLink="dashboard" routerLinkActive="active" [matTooltip]="'iD Home'" matTooltipPosition="right">dashboard</span>
+    <span class="material-symbols-outlined" routerLink="dashboard" routerLinkActive="active" [matTooltip]="'iD Home'" matTooltipPosition="right" matTooltipClass="id-tooltip">dashboard</span>
     <mat-divider></mat-divider>
     <div class="nav-buttons">
-      <span class="material-symbols-outlined" routerLink="todos" routerLinkActive="active" [matTooltip]="'Todos'" matTooltipPosition="right">fact_check</span>
-      <span class="material-symbols-outlined" routerLink="notes" routerLinkActive="active" [matTooltip]="'Notes'" matTooltipPosition="right">text_snippet</span>
-      <span class="material-symbols-outlined" routerLink="budget" routerLinkActive="active" [matTooltip]="'Budget'" matTooltipPosition="right">account_balance_wallet</span>
+      <span class="material-symbols-outlined" routerLink="todos" routerLinkActive="active" [matTooltip]="'Todos'" matTooltipPosition="right" matTooltipClass="id-tooltip">fact_check</span>
+      <span class="material-symbols-outlined" routerLink="notes" routerLinkActive="active" [matTooltip]="'Notes'" matTooltipPosition="right" matTooltipClass="id-tooltip">text_snippet</span>
+      <span class="material-symbols-outlined" routerLink="budget" routerLinkActive="active" [matTooltip]="'Budget'" matTooltipPosition="right" matTooltipClass="id-tooltip">account_balance_wallet</span>
     </div>
   </nav>
   <main class="bg-blur">

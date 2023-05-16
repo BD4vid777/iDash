@@ -10,7 +10,7 @@ import { RouterLink } from "@angular/router";
   template: `
     <div class="title-wrapper">
       <span [routerLink]="route">{{title}}</span>
-      <div *ngIf="hasCounter" [matTooltip]="counterTooltip">{{counter}}</div>
+      <div *ngIf="hasCounter" [matTooltip]="counterTooltip" matTooltipClass="id-tooltip">{{counter}}</div>
     </div>
 
   `,

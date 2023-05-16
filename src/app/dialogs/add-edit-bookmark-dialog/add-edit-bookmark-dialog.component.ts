@@ -53,6 +53,11 @@ export class AddEditBookmarkDialogComponent implements OnInit {
     this.dialogRef.close({type: 'edit', title, src})
   }
 
+  saveBookmark() {
+    if (this.type == 'add') this.addNewBookmark()
+    else this.editBookmark()
+  }
+
   close() {
     this.dialogRef.close(false)
   }

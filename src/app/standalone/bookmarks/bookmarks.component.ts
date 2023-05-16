@@ -109,4 +109,7 @@ export class BookmarksComponent implements OnInit {
     this.bookmarks = this.bookmarksService.getBookmarks()
   }
 
+  getFavicon(src: URL) {
+    return `https://www.google.com/s2/favicons?domain=${src}&sz=32`
+  }
 }

@@ -3,7 +3,7 @@
 <mat-dialog-content>
 
   <form class="id-flex-col id-gap-medium" [formGroup]="bookmarkForm">
-    <div class="id-form-control id-flex-col">
+    <div class="id-form-control id-flex-col" (keydown.enter)="bookmarkForm.valid && saveBookmark()">
       <label for="titleInput" class="id-label">Bookmark Name</label>
       <input
         type="text"
@@ -17,7 +17,7 @@
         <span *ngIf="bookmarkForm.controls.titleInput.errors?.['required']">Please provide name</span>
       </div>
     </div>
-    <div class="id-form-control id-flex-col">
+    <div class="id-form-control id-flex-col" (keydown.enter)="bookmarkForm.valid && saveBookmark()">
       <label for="srcInput" class="id-label">Bookmark url</label>
       <input
         type="url"
@@ -37,19 +37,13 @@
 
 </mat-dialog-content>
 <mat-dialog-actions [align]="'end'" [ngStyle]="{display: 'flex', gap: '.75rem', 'margin-right': '.5rem'}">
-  <button class="btn btn-no" (click)="close()">Cancel</button>
-  <ng-container *ngIf="type == 'add'; else editBookmarkBtn">
-    <button
-      class="btn btn-yes"
-      [disabled]="!bookmarkForm.valid"
-      (click)="addNewBookmark()"
-    >Add New</button>
-  </ng-container>
-  <ng-template #editBookmarkBtn>
-    <button
-      class="btn btn-yes"
-      [disabled]="!bookmarkForm.valid"
-      (click)="editBookmark()"
-    >Save changes</button>
-  </ng-template>
+  <button
+    class="btn btn-no"
+    (click)="close()"
+  >Cancel</button>
+  <button
+    class="btn btn-yes"
+    [disabled]="!bookmarkForm.valid"
+    (click)="saveBookmark()"
+  >{{ type == 'add' ? 'Add New' : 'Save changes' }}</button>
 </mat-dialog-actions>
