@@ -43,6 +43,6 @@ export class AppComponent implements OnInit {
   }
 
   resetBackground() {
-    this.bgPhoto = this.bgPrimary
+    this.changeBackground(this.bgPrimary.photoLink, this.bgPrimary.photoAuthor, this.bgPrimary.photoIndex)
   }
 }

@@ -14,6 +14,8 @@ import { BookmarksComponent } from "./standalone/bookmarks/bookmarks.component";
 import { DashNotesComponent } from "./standalone/dash-notes/dash-notes.component";
 import { DashTodosComponent } from "./standalone/dash-todos/dash-todos.component";
 import { DashBudgetComponent } from "./standalone/dash-budget/dash-budget.component";
+import {MatDialogModule} from '@angular/material/dialog';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -29,12 +31,15 @@ import { DashBudgetComponent } from "./standalone/dash-budget/dash-budget.compon
     BrowserAnimationsModule,
     MatDividerModule,
     MatTooltipModule,
+    MatDialogModule,
     BookmarksComponent,
     DashNotesComponent,
     DashTodosComponent,
     DashBudgetComponent
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

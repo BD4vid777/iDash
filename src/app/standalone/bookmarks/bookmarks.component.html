@@ -5,8 +5,8 @@
       <p *ngIf="tile.title.length > 8" [matTooltip]="tile.title" matTooltipPosition="below">{{tile.title}}</p>
       <p *ngIf="tile.title.length <= 8">{{tile.title}}</p>
 
-      <span class="material-symbols-outlined delete" (click)="$event.preventDefault(); deleteBookmark(tile.uid)">delete</span>
       <span class="material-symbols-outlined edit" (click)="$event.preventDefault(); editBookmark(tile.uid)">stylus</span>
+      <span class="material-symbols-outlined delete" (click)="$event.preventDefault(); openDeleteBookmarkDialog(tile)">delete</span>
 
     </a>
   </div>

@@ -2,6 +2,7 @@
 @import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "app/styles/variables.scss";
+@import "app/styles/dialog.scss";
 
 
 *, *:before, *:after {
@@ -100,9 +101,30 @@ body {
     }
   }
 
+  &.btn-no, &.btn-yes {
+    opacity: .7;
+    min-width: 50px;
+    font-size: 1rem;
+    text-align: center;
+    color: $primary-white;
+  }
+
+  &.btn-no {
+    background-color: $delete;
+  }
+
+  &.btn-yes {
+    background-color: $success;
+  }
+
   &:hover {
     color: $primary-white;
     transform: scale(1.05);
+
+    &.btn-no, &.btn-yes {
+      opacity: 1;
+      transform: scale(1.15);
+    }
   }
 
 }

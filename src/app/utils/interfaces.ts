@@ -49,3 +49,8 @@ export interface IBudgetValue {
   tag: string,
   uid: string
 }
+
+export interface ISimpleQuestionDialogData {
+  title: string,
+  question: string,
+}

@@ -2,6 +2,10 @@ import { IBookmark, INote, ITodo } from "./interfaces";
 import { v4 as uuid4 } from 'uuid'
 
 export const UserDataStorageKey: string = 'iDashUserData'
+export const DialogQuestionWidth: string = '500px'
+export const DialogQuestionAnimationTimeEnter: string = '750ms'
+export const DialogQuestionAnimationTimeExit: string = '250ms'
+export const DialogQuestionClass: string =  'simple-question-dialog-container'
 
 export const primaryBG = {
   photoLink: '../assets/bgImg/christian-lue-unsplash.jpg',
