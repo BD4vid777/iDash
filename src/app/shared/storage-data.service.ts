@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { IBackground, IUserStorageData } from "../utils/interfaces";
-import { primaryBG, tmpBookmarks, tmpNotes, tmpTodos, UserDataStorageKey } from "../utils/internal-data";
+import { IBackground, IBookmark, IUserStorageData } from "../utils/interfaces";
+import { primaryBG, UserDataStorageKey } from "../utils/internal-data";
+import { Bookmark } from "./bookmarks.service";
 
 @Injectable({
   providedIn: 'root'
@@ -34,13 +35,20 @@ export class StorageDataService {
   }
 
   setDefaultData() {
+    let tmpBookmarks: IBookmark[] = [
+      new Bookmark('Google', 'https://www.google.com'),
+      new Bookmark('YouTube', 'https://www.youtube.com'),
+      new Bookmark('GitHub', 'https://www.github.com'),
+      new Bookmark('Wikipedia', 'https://www.wikipedia.com')
+    ]
+
     return {
       userName: '',
       userLogin: '',
       userDevices: [],
       userBookmarks: tmpBookmarks,
-      userTodos: tmpTodos,
-      userNotes: tmpNotes,
+      userTodos: [],
+      userNotes: [],
       userBudget: [],
       userBackground: this.bgPrimary,
       showWelcomeMsg: true,

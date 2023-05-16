@@ -1,9 +1,14 @@
 <h2 mat-dialog-title>{{title}}</h2>
 <span class="material-symbols-outlined close-btn" (click)="close()">close</span>
 <mat-dialog-content>
-  <p>{{question}}</p>
+  <div>{{type}}</div>
 </mat-dialog-content>
 <mat-dialog-actions [align]="'end'" [ngStyle]="{display: 'flex', gap: '.75rem', 'margin-right': '.5rem'}">
   <button class="btn btn-no" (click)="close()">Cancel</button>
-  <button class="btn btn-yes" [mat-dialog-close]="true">Yes, delete</button>
+  <ng-container *ngIf="type == 'add'; else editBookmarkBtn">
+    <button class="btn btn-yes" (click)="addNewBookmark()">Add New</button>
+  </ng-container>
+  <ng-template #editBookmarkBtn>
+    <button class="btn btn-yes" (click)="editBookmark()">Save changes</button>
+  </ng-template>
 </mat-dialog-actions>

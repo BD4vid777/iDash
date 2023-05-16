@@ -10,6 +10,9 @@ import {
   DialogQuestionAnimationTimeEnter, DialogQuestionAnimationTimeExit,
   DialogQuestionClass, DialogQuestionWidth
 } from "../../utils/internal-data";
+import {
+  AddEditBookmarkDialogComponent
+} from "../../dialogs/add-edit-bookmark-dialog/add-edit-bookmark-dialog.component";
 
 
 @Component({
@@ -29,14 +32,56 @@ export class BookmarksComponent implements OnInit {
     this.bookmarks = this.bookmarksService.getBookmarks()
   }
 
+  openAddBookmarkDialog() {
+    let addDialog = this.matDialog.open(AddEditBookmarkDialogComponent, {
+      width: DialogQuestionWidth,
+      enterAnimationDuration: DialogQuestionAnimationTimeEnter,
+      exitAnimationDuration: DialogQuestionAnimationTimeExit,
+      panelClass: DialogQuestionClass,
+      data: {
+        title: 'Add new bookmark',
+        type: 'add',
+        titleInput: '',
+        srcInput: ''
+      }
+    })
+
+    addDialog.afterClosed().subscribe(result => {
+      if (result && result.type == 'add') {
+        this.addNewBookmark(result.title, result.src)
+      }
+    })
+  }
+
   addNewBookmark(title: string, src: string) {
-    let newBookmark = new Bookmark(title, src)
+    let newBookmark: IBookmark = new Bookmark(title, src)
     this.bookmarksService.addBookmark(newBookmark)
     this.bookmarks = this.bookmarksService.getBookmarks()
   }
 
-  editBookmark(uid: string) {
-    this.bookmarksService.editBookmark(uid, 'zmiana', 'https://www.wtatv.com')
+  openEditBookmarkDialog(tile: IBookmark) {
+    let editDialog = this.matDialog.open(AddEditBookmarkDialogComponent, {
+      width: DialogQuestionWidth,
+      enterAnimationDuration: DialogQuestionAnimationTimeEnter,
+      exitAnimationDuration: DialogQuestionAnimationTimeExit,
+      panelClass: DialogQuestionClass,
+      data: {
+        title: 'Edit bookmark',
+        type: 'edit',
+        titleInput: tile.title,
+        srcInput: tile.src,
+      }
+    })
+
+    editDialog.afterClosed().subscribe(result => {
+      if (result && result.type == 'edit') {
+        this.editBookmark(tile.uid, result.title, result.src)
+      }
+    })
+  }
+
+  editBookmark(uid: string, title: string, src: string) {
+    this.bookmarksService.editBookmark(uid, title, src)
     this.bookmarks = this.bookmarksService.getBookmarks()
   }
 

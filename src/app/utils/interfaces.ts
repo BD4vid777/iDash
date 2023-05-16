@@ -55,3 +55,10 @@ export interface ISimpleQuestionDialogData {
   title: string,
   question: string,
 }
+
+export interface IAddEditBookmarkDialogData {
+  title: string,
+  type: 'add' | 'edit',
+  titleInput: string,
+  srcInput: string
+}

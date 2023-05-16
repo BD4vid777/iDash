@@ -1,5 +1,20 @@
 @import "variables.scss";
 
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 1rem;
+  font-family: 'Material Symbols Outlined', sans-serif !important;
+  cursor: pointer;
+  transition: $smooth;
+
+  &:hover {
+    color: $delete;
+    transform: scale(1.1);
+  }
+}
+
 .simple-question-dialog-container {
   padding: $padding-primary;
   background-color: rgba(255,255,255, 0.15);

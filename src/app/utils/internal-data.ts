@@ -1,5 +1,3 @@
-import { IBookmark, INote, ITodo } from "./interfaces";
-import { v4 as uuid4 } from 'uuid'
 
 export const UserDataStorageKey: string = 'iDashUserData'
 export const DialogQuestionWidth: string = '500px'
@@ -36,39 +34,3 @@ export const backgroundImages = [
   }
 ]
 
-// Temporary data for testing
-
-export const tmpBookmarks: IBookmark[] = [
-  {
-    title: 'Google',
-    src: new URL('https://www.google.com/'),
-    target: '_blank',
-    uid: uuid4()
-  },
-  {
-    title: 'YouTube',
-    src: new URL('https://www.youtube.com/'),
-    target: '_blank',
-    uid: uuid4()
-  },
-  {
-    title: 'GitHub',
-    src: new URL('https://www.github.com/'),
-    target: '_blank',
-    uid: uuid4()
-  },
-  {
-    title: 'Wikipedia',
-    src: new URL('https://www.wikipedia.com/'),
-    target: '_blank',
-    uid: uuid4()
-  }
-]
-
-export const tmpTodos: ITodo[] = [
-
-]
-
-export const tmpNotes: INote[] = [
-
-]
