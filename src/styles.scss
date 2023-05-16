@@ -27,15 +27,16 @@ body {
 .dash-box-wrapper {
   padding: $padding-primary;
   margin-top: 65px;
-  height: 100%;
+  height: calc(100% - 65px);
   width: 100%;
+  overflow: hidden;
+  overflow-x: auto;
 }
 
-.dash-scrollbar {
+.id-scrollbar {
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
   scrollbar-width: none; /* for Firefox */
   overflow: auto;
-  cursor: grabbing;
 
   &::-webkit-scrollbar {
     width: 5px!important;
