@@ -15,7 +15,7 @@ export class BookmarksService {
     this.getBookmarksFromStorage()
   }
 
-  getBookmarksFromStorage() {
+  private getBookmarksFromStorage() {
     let userData = this.storageService.getUserData()
     this.bookmarks = userData.userBookmarks
   }

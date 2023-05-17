@@ -1,10 +1,19 @@
 <id-title-header
   [route]="'/notes'"
-  [title]="'Latest Notes'"
-  [counter]="11"
+  [title]="notes.length == 0 ? 'Notes' : 'Latest Notes'"
+  [counter]="notes.length"
   [counterTooltip]="'Notes overall'"
 ></id-title-header>
 
-<div class="dash-box-wrapper id-scrollbar">
-  NOTES
+<div class="dash-box-wrapper id-flex-col id-gap-medium id-scrollbar">
+  <div *ngFor="let note of notes" class="id-note-dash-container bg-blur padding-secondary">{{note.title}}</div>
 </div>
+
+<button
+  class="btn btn-dashboard-box"
+  [ngClass]="notes.length == 0 ? 'first-note' : 'hidden-text'"
+  (click)="openAddNoteDialog()"
+>
+  <span class="material-symbols-outlined">add</span>
+  <p>{{notes.length == 0 ? 'Add First Note' : 'Add New Note'}}</p>
+</button>
