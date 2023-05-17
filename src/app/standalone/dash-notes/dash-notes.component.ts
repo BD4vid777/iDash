@@ -11,11 +11,12 @@ import {
   DialogQuestionWidth
 } from "../../utils/internal-data";
 import { SimpleQuestionDialogComponent } from "../../dialogs/simple-question-dialog/simple-question-dialog.component";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 @Component({
   selector: 'id-dash-notes',
   standalone: true,
-    imports: [CommonModule, TitleHeaderComponent],
+  imports: [CommonModule, TitleHeaderComponent, MatTooltipModule],
   templateUrl: './dash-notes.component.html',
   styleUrls: ['./dash-notes.component.scss']
 })
@@ -110,5 +111,9 @@ export class DashNotesComponent implements OnInit {
   deleteNote(uid: string) {
     this.notesService.deleteNote(uid)
     this.setLatestNotes()
+  }
+
+  showNotePreview(uid: string) {
+
   }
 }

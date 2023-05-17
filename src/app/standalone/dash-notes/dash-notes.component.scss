@@ -2,4 +2,48 @@
 
 .id-note-dash-container {
   padding: $padding-secondary;
+  align-items: flex-start;
+
+  div:first-child {
+    display: flex;
+    align-items: flex-start;
+    gap: $gap-primary;
+
+    span {
+      font-size: 1.25rem;
+      cursor: help;
+    }
+  }
+
+  div:last-child {
+    display: flex;
+    gap: $gap-secondary;
+    width: fit-content;
+
+    span {
+      font-size: 1.25rem;
+      cursor: pointer;
+      opacity: .7;
+      transition: $smooth;
+    }
+
+    span:hover {
+      opacity: 1;
+    }
+
+    span.preview:hover {
+      color: $active;
+      transform: scale(1.5);
+    }
+
+    span.edit:hover {
+      color: $success;
+      transform: scale(1.5);
+    }
+
+    span.delete:hover {
+      color: $delete;
+      transform: scale(1.5);
+    }
+  }
 }

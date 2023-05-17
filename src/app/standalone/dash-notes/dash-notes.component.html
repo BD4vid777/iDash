@@ -6,7 +6,17 @@
 ></id-title-header>
 
 <div class="dash-box-wrapper id-flex-col id-gap-medium id-scrollbar">
-  <div *ngFor="let note of latestNotes" class="id-note-dash-container bg-blur padding-secondary">{{note.title}}</div>
+  <div *ngFor="let note of latestNotes" class="id-note-dash-container id-flex-spc bg-blur padding-secondary">
+    <div>
+      <span class="material-symbols-outlined" matTooltip="{{ note.createdAt | date: 'short' }}" matTooltipClass="id-tooltip">event</span>
+      {{note.title}}
+    </div>
+    <div>
+      <span class="material-symbols-outlined preview" (click)="showNotePreview(note.uid)">manage_search</span>
+      <span class="material-symbols-outlined edit" (click)="openEditNoteDialog(note)">stylus</span>
+      <span class="material-symbols-outlined delete" (click)="openDeleteNoteDialog(note)">delete</span>
+    </div>
+  </div>
 </div>
 
 <button
