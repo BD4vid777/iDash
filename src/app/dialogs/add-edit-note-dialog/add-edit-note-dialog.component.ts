@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { IAddEditNoteDialogData } from "../../utils/interfaces";
 
 @Component({
@@ -31,7 +31,7 @@ export class AddEditNoteDialogComponent implements OnInit {
 
   ngOnInit() {
     this.noteForm = this.fb.nonNullable.group({
-      titleInput: this.fb.nonNullable.control(this.type == 'add' ? '' : this.titleInput),
+      titleInput: this.fb.nonNullable.control(this.type == 'add' ? '' : this.titleInput, [Validators.required]),
       contentInput: this.fb.nonNullable.control(this.type == 'add' ? '' : this.contentInput)
     })
   }

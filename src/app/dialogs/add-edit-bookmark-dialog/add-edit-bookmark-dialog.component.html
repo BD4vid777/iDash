@@ -4,7 +4,7 @@
 
   <form class="id-flex-col id-gap-medium" [formGroup]="bookmarkForm">
     <div class="id-form-control id-flex-col" (keydown.enter)="bookmarkForm.valid && saveBookmark()">
-      <label for="titleInput" class="id-label">Bookmark Name</label>
+      <label for="titleInput">Bookmark Name</label>
       <input
         type="text"
         name="titleInput"
@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="id-form-control id-flex-col" (keydown.enter)="bookmarkForm.valid && saveBookmark()">
-      <label for="srcInput" class="id-label">Bookmark url</label>
+      <label for="srcInput">Bookmark url</label>
       <input
         type="url"
         name="srcInput"

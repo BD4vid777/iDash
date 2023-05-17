@@ -37,9 +37,7 @@ export class StorageDataService {
   setDefaultData() {
     let tmpBookmarks: IBookmark[] = [
       new Bookmark('Google', 'https://www.google.com'),
-      new Bookmark('YouTube', 'https://www.youtube.com'),
-      new Bookmark('GitHub', 'https://www.github.com'),
-      new Bookmark('Wikipedia', 'https://www.wikipedia.com')
+      new Bookmark('YouTube', 'https://www.youtube.com')
     ]
 
     return {
