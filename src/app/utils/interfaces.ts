@@ -34,9 +34,11 @@ export interface INote {
 export interface ITodo {
   title: string,
   content: string,
+  createdAt: Date,
   dueDate: Date | undefined,
   priority: 'low' | 'medium' | 'high',
-  col: string,
+  column: { name: string, uid: string },
+  board: { name: string, uid: string },
   completed: boolean,
   uid: string
 }
