@@ -13,8 +13,8 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 })
 export class AddEditBookmarkDialogComponent implements OnInit {
 
-  public dialogRef: MatDialogRef<IAddEditBookmarkDialogData> = inject(MatDialogRef<AddEditBookmarkDialogComponent>)
-  public data: IAddEditBookmarkDialogData = inject(MAT_DIALOG_DATA)
+  private dialogRef: MatDialogRef<IAddEditBookmarkDialogData> = inject(MatDialogRef<AddEditBookmarkDialogComponent>)
+  private data: IAddEditBookmarkDialogData = inject(MAT_DIALOG_DATA)
   private fb: FormBuilder = inject(FormBuilder)
 
   public bookmarkForm!: FormGroup<{
@@ -61,5 +61,4 @@ export class AddEditBookmarkDialogComponent implements OnInit {
   close() {
     this.dialogRef.close(false)
   }
-
 }

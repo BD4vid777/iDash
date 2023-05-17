@@ -62,3 +62,10 @@ export interface IAddEditBookmarkDialogData {
   titleInput: string,
   srcInput: string
 }
+
+export interface IAddEditNoteDialogData {
+  title: string,
+  type: 'add' | 'edit',
+  titleInput: string,
+  contentInput: string
+}
