@@ -1,0 +1,56 @@
+@import "variables.scss";
+
+::ng-deep quill-editor.id-quill {
+  margin-top: .2rem;
+
+  .ql-toolbar, ::ng-deep.ql-container {
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  .ql-toolbar {
+    border: none;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+  }
+
+  ::ng-deep.ql-container {
+    max-height: 400px;
+    border: none!important;
+
+    .ql-tooltip.ql-editing {
+      left: 0!important;
+    }
+
+    .ql-editor {
+      transition: $smooth;
+      &:focus {
+        border-bottom: 2px solid $active!important;
+      }
+    }
+
+    .ql-editor.ql-blank::before {
+      opacity: .5;
+    }
+
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 5px!important;
+      height: 5px!important;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: $primary-white;
+      margin: 10px;
+      border-radius: 20px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $active;
+      width: 5px;
+      border-radius: 20px!important;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: $gray-300;
+    }
+  }
+}
