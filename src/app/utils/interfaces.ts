@@ -70,3 +70,8 @@ export interface IAddEditNoteDialogData {
   titleInput: string,
   contentInput: string
 }
+
+export interface INotePreviewDialogData {
+  title: string,
+  contentInput: string,
+}

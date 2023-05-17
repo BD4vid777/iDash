@@ -12,6 +12,7 @@ import {
 } from "../../utils/internal-data";
 import { SimpleQuestionDialogComponent } from "../../dialogs/simple-question-dialog/simple-question-dialog.component";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { NotePreviewDialogComponent } from "../../dialogs/note-preview-dialog/note-preview-dialog.component";
 
 @Component({
   selector: 'id-dash-notes',
@@ -33,7 +34,7 @@ export class DashNotesComponent implements OnInit {
 
   setLatestNotes() {
     this.notes = this.notesService.getNotes()
-    this.latestNotes = this.notes.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).slice(0, 5)
+    this.latestNotes = this.notes.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).slice(0, 10)
   }
 
   openAddNoteDialog() {
@@ -113,7 +114,24 @@ export class DashNotesComponent implements OnInit {
     this.setLatestNotes()
   }
 
-  showNotePreview(uid: string) {
+  showNotePreview(note: INote) {
+    let previewDialog = this.matDialog.open(NotePreviewDialogComponent, {
+      width: DialogQuestionWidth,
+      enterAnimationDuration: DialogQuestionAnimationTimeEnter,
+      exitAnimationDuration: DialogQuestionAnimationTimeExit,
+      panelClass: DialogQuestionClass,
+      data: {
+        title: 'Preview: ' + note.title,
+        contentInput: note.content
+      }
+    })
 
+    previewDialog.afterClosed().subscribe(result => {
+      if (result == 'edit') {
+        this.openEditNoteDialog(note)
+      } else if (result == 'delete') {
+        this.openDeleteNoteDialog(note)
+      }
+    })
   }
 }

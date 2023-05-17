@@ -30,8 +30,9 @@ body {
 
 .dash-box-wrapper {
   padding: $padding-primary;
-  margin-top: 65px;
-  height: calc(100% - 65px);
+  margin-top: 70px;
+  margin-bottom: 30px;
+  height: calc(100% - 100px);
   width: 100%;
   overflow: hidden;
   overflow-x: auto;
@@ -209,6 +210,7 @@ body {
 
   main {
     padding: $padding-primary;
+    height: calc(100vh - 3.5rem);
   }
 }
 

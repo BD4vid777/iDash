@@ -58,7 +58,7 @@ import { QuillConfigModule } from 'ngx-quill/config';
         ]
       },
       placeholder: 'Enter content here...',
-      sanitize: true,
+      sanitize: false,
       format: 'html',
       theme: 'snow'
     })
