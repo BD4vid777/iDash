@@ -52,11 +52,13 @@ export class NotesService {
 export class Note {
   title: string
   content: string
+  createdAt: Date
   uid: string
 
   constructor(title: string, content: string) {
     this.title = title
     this.content = content
+    this.createdAt = new Date()
     this.uid = uuid4()
   }
 }

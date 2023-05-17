@@ -16,6 +16,8 @@ import { DashTodosComponent } from "./standalone/dash-todos/dash-todos.component
 import { DashBudgetComponent } from "./standalone/dash-budget/dash-budget.component";
 import {MatDialogModule} from '@angular/material/dialog';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from "@angular/material/dialog";
+import { QuillModule } from "ngx-quill";
+import { QuillConfigModule } from 'ngx-quill/config';
 
 @NgModule({
   declarations: [
@@ -32,10 +34,34 @@ import { MAT_DIALOG_DEFAULT_OPTIONS } from "@angular/material/dialog";
     MatDividerModule,
     MatTooltipModule,
     MatDialogModule,
+    QuillModule.forRoot(),
     BookmarksComponent,
     DashNotesComponent,
     DashTodosComponent,
-    DashBudgetComponent
+    DashBudgetComponent,
+    QuillConfigModule.forRoot({
+      modules: {
+        toolbar: [
+          [{ 'color': [] }, { 'background': [] }],
+          ['bold', 'italic'],
+          ['code-block'],
+          [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+          [{ 'align': [] }],
+          [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+
+          [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+
+          ['clean'],                                         // remove formatting button
+
+          ['link', 'image', 'video']                         // link and image, video
+        ]
+      },
+      placeholder: 'Enter content here...',
+      sanitize: true,
+      format: 'html',
+      theme: 'snow'
+    })
   ],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}

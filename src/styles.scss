@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;600&display=swap');
 @import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
+
 @import "app/styles/variables.scss";
 @import "app/styles/global.scss";
 @import "app/styles/dialog.scss";

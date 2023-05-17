@@ -21,12 +21,18 @@ import { SimpleQuestionDialogComponent } from "../../dialogs/simple-question-dia
 })
 export class DashNotesComponent implements OnInit {
   notes: INote[] = []
+  latestNotes: INote[] = []
 
   notesService = inject(NotesService)
   matDialog = inject(MatDialog)
 
   ngOnInit() {
+    this.setLatestNotes()
+  }
+
+  setLatestNotes() {
     this.notes = this.notesService.getNotes()
+    this.latestNotes = this.notes.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).slice(0, 5)
   }
 
   openAddNoteDialog() {
@@ -53,7 +59,7 @@ export class DashNotesComponent implements OnInit {
   addNewNote(title: string, content: string) {
     let newNote: INote = new Note(title, content)
     this.notesService.addNote(newNote)
-    this.notes = this.notesService.getNotes()
+    this.setLatestNotes()
   }
 
   openEditNoteDialog(note: INote) {
@@ -79,7 +85,7 @@ export class DashNotesComponent implements OnInit {
 
   editNoteContent(uid: string, title: string, content: string) {
     this.notesService.editNote(uid, title, content)
-    this.notes = this.notesService.getNotes()
+    this.setLatestNotes()
   }
 
   openDeleteNoteDialog(note: INote) {
@@ -103,6 +109,6 @@ export class DashNotesComponent implements OnInit {
 
   deleteNote(uid: string) {
     this.notesService.deleteNote(uid)
-    this.notes = this.notesService.getNotes()
+    this.setLatestNotes()
   }
 }

@@ -1,13 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { IAddEditNoteDialogData } from "../../utils/interfaces";
+import { QuillEditorComponent } from "ngx-quill";
 
 @Component({
   selector: 'id-add-edit-note-dialog',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, ReactiveFormsModule],
+  imports: [CommonModule, MatDialogModule, ReactiveFormsModule, FormsModule, QuillEditorComponent],
   templateUrl: './add-edit-note-dialog.component.html',
   styleUrls: ['./add-edit-note-dialog.component.scss']
 })
