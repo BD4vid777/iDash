@@ -26,14 +26,14 @@ export class AddEditNoteDialogComponent implements OnInit {
   public title: string = this.data.title
   public type: 'add' | 'edit' = this.data.type
   public titleInput: string = this.data.titleInput
-  public contentInput: string = this.data.contentInput
+  public content: string = this.data.contentInput
 
   // TODO: add quill editor
 
   ngOnInit() {
     this.noteForm = this.fb.nonNullable.group({
       titleInput: this.fb.nonNullable.control(this.type == 'add' ? '' : this.titleInput, [Validators.required]),
-      contentInput: this.fb.nonNullable.control(this.type == 'add' ? '' : this.contentInput)
+      contentInput: this.fb.nonNullable.control(this.type == 'add' ? '' : this.content)
     })
   }
 

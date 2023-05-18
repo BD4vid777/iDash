@@ -1,10 +1,20 @@
 <id-title-header
   [route]="'/todos'"
-  [title]="'Latest/Due Todos'"
-  [counter]="5"
+  [title]="todos.length == 0 ? 'Todos' : 'Latest/Due Todos'"
+  [counter]="todos.length"
   [counterTooltip]="'Due soon todos'"
 ></id-title-header>
 
-<div class="dash-box-wrapper id-scrollbar">
-  TODOS
+<div class="dash-box-wrapper id-flex-col id-gap-medium id-scrollbar">
+  <div *ngFor="let todo of latestDueTodos" class="id-note-dash-container id-flex-spc bg-blur padding-secondary">
+    <div>
+      <span class="material-symbols-outlined" matTooltip="{{ todo.editedAt | date: 'short' }}" matTooltipClass="id-tooltip">event</span>
+      {{todo.title}}
+    </div>
+    <div>
+      <span class="material-symbols-outlined preview" (click)="showTodoPreview(todo)">manage_search</span>
+      <span class="material-symbols-outlined edit" (click)="openEditTodoDialog(todo)">stylus</span>
+      <span class="material-symbols-outlined delete" (click)="openDeleteTodoDialog(todo)">delete</span>
+    </div>
+  </div>
 </div>

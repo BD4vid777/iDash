@@ -9,6 +9,8 @@ import { IBoard, IColumn } from "../utils/interfaces";
 export class TodosService {
 
   todos: Todo[] = []
+  boards: Board[] = []
+
   private storageService = inject(StorageDataService)
 
   constructor() {
@@ -18,9 +20,30 @@ export class TodosService {
   private getTodosDataFromStorage() {
     let userData = this.storageService.getUserData()
     this.todos = userData.userTodos
+    this.boards = userData.userTodosBoards
+  }
+
+  private setTodosToStorage() {
+    let userData = this.storageService.getUserData()
+    userData.userTodos = this.todos
+    userData.userTodosBoards = this.boards
+    this.storageService.setUserData(userData)
+    this.getTodosDataFromStorage()
   }
 
 
+  getBoards() {
+    return this.boards
+  }
+
+  getTodos() {
+    return this.todos;
+  }
+
+  deleteTodo(uid: string) {
+    this.todos = this.todos.filter(todo => todo.uid !== uid)
+    this.setTodosToStorage()
+  }
 }
 
 export class Todo {
@@ -28,7 +51,7 @@ export class Todo {
   content: string
   createdAt: Date
   editedAt: Date
-  dueDate: Date | undefined
+  dueDate: Date | ''
   priority: 'low' | 'medium' | 'high'
   column: IColumn
   columnIndex: number
@@ -36,7 +59,7 @@ export class Todo {
   completed: boolean
   uid: string
 
-  constructor(title: string, content: string, dueDate: Date | undefined, priority: 'low' | 'medium' | 'high', column: IColumn, board: IBoard) {
+  constructor(title: string, content: string, dueDate: Date | '', priority: 'low' | 'medium' | 'high', column: IColumn, board: IBoard) {
     this.title = title
     this.content = content
     this.dueDate = dueDate

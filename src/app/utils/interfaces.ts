@@ -37,7 +37,7 @@ export interface ITodo {
   content: string,
   createdAt: Date,
   editedAt: Date,
-  dueDate: Date | undefined,
+  dueDate: Date | '',
   priority: 'low' | 'medium' | 'high',
   column: IColumn,
   columnIndex: number,
