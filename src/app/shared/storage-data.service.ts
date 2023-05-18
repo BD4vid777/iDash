@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { IBackground, IBoard, IBookmark, IUserStorageData } from "../utils/interfaces";
+import { IBackground, IBoard, IBookmark, ITodo, IUserStorageData } from "../utils/interfaces";
 import { primaryBG, UserDataStorageKey } from "../utils/internal-data";
 import { Bookmark } from "./bookmarks.service";
-import { Board } from "./todos.service";
+import { Board, Column, Todo } from "./todos.service";
 
 @Injectable({
   providedIn: 'root'
@@ -45,12 +45,16 @@ export class StorageDataService {
       new Board('Main Board', true)
     ]
 
+    let tmpUserTodos: ITodo[] = [
+      new Todo('Welcome to iDash!', 'This is your first todo. You can edit it or delete it.', new Date(), 'medium', new Column('To Do', tmpUserTodosBoards[0].uid), tmpUserTodosBoards[0])
+    ]
+
     return {
       userName: '',
       userLogin: '',
       userDevices: [],
       userBookmarks: tmpBookmarks,
-      userTodos: [],
+      userTodos: tmpUserTodos,
       userTodosBoards: tmpUserTodosBoards,
       userNotes: [],
       userBudget: [],

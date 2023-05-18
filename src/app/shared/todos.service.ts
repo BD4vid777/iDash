@@ -44,6 +44,12 @@ export class TodosService {
     this.todos = this.todos.filter(todo => todo.uid !== uid)
     this.setTodosToStorage()
   }
+
+  updateTodoStatus(uid: string, completed: boolean) {
+    let updatedTodo = this.todos.findIndex(todo => todo.uid === uid)
+    this.todos[updatedTodo].completed = !completed
+    this.setTodosToStorage()
+  }
 }
 
 export class Todo {

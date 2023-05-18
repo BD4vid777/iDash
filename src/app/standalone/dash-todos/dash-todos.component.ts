@@ -35,6 +35,10 @@ export class DashTodosComponent implements OnInit {
     this.latestDueTodos = this.todos.sort((a, b) => new Date(b.dueDate).getTime() - new Date(a.dueDate).getTime() || new Date(b.editedAt).getTime() - new Date(a.editedAt).getTime()).slice(0, 10)
   }
 
+  openAddTodoDialog() {
+
+  }
+
   showTodoPreview(todo: ITodo) {
 
   }
@@ -68,6 +72,11 @@ export class DashTodosComponent implements OnInit {
 
   deleteTodo(uid: string) {
     this.todosService.deleteTodo(uid)
+    this.setLatestDueTodos()
+  }
+
+  updateTodoStatus(todo: ITodo) {
+    this.todosService.updateTodoStatus(todo.uid, todo.completed)
     this.setLatestDueTodos()
   }
 }

@@ -8,7 +8,7 @@
 <div class="dash-box-wrapper id-flex-col id-gap-medium id-scrollbar">
   <div *ngFor="let note of latestNotes" class="id-note-dash-container id-flex-spc bg-blur padding-secondary">
     <div>
-      <span class="material-symbols-outlined" matTooltip="{{ note.createdAt | date: 'short' }}" matTooltipClass="id-tooltip">event</span>
+      <span class="material-symbols-outlined" matTooltip="{{ note.createdAt | date: 'dd/MM/YY, HH:mm' }}" matTooltipClass="id-tooltip">event</span>
       {{note.title}}
     </div>
     <div>
