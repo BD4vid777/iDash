@@ -39,6 +39,10 @@ export class DashTodosComponent implements OnInit {
 
   }
 
+  addNewTodo() {
+
+  }
+
   showTodoPreview(todo: ITodo) {
 
   }
