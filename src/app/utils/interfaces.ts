@@ -4,6 +4,7 @@ export interface IUserStorageData {
   userDevices: string[],
   userBookmarks: IBookmark[],
   userTodos: ITodo[],
+  userTodosBoards: IBoard[],
   userNotes: INote[],
   userBudget: IBudgetValue[],
   userBackground: IBackground,
@@ -35,12 +36,27 @@ export interface ITodo {
   title: string,
   content: string,
   createdAt: Date,
+  editedAt: Date,
   dueDate: Date | undefined,
   priority: 'low' | 'medium' | 'high',
-  column: { name: string, uid: string },
-  board: { name: string, uid: string },
+  column: IColumn,
+  columnIndex: number,
+  board: IBoard,
   completed: boolean,
   uid: string
+}
+
+export interface IColumn {
+  name: string,
+  boardUid: string,
+  uid: string
+}
+
+export interface IBoard {
+  name: string,
+  uid: string,
+  columns: IColumn[],
+  isPrimary: boolean
 }
 
 export interface IBudgetValue {
