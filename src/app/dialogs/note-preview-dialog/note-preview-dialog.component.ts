@@ -16,7 +16,7 @@ export class NotePreviewDialogComponent {
   private dialogRef = inject(MatDialogRef<NotePreviewDialogComponent>)
   private data: INotePreviewDialogData = inject(MAT_DIALOG_DATA)
 
-  public title: string = this.data.title
+  public dialogTitle: string = this.data.dialogTitle
   public contentInput: string = this.data.contentInput
 
   closeEdit() {

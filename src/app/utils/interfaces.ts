@@ -35,13 +35,14 @@ export interface INote {
 export interface ITodo {
   title: string,
   content: string,
+  progress: number;
   createdAt: Date,
   editedAt: Date,
   dueDate: Date | '',
   priority: 'low' | 'medium' | 'high',
-  column: IColumn,
+  columnUid: string,
   columnIndex: number,
-  board: IBoard,
+  boardUid: string,
   completed: boolean,
   uid: string
 }
@@ -71,25 +72,25 @@ export interface IBudgetValue {
 }
 
 export interface ISimpleQuestionDialogData {
-  title: string,
+  dialogTitle: string,
   question: string,
 }
 
 export interface IAddEditBookmarkDialogData {
-  title: string,
+  dialogTitle: string,
   type: 'add' | 'edit',
   titleInput: string,
   srcInput: string
 }
 
 export interface IAddEditNoteDialogData {
-  title: string,
+  dialogTitle: string,
   type: 'add' | 'edit',
   titleInput: string,
   contentInput: string
 }
 
 export interface INotePreviewDialogData {
-  title: string,
+  dialogTitle: string,
   contentInput: string,
 }

@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleHeaderComponent } from "../title-header/title-header.component";
 import { ITodo } from "../../utils/interfaces";
-import { TodosService } from "../../shared/todos.service";
+import { Todo, TodosService } from "../../shared/todos.service";
 import { MatDialog } from "@angular/material/dialog";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { SimpleQuestionDialogComponent } from "../../dialogs/simple-question-dialog/simple-question-dialog.component";
@@ -11,6 +11,7 @@ import {
   DialogQuestionAnimationTimeExit, DialogQuestionClass,
   DialogQuestionWidth
 } from "../../utils/internal-data";
+import { AddEditTodoDialogComponent } from "../../dialogs/add-edit-todo-dialog/add-edit-todo-dialog.component";
 
 @Component({
   selector: 'id-dash-todos',
@@ -36,11 +37,35 @@ export class DashTodosComponent implements OnInit {
   }
 
   openAddTodoDialog() {
+    let addDialog = this.matDialog.open(AddEditTodoDialogComponent, {
+      width: DialogQuestionWidth,
+      enterAnimationDuration: DialogQuestionAnimationTimeEnter,
+      exitAnimationDuration: DialogQuestionAnimationTimeExit,
+      panelClass: DialogQuestionClass,
+      data: {
+        dialogTitle: 'Add new todo',
+        type: 'add',
+        title: '',
+        content: '',
+        progress: 0,
+        dueDate: '',
+        priority: 'low',
+        boardUid: this.todosService.getBoards()[0].uid,
+        columnUid: this.todosService.getBoards()[0].columns[0].uid
+      }
+    })
 
+    addDialog.afterClosed().subscribe(result => {
+      if (result && result.type == 'add') {
+        this.addNewTodo(result.title, result.content, result.progress, result.dueDate, result.priority, result.boardUid, result.columnUid)
+      }
+    })
   }
 
-  addNewTodo() {
-
+  addNewTodo(title: string, content: string, progress: number, dueDate: Date | '', priority: 'low' | 'medium' | 'high', boardUid: string, columnUid: string) {
+    let newTodo: ITodo = new Todo(title, content, progress, dueDate, priority, boardUid, columnUid)
+    this.todosService.addTodo(newTodo)
+    this.setLatestDueTodos()
   }
 
   showTodoPreview(todo: ITodo) {

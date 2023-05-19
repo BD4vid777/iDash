@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { v4 as uuid4 } from 'uuid'
 import { StorageDataService } from "./storage-data.service";
-import { IBoard, IColumn } from "../utils/interfaces";
+import { IColumn } from "../utils/interfaces";
 
 @Injectable({
   providedIn: 'root'
@@ -67,12 +67,6 @@ export class TodosService {
     const column = board.columns.find(column => column.uid === uid)
     if (!column) return
     Object.assign(column, { name })
-    // search todos and update column name
-    this.todos.forEach(todo => {
-      if (todo.column.uid === uid) {
-        todo.column.name = name
-      }
-    })
     // search boards and update column name
     this.boards.forEach(board => {
       board.columns.forEach(column => {
@@ -89,7 +83,7 @@ export class TodosService {
     if (!board) return
     board.columns = board.columns.filter(column => column.uid !== uid)
     // search todos and deleteTodos with this column
-    this.todos = this.todos.filter(todo => todo.column.uid !== uid)
+    this.todos = this.todos.filter(todo => todo.columnUid !== uid)
     this.setTodosToStorage()
   }
 
@@ -103,18 +97,13 @@ export class TodosService {
     if (!board) return
     Object.assign(board, { name })
     // search todos and update board name
-    this.todos.forEach(todo => {
-      if (todo.board.uid === uid) {
-        todo.board.name = name
-      }
-    })
     this.setTodosToStorage()
   }
 
   deleteBoard(uid: string) {
     this.boards = this.boards.filter(board => board.uid !== uid)
     // search todos and deleteTodos with this board
-    this.todos = this.todos.filter(todo => todo.board.uid !== uid)
+    this.todos = this.todos.filter(todo => todo.boardUid !== uid)
     this.setTodosToStorage()
   }
 
@@ -130,24 +119,26 @@ export class TodosService {
 export class Todo {
   title: string
   content: string
+  progress: number
   createdAt: Date
   editedAt: Date
   dueDate: Date | ''
   priority: 'low' | 'medium' | 'high'
-  column: IColumn
+  columnUid: string
   columnIndex: number
-  board: IBoard
+  boardUid: string
   completed: boolean
   uid: string
 
-  constructor(title: string, content: string, dueDate: Date | '', priority: 'low' | 'medium' | 'high', column: IColumn, board: IBoard) {
+  constructor(title: string, content: string, progress: number = 0, dueDate: Date | '', priority: 'low' | 'medium' | 'high', columnUid: string, boardUid: string) {
     this.title = title
     this.content = content
+    this.progress = progress
     this.dueDate = dueDate
     this.priority = priority
-    this.column = column
+    this.columnUid = columnUid
     this.columnIndex = 0
-    this.board = board
+    this.boardUid = boardUid
     this.completed = false
     this.createdAt = new Date()
     this.editedAt = new Date()

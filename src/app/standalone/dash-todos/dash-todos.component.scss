@@ -24,8 +24,10 @@
   }
 
   .todo-title-due {
+    display: flex;
+    flex-direction: column;
     margin-right: auto;
-    width: calc(100% - 200px);
+    width: calc(100% - 180px);
     div:last-child {
       font-size: .8rem;
     }

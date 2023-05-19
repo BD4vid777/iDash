@@ -20,7 +20,16 @@
       {{todo.completed ? 'select_check_box' : 'check_box_outline_blank'}}</span>
     <div class="todo-title-due">
       <div>{{todo.title}}</div>
-      <div *ngIf="todo.dueDate">{{todo.dueDate | date: 'dd/MM/YY, HH:mm'}}</div>
+      <div *ngIf="todo.dueDate">
+        {{todo.dueDate | date: 'dd/MM/YY, HH:mm'}}
+      </div>
+      <progress
+        [matTooltip]="'Progress: ' + todo.progress.toString() + '%'"
+        matTooltipPosition="below"
+        class="dash-progress"
+        [value]="todo.progress"
+        max="100"
+      ></progress>
     </div>
     <div class="todo-actions">
       <div>

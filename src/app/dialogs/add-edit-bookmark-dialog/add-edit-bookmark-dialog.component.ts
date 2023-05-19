@@ -22,7 +22,7 @@ export class AddEditBookmarkDialogComponent implements OnInit {
     srcInput: FormControl<string>
   }>
 
-  public title: string = this.data.title
+  public dialogTitle: string = this.data.dialogTitle
   public type: 'add' | 'edit' = this.data.type
   public titleInput: string = this.data.titleInput
   public srcInput: string = this.data.srcInput

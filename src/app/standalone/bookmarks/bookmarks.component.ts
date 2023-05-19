@@ -39,7 +39,7 @@ export class BookmarksComponent implements OnInit {
       exitAnimationDuration: DialogQuestionAnimationTimeExit,
       panelClass: DialogQuestionClass,
       data: {
-        title: 'Add new bookmark',
+        dialogTitle: 'Add new bookmark',
         type: 'add',
         titleInput: '',
         srcInput: ''
@@ -66,7 +66,7 @@ export class BookmarksComponent implements OnInit {
       exitAnimationDuration: DialogQuestionAnimationTimeExit,
       panelClass: DialogQuestionClass,
       data: {
-        title: 'Edit bookmark',
+        dialogTitle: 'Edit bookmark',
         type: 'edit',
         titleInput: tile.title,
         srcInput: tile.src,
@@ -92,7 +92,7 @@ export class BookmarksComponent implements OnInit {
       exitAnimationDuration: DialogQuestionAnimationTimeExit,
       panelClass: DialogQuestionClass,
       data: {
-        title: `Delete: ${tile.title}`,
+        dialogTitle: `Delete: ${tile.title}`,
         question: 'Are you sure you want to delete this bookmark?'
       }
     })

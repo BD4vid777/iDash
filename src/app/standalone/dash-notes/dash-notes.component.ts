@@ -44,7 +44,7 @@ export class DashNotesComponent implements OnInit {
       exitAnimationDuration: DialogQuestionAnimationTimeExit,
       panelClass: DialogQuestionClass,
       data: {
-        title: 'Add new note',
+        dialogTitle: 'Add new note',
         type: 'add',
         titleInput: '',
         contentInput: ''
@@ -71,7 +71,7 @@ export class DashNotesComponent implements OnInit {
       exitAnimationDuration: DialogQuestionAnimationTimeExit,
       panelClass: DialogQuestionClass,
       data: {
-        title: 'Edit note',
+        dialogTitle: 'Edit note',
         type: 'edit',
         titleInput: note.title,
         contentInput: note.content
@@ -97,7 +97,7 @@ export class DashNotesComponent implements OnInit {
       exitAnimationDuration: DialogQuestionAnimationTimeExit,
       panelClass: DialogQuestionClass,
       data: {
-        title: `Delete: ${note.title}`,
+        dialogTitle: `Delete: ${note.title}`,
         question: 'Are you sure you want to delete this note?'
       }
     })
@@ -121,7 +121,7 @@ export class DashNotesComponent implements OnInit {
       exitAnimationDuration: DialogQuestionAnimationTimeExit,
       panelClass: DialogQuestionClass,
       data: {
-        title: 'Preview: ' + note.title,
+        dialogTitle: 'Preview: ' + note.title,
         contentInput: note.content
       }
     })

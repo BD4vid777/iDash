@@ -23,7 +23,7 @@ export class AddEditNoteDialogComponent implements OnInit {
     contentInput: FormControl<string>
   }>
 
-  public title: string = this.data.title
+  public dialogTitle: string = this.data.dialogTitle
   public type: 'add' | 'edit' = this.data.type
   public titleInput: string = this.data.titleInput
   public content: string = this.data.contentInput

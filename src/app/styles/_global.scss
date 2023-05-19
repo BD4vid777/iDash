@@ -93,13 +93,17 @@
     background-color: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(5px);
 
+
     &.first-note-todo {
       border-radius: 5px;
       inset: 65px 0 0 0;
       margin: auto;
       height: fit-content;
+      transition: $smooth;
+      -webkit-backface-visibility: hidden;
       &:hover {
-        transform: scale(1.1);
+        transform: scale(1.1) perspective(1px) translateZ(0);
+        backface-visibility: hidden;
       }
     }
 
@@ -120,6 +124,27 @@
     top: 0;
     content: "";
     margin-right: .2rem;
+  }
+}
+
+progress {
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  background-color: $gray-100;
+  outline: none;
+  &::-webkit-progress-bar {
+    background-color: $gray-100;
+    border-radius: 5px;
+  }
+  &::-webkit-progress-value {
+    background-color: $active;
+    border-radius: 5px;
+  }
+  &::-moz-progress-bar {
+    background-color: $active;
+    border-radius: 5px;
   }
 }
 
