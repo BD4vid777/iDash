@@ -6,7 +6,11 @@
 ></id-title-header>
 
 <div class="dash-box-wrapper id-flex-col id-gap-medium id-scrollbar">
-  <div *ngFor="let todo of latestDueTodos" class="id-todo-dash-container id-flex-spc bg-blur padding-secondary">
+  <div
+    *ngFor="let todo of latestDueTodos"
+    class="id-todo-dash-container id-flex-spc bg-blur padding-secondary"
+    [style.opacity]="todo.completed ? .5 : 1"
+  >
     <span
       (click)="updateTodoStatus(todo)"
       class="material-symbols-outlined checkBox"
