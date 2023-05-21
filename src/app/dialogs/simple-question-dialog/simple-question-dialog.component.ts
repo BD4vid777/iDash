@@ -17,6 +17,7 @@ export class SimpleQuestionDialogComponent {
 
   public dialogTitle: string = this.data.dialogTitle
   public question: string = this.data.question
+  public setProgress: boolean = this.data.setProgress
 
   close() {
     this.dialogRef.close(false)

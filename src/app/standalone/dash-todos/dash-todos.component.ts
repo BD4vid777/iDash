@@ -87,7 +87,7 @@ export class DashTodosComponent implements OnInit {
       exitAnimationDuration: DialogQuestionAnimationTimeExit,
       panelClass: DialogQuestionClass,
       data: {
-        title: `Delete: ${todo.title}`,
+        dialogTitle: `Delete: ${todo.title}`,
         question: 'Are you sure you want to delete this todo?'
       }
     })
@@ -105,7 +105,31 @@ export class DashTodosComponent implements OnInit {
   }
 
   updateTodoStatus(todo: ITodo) {
-    this.todosService.updateTodoStatus(todo.uid, todo.completed)
-    this.setLatestDueTodos()
+    if (!todo.completed && todo.progress != 100) {
+      let completeQuestionDialog = this.matDialog.open(SimpleQuestionDialogComponent, {
+        width: DialogQuestionWidth,
+        enterAnimationDuration: DialogQuestionAnimationTimeEnter,
+        exitAnimationDuration: DialogQuestionAnimationTimeExit,
+        panelClass: DialogQuestionClass,
+        data: {
+          dialogTitle: `Todo progress: ${todo.progress}%`,
+          question: 'Set todo progress to 100%?',
+          setProgress: true
+        }
+      })
+
+      completeQuestionDialog.afterClosed().subscribe(result => {
+        if (result) {
+          this.todosService.updateTodoStatus(todo.uid, todo.completed, true)
+          this.setLatestDueTodos()
+        } else {
+          this.todosService.updateTodoStatus(todo.uid, todo.completed)
+          this.setLatestDueTodos()
+        }
+      })
+    } else {
+      this.todosService.updateTodoStatus(todo.uid, todo.completed)
+      this.setLatestDueTodos()
+    }
   }
 }

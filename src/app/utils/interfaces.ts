@@ -74,6 +74,7 @@ export interface IBudgetValue {
 export interface ISimpleQuestionDialogData {
   dialogTitle: string,
   question: string,
+  setProgress: boolean
 }
 
 export interface IAddEditBookmarkDialogData {

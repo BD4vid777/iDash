@@ -48,9 +48,12 @@ export class TodosService {
     this.setTodosToStorage()
   }
 
-  updateTodoStatus(uid: string, completed: boolean) {
+  updateTodoStatus(uid: string, completed: boolean, setToHundred: boolean = false) {
     let updatedTodo = this.todos.findIndex(todo => todo.uid === uid)
     this.todos[updatedTodo].completed = !completed
+    if (setToHundred) {
+      this.todos[updatedTodo].progress = 100
+    }
     this.setTodosToStorage()
   }
 

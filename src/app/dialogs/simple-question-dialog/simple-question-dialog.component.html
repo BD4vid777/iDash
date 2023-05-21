@@ -5,5 +5,5 @@
 </mat-dialog-content>
 <mat-dialog-actions [align]="'end'" [ngStyle]="{display: 'flex', gap: '.75rem', 'margin-right': '.5rem'}">
   <button class="btn btn-no" (click)="close()">Cancel</button>
-  <button class="btn btn-yes" [mat-dialog-close]="true">Yes, delete</button>
+  <button class="btn btn-yes" [mat-dialog-close]="true">{{setProgress ? 'Yes, set to 100%' : 'Yes, delete'}}</button>
 </mat-dialog-actions>
