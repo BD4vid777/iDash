@@ -1,1 +1,21 @@
-<p>todo-preview-dialog works!</p>
+<h2 mat-dialog-title>{{dialogTitle}}</h2>
+<span class="material-symbols-outlined close-btn" (click)="close()">close</span>
+<mat-dialog-content>
+
+  {{todo.content}}{{todo.priority}}{{todo.progress}}{{todo.completed}}
+
+</mat-dialog-content>
+<mat-dialog-actions [align]="'end'" [ngStyle]="{display: 'flex', gap: '.75rem', 'margin-right': '.5rem'}">
+  <button
+    class="btn btn-no"
+    (click)="close()"
+  >Close</button>
+  <button
+    class="btn btn-yes"
+    (click)="closeEdit()"
+  >Edit Note</button>
+  <button
+    class="btn btn-yes"
+    (click)="closeDelete()"
+  >Delete Note</button>
+</mat-dialog-actions>
