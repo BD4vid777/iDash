@@ -17,7 +17,8 @@ export class SimpleQuestionDialogComponent {
 
   public dialogTitle: string = this.data.dialogTitle
   public question: string = this.data.question
-  public setProgress: boolean = this.data.setProgress
+  public yesButton: string = this.data.yesButton ? this.data.yesButton : 'Yes, Delete'
+  public noButton: string = this.data.noButton ? this.data.noButton : 'No'
 
   close() {
     this.dialogRef.close(false)

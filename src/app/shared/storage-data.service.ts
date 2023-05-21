@@ -46,7 +46,7 @@ export class StorageDataService {
     ]
 
     let tmpUserTodos: ITodo[] = [
-      new Todo('Welcome to iDash!', 'This is your first todo. You can edit it or delete it.',25, new Date(), 'medium', new Column('To Do', tmpUserTodosBoards[0].uid).uid, tmpUserTodosBoards[0].uid)
+      new Todo('Welcome to iDash!', 'This is your first todo. You can edit or delete it.',25, new Date(), 'medium', new Column('To Do', tmpUserTodosBoards[0].uid).uid, tmpUserTodosBoards[0].uid)
     ]
 
     return {

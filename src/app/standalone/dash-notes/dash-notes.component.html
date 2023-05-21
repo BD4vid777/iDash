@@ -12,9 +12,24 @@
       {{note.title}}
     </div>
     <div>
-      <span class="material-symbols-outlined preview" (click)="showNotePreview(note)">manage_search</span>
-      <span class="material-symbols-outlined edit" (click)="openEditNoteDialog(note)">stylus</span>
-      <span class="material-symbols-outlined delete" (click)="openDeleteNoteDialog(note)">delete</span>
+      <span
+        class="material-symbols-outlined preview"
+        (click)="showNotePreview(note)"
+        matTooltip="Preview Note"
+        matTooltipPosition="below"
+      >manage_search</span>
+      <span
+        class="material-symbols-outlined edit"
+        (click)="openEditNoteDialog(note)"
+        matTooltip="Edit Note"
+        matTooltipPosition="below"
+      >stylus</span>
+      <span
+        class="material-symbols-outlined delete"
+        (click)="openDeleteNoteDialog(note)"
+        matTooltip="Delete Note"
+        matTooltipPosition="below"
+      >delete</span>
     </div>
   </div>
 </div>

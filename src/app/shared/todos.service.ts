@@ -36,10 +36,10 @@ export class TodosService {
     this.setTodosToStorage()
   }
 
-  editTodo (uid: string, title: string, content: string) {
+  editTodo(uid: string, title: string, content: string, progress: number, dueDate: Date | "", priority: string, boardUid: string, columnUid: string) {
     const todo = this.todos.find(todo => todo.uid === uid)
     if (!todo) return
-    Object.assign(todo, { title, content })
+    Object.assign(todo, { title, content, progress, dueDate, priority, boardUid, columnUid })
     this.setTodosToStorage()
   }
 

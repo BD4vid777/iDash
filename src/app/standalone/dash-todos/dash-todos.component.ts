@@ -12,6 +12,7 @@ import {
   DialogQuestionWidth
 } from "../../utils/internal-data";
 import { AddEditTodoDialogComponent } from "../../dialogs/add-edit-todo-dialog/add-edit-todo-dialog.component";
+import { TodoPreviewDialogComponent } from "../../dialogs/todo-preview-dialog/todo-preview-dialog.component";
 
 @Component({
   selector: 'id-dash-todos',
@@ -68,16 +69,56 @@ export class DashTodosComponent implements OnInit {
     this.setLatestDueTodos()
   }
 
-  showTodoPreview(todo: ITodo) {
-
-  }
-
   openEditTodoDialog(todo: ITodo) {
+    let editDialog = this.matDialog.open(AddEditTodoDialogComponent, {
+      width: DialogQuestionWidth,
+      enterAnimationDuration: DialogQuestionAnimationTimeEnter,
+      exitAnimationDuration: DialogQuestionAnimationTimeExit,
+      panelClass: DialogQuestionClass,
+      data: {
+        dialogTitle: `Edit: ${todo.title}`,
+        type: 'edit',
+        title: todo.title,
+        content: todo.content,
+        progress: todo.progress,
+        dueDate: todo.dueDate,
+        priority: todo.priority,
+        boardUid: todo.boardUid,
+        columnUid: todo.columnUid
+      }
+    })
 
+    editDialog.afterClosed().subscribe(result => {
+      if (result && result.type == 'edit') {
+        this.editTodo(todo.uid, result.title, result.content, result.progress, result.dueDate, result.priority, result.boardUid, result.columnUid)
+      }
+    })
   }
 
-  editTodo() {
+  editTodo(uid: string, title: string, content: string, progress: number, dueDate: Date | '', priority: string, boardUid: string, columnUid: string) {
+    this.todosService.editTodo(uid, title, content, progress, dueDate, priority, boardUid, columnUid)
+    this.setLatestDueTodos()
+  }
 
+  showTodoPreview(todo: ITodo) {
+    let previewDialog = this.matDialog.open(TodoPreviewDialogComponent, {
+      width: DialogQuestionWidth,
+      enterAnimationDuration: DialogQuestionAnimationTimeEnter,
+      exitAnimationDuration: DialogQuestionAnimationTimeExit,
+      panelClass: DialogQuestionClass,
+      data: {
+        dialogTitle: `Preview: ${todo.title}`,
+        todo: todo
+      }
+    })
+
+    previewDialog.afterClosed().subscribe(result => {
+      if (result == 'edit') {
+        this.openEditTodoDialog(todo)
+      } else if (result == 'delete') {
+        this.openDeleteTodoDialog(todo)
+      }
+    })
   }
 
   openDeleteTodoDialog(todo: ITodo) {
@@ -114,7 +155,8 @@ export class DashTodosComponent implements OnInit {
         data: {
           dialogTitle: `Todo progress: ${todo.progress}%`,
           question: 'Set todo progress to 100%?',
-          setProgress: true
+          yesButton: 'Yes, set to 100%',
+          noButton: 'No, keep current progress'
         }
       })
 

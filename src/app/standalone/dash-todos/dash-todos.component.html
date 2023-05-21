@@ -33,15 +33,30 @@
     </div>
     <div class="todo-actions">
       <div>
-        <span class="material-symbols-outlined preview" (click)="showTodoPreview(todo)">manage_search</span>
-        <span class="material-symbols-outlined edit" (click)="openEditTodoDialog(todo)">stylus</span>
-        <span class="material-symbols-outlined delete" (click)="openDeleteTodoDialog(todo)">delete</span>
+        <span
+          class="material-symbols-outlined preview"
+          (click)="showTodoPreview(todo)"
+          matTooltip="Preview Todo"
+          matTooltipPosition="below"
+        >manage_search</span>
+        <span
+          class="material-symbols-outlined edit"
+          (click)="openEditTodoDialog(todo)"
+          matTooltip="Edit Todo"
+          matTooltipPosition="below"
+        >stylus</span>
+        <span
+          class="material-symbols-outlined delete"
+          (click)="openDeleteTodoDialog(todo)"
+          matTooltip="Delete Todo"
+          matTooltipPosition="below"
+        >delete</span>
       </div>
       <div
         class="todo-priority"
         [ngClass]="todo.priority == 'high' ? 'high' : todo.priority == 'medium' ? 'medium' : 'low'"
         [matTooltip]="'Priority: ' + todo.priority.toUpperCase()"
-      >{{todo.priority.slice(0,1)}}</div>
+      >{{todo.priority.slice(0,1).toUpperCase()}}</div>
     </div>
   </div>
 </div>
