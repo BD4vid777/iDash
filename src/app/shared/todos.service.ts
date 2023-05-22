@@ -114,6 +114,22 @@ export class TodosService {
     return this.boards
   }
 
+  getBoardName(boardUid: string): string {
+    const board = this.boards.find(board => board.uid === boardUid)
+    if (!board) return ''
+    return board.name
+  }
+
+  getColumnName(columnUid: string, boardUid: string): string {
+    const board = this.boards.find(board => board.uid === boardUid)
+    console.log(this.boards)
+    if (!board) return ''
+    console.log(board)
+    const column = board.columns.find(column => column.uid === columnUid)
+    if (!column) return ''
+    return column.name
+  }
+
   getTodos() {
     return this.todos;
   }

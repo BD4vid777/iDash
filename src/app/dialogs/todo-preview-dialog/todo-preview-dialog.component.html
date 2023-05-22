@@ -1,9 +1,55 @@
 <h2 mat-dialog-title>{{dialogTitle}}</h2>
 <span class="material-symbols-outlined close-btn" (click)="close()">close</span>
 <mat-dialog-content>
-
-  {{todo.content}}{{todo.priority}}{{todo.progress}}{{todo.completed}}
-
+  <div class="preview-container">
+    <p>{{todo.content}}</p>
+    <mat-divider></mat-divider>
+    <div class="preview-info">
+      <div
+        class="preview-info__priority"
+        matTooltip="Priority"
+        matTooltipPosition="below"
+        [ngClass]="todo.priority == 'high' ? 'high' : todo.priority == 'medium' ? 'medium' : 'low'">
+        <span class="material-symbols-outlined">priority_high</span>
+        <span>{{todo.priority.toUpperCase()}}</span>
+      </div>
+      <div
+        class="preview-info__progress"
+        matTooltip="Progress"
+        matTooltipPosition="below">
+        <span class="material-symbols-outlined">pending_actions</span>
+        <span>{{todo.progress}} %</span>
+      </div>
+      <div
+        class="preview-info__completed"
+        matTooltip="Status"
+        matTooltipPosition="below">
+        <span class="material-symbols-outlined">done</span>
+        <span>{{todo.completed ? 'Completed' : 'Not Done'}}</span>
+      </div>
+      <div
+        class="preview-info__due"
+        matTooltip="Due date"
+        matTooltipPosition="below">
+        <span class="material-symbols-outlined">calendar_today</span>
+        <span>{{todo.dueDate ? (todo.dueDate | date: 'short') : 'Unset'}}</span>
+      </div>
+      <div
+        class="preview-info__board"
+        matTooltip="Board"
+        matTooltipPosition="below">
+        <span class="material-symbols-outlined">dashboard</span>
+        <span>{{getBoardName(todo.boardUid)}}</span>
+      </div>
+      <div
+        class="preview-info__column"
+        matTooltip="Column"
+        matTooltipPosition="below">
+        <span class="material-symbols-outlined">view_column</span>
+        <span>{{getColumnName(todo.columnUid, todo.boardUid)}}</span>
+      </div>
+    </div>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions [align]="'end'" [ngStyle]="{display: 'flex', gap: '.75rem', 'margin-right': '.5rem'}">
   <button
