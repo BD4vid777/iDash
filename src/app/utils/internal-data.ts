@@ -1,9 +1,10 @@
 
-export const UserDataStorageKey: string = 'iDashUserData'
-export const DialogQuestionWidth: string = '500px'
-export const DialogQuestionAnimationTimeEnter: string = '750ms'
-export const DialogQuestionAnimationTimeExit: string = '250ms'
-export const DialogQuestionClass: string =  'simple-question-dialog-container'
+export const USER_DATA_STORAGE_KEY: string = 'iDashUserData'
+export const DIALOG_QUESTION_WIDTH: string = '500px'
+export const DIALOG_EDIT_ADD_TODO_WIDTH: string = '750px'
+export const DIALOG_QUESTION_ANIMATION_ENTER: string = '750ms'
+export const DIALOG_QUESTION_ANIMATION_EXIT: string = '500ms'
+export const DIALOG_QUESTION_CLASS: string =  'simple-question-dialog-container'
 export const DEFAULT_TODO_CONTENT: string = '<h2 class="ql-align-center">This is your first TODO</h2><p class="ql-align-justify"><br></p><p class="ql-align-justify">You can <span style="color: rgb(0, 138, 0);">Edit </span>or <span style="color: rgb(230, 0, 0);">Delete </span>it!</p>'
 
 export const primaryBG = {

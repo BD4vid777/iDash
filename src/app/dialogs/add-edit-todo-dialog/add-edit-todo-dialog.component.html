@@ -23,7 +23,8 @@
         <mat-select
           id="priority"
           formControlName="priority"
-          placeholder="Select priority"
+          class="id-select-panel"
+          panelClass="id-select-panel"
           [ngClass]="todoForm.controls.priority.touched && todoForm.controls.priority.invalid ? 'error' : ''"
         >
           <mat-option *ngFor="let priority of priorities" [value]="priority">{{priority}}</mat-option>
@@ -50,6 +51,40 @@
           <option value="75"></option>
           <option value="100" label="100%"></option>
         </datalist>
+      </div>
+    </div>
+
+    <div class="id-flex-spc id-align-start id-gap-big">
+      <div class="id-form-control id-flex-col w-100">
+        <label for="boardUid">Board</label>
+        <mat-select
+          id="boardUid"
+          [disabled]="type == 'edit'"
+          formControlName="boardUid"
+          class="id-select-panel"
+          panelClass="id-select-panel"
+          [ngClass]="todoForm.controls.boardUid.touched && todoForm.controls.boardUid.invalid ? 'error' : ''"
+        >
+          <mat-option *ngFor="let board of boards" [value]="board.uid">{{board.name}}</mat-option>
+        </mat-select>
+        <div *ngIf="type == 'add' && todoForm.controls.boardUid.touched && todoForm.controls.boardUid.invalid" class="id-form-alert">
+          <span *ngIf="todoForm.controls.boardUid.errors?.['required']">Please select board</span>
+        </div>
+      </div>
+      <div class="id-form-control id-flex-col w-100">
+        <label for="columnUid">Column</label>
+        <mat-select
+          id="columnUid"
+          formControlName="columnUid"
+          class="id-select-panel"
+          panelClass="id-select-panel"
+          [ngClass]="todoForm.controls.priority.touched && todoForm.controls.priority.invalid ? 'error' : ''"
+        >
+          <mat-option *ngFor="let column of boardColumns" [value]="column.uid">{{column.name}}</mat-option>
+        </mat-select>
+        <div *ngIf="todoForm.controls.priority.touched && todoForm.controls.priority.invalid" class="id-form-alert">
+          <span *ngIf="todoForm.controls.priority.errors?.['required']">Please select column</span>
+        </div>
       </div>
     </div>
 

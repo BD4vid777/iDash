@@ -36,10 +36,10 @@ export class TodosService {
     this.setTodosToStorage()
   }
 
-  editTodo(uid: string, title: string, content: string, progress: number, dueDate: Date | "", priority: string, boardUid: string, columnUid: string) {
+  editTodo(uid: string, title: string, content: string, progress: number, dueDate: Date | "", priority: string, boardUid: string, columnUid: string, completed: boolean) {
     const todo = this.todos.find(todo => todo.uid === uid)
     if (!todo) return
-    Object.assign(todo, { title, content, progress, dueDate, priority, boardUid, columnUid })
+    Object.assign(todo, { title, content, progress, dueDate, priority, boardUid, columnUid, completed })
     this.setTodosToStorage()
   }
 
@@ -112,6 +112,12 @@ export class TodosService {
 
   getBoards() {
     return this.boards
+  }
+
+  getColumns(boardUid: string) {
+    const board = this.boards.find(board => board.uid === boardUid)
+    if (!board) return []
+    return board.columns
   }
 
   getBoardName(boardUid: string): string {

@@ -30,7 +30,8 @@ export class AddEditTodoDialogComponent implements OnInit {
     dueDate: FormControl<Date | ''>,
     priority: FormControl<'low' | 'medium' | 'high'>
     boardUid: FormControl<string>,
-    columnUid: FormControl<string>
+    columnUid: FormControl<string>,
+    completed: FormControl<boolean>
   }>
 
   public dialogTitle: string = this.data.dialogTitle
@@ -42,8 +43,10 @@ export class AddEditTodoDialogComponent implements OnInit {
   public priority: 'low' | 'medium' | 'high' = this.data.priority
   public boardUid: string = this.data.boardUid
   public columnUid: string = this.data.columnUid
+  public completed: boolean = this.data.completed
 
   public boards = this.todosService.getBoards()
+  public boardColumns = this.todosService.getColumns(this.boardUid)
   priorities: string[] = ['low', 'medium', 'high']
 
   ngOnInit() {
@@ -54,7 +57,13 @@ export class AddEditTodoDialogComponent implements OnInit {
       dueDate: this.fb.nonNullable.control(this.type == 'add' ? '' : this.dueDate),
       priority: this.fb.nonNullable.control(this.type == 'add' ? 'low' : this.priority, [Validators.required]),
       boardUid: this.fb.nonNullable.control(this.type == 'add' ? this.boards[0].uid : this.boardUid, [Validators.required]),
-      columnUid: this.fb.nonNullable.control(this.type == 'add' ? this.boards[0].columns[0].uid : this.columnUid, [Validators.required])
+      columnUid: this.fb.nonNullable.control(this.type == 'add' ? this.boards[0].columns[0].uid : this.columnUid, [Validators.required]),
+      completed: this.fb.nonNullable.control(this.type == 'add' ? false : this.completed)
+    })
+
+    this.todoForm.controls.boardUid.valueChanges.subscribe((value: string) => {
+      this.boardColumns = this.todosService.getColumns(value)
+      this.todoForm.controls.columnUid.setValue(this.boardColumns[0].uid)
     })
   }
 

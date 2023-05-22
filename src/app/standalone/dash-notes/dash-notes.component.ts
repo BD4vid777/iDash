@@ -6,9 +6,9 @@ import { Note, NotesService } from "../../shared/notes.service";
 import { MatDialog } from "@angular/material/dialog";
 import { AddEditNoteDialogComponent } from "../../dialogs/add-edit-note-dialog/add-edit-note-dialog.component";
 import {
-  DialogQuestionAnimationTimeEnter,
-  DialogQuestionAnimationTimeExit, DialogQuestionClass,
-  DialogQuestionWidth
+  DIALOG_QUESTION_ANIMATION_ENTER,
+  DIALOG_QUESTION_ANIMATION_EXIT, DIALOG_QUESTION_CLASS,
+  DIALOG_QUESTION_WIDTH
 } from "../../utils/internal-data";
 import { SimpleQuestionDialogComponent } from "../../dialogs/simple-question-dialog/simple-question-dialog.component";
 import { MatTooltipModule } from "@angular/material/tooltip";
@@ -43,10 +43,10 @@ export class DashNotesComponent implements OnInit {
 
   openAddNoteDialog() {
     let addDialog = this.matDialog.open(AddEditNoteDialogComponent, {
-      width: DialogQuestionWidth,
-      enterAnimationDuration: DialogQuestionAnimationTimeEnter,
-      exitAnimationDuration: DialogQuestionAnimationTimeExit,
-      panelClass: DialogQuestionClass,
+      width: DIALOG_QUESTION_WIDTH,
+      enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
+      exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
+      panelClass: DIALOG_QUESTION_CLASS,
       data: {
         dialogTitle: 'Add new note',
         type: 'add',
@@ -70,10 +70,10 @@ export class DashNotesComponent implements OnInit {
 
   openEditNoteDialog(note: INote) {
     let editDialog = this.matDialog.open(AddEditNoteDialogComponent, {
-      width: DialogQuestionWidth,
-      enterAnimationDuration: DialogQuestionAnimationTimeEnter,
-      exitAnimationDuration: DialogQuestionAnimationTimeExit,
-      panelClass: DialogQuestionClass,
+      width: DIALOG_QUESTION_WIDTH,
+      enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
+      exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
+      panelClass: DIALOG_QUESTION_CLASS,
       data: {
         dialogTitle: 'Edit note',
         type: 'edit',
@@ -96,10 +96,10 @@ export class DashNotesComponent implements OnInit {
 
   openDeleteNoteDialog(note: INote) {
     let deleteDialog = this.matDialog.open(SimpleQuestionDialogComponent, {
-      width: DialogQuestionWidth,
-      enterAnimationDuration: DialogQuestionAnimationTimeEnter,
-      exitAnimationDuration: DialogQuestionAnimationTimeExit,
-      panelClass: DialogQuestionClass,
+      width: DIALOG_QUESTION_WIDTH,
+      enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
+      exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
+      panelClass: DIALOG_QUESTION_CLASS,
       data: {
         dialogTitle: `Delete: ${note.title}`,
         question: 'Are you sure you want to delete this note?'
@@ -120,10 +120,10 @@ export class DashNotesComponent implements OnInit {
 
   showNotePreview(note: INote) {
     let previewDialog = this.matDialog.open(NotePreviewDialogComponent, {
-      width: DialogQuestionWidth,
-      enterAnimationDuration: DialogQuestionAnimationTimeEnter,
-      exitAnimationDuration: DialogQuestionAnimationTimeExit,
-      panelClass: DialogQuestionClass,
+      width: DIALOG_QUESTION_WIDTH,
+      enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
+      exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
+      panelClass: DIALOG_QUESTION_CLASS,
       data: {
         dialogTitle: 'Preview: ' + note.title,
         contentInput: note.content

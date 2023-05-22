@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IBackground, IBoard, IBookmark, ITodo, IUserStorageData } from "../utils/interfaces";
-import { DEFAULT_TODO_CONTENT, primaryBG, UserDataStorageKey } from "../utils/internal-data";
+import { DEFAULT_TODO_CONTENT, primaryBG, USER_DATA_STORAGE_KEY } from "../utils/internal-data";
 import { Bookmark } from "./bookmarks.service";
 import { Board, Todo } from "./todos.service";
 
@@ -9,7 +9,7 @@ import { Board, Todo } from "./todos.service";
 })
 export class StorageDataService {
 
-  public userDataStorageKey: string = UserDataStorageKey
+  public userDataStorageKey: string = USER_DATA_STORAGE_KEY
   private userDataFromStorage!: IUserStorageData
   private bgPrimary: IBackground = primaryBG
 

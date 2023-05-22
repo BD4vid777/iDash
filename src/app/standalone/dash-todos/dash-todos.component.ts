@@ -7,9 +7,10 @@ import { MatDialog } from "@angular/material/dialog";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { SimpleQuestionDialogComponent } from "../../dialogs/simple-question-dialog/simple-question-dialog.component";
 import {
-  DialogQuestionAnimationTimeEnter,
-  DialogQuestionAnimationTimeExit, DialogQuestionClass,
-  DialogQuestionWidth
+  DIALOG_EDIT_ADD_TODO_WIDTH,
+  DIALOG_QUESTION_ANIMATION_ENTER,
+  DIALOG_QUESTION_ANIMATION_EXIT, DIALOG_QUESTION_CLASS,
+  DIALOG_QUESTION_WIDTH
 } from "../../utils/internal-data";
 import { AddEditTodoDialogComponent } from "../../dialogs/add-edit-todo-dialog/add-edit-todo-dialog.component";
 import { TodoPreviewDialogComponent } from "../../dialogs/todo-preview-dialog/todo-preview-dialog.component";
@@ -39,10 +40,10 @@ export class DashTodosComponent implements OnInit {
 
   openAddTodoDialog() {
     let addDialog = this.matDialog.open(AddEditTodoDialogComponent, {
-      width: DialogQuestionWidth,
-      enterAnimationDuration: DialogQuestionAnimationTimeEnter,
-      exitAnimationDuration: DialogQuestionAnimationTimeExit,
-      panelClass: DialogQuestionClass,
+      width: DIALOG_EDIT_ADD_TODO_WIDTH,
+      enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
+      exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
+      panelClass: DIALOG_QUESTION_CLASS,
       data: {
         dialogTitle: 'Add new todo',
         type: 'add',
@@ -52,7 +53,8 @@ export class DashTodosComponent implements OnInit {
         dueDate: '',
         priority: 'low',
         boardUid: this.todosService.getBoards()[0].uid,
-        columnUid: this.todosService.getBoards()[0].columns[0].uid
+        columnUid: this.todosService.getBoards()[0].columns[0].uid,
+        completed: false
       }
     })
 
@@ -71,10 +73,10 @@ export class DashTodosComponent implements OnInit {
 
   openEditTodoDialog(todo: ITodo) {
     let editDialog = this.matDialog.open(AddEditTodoDialogComponent, {
-      width: DialogQuestionWidth,
-      enterAnimationDuration: DialogQuestionAnimationTimeEnter,
-      exitAnimationDuration: DialogQuestionAnimationTimeExit,
-      panelClass: DialogQuestionClass,
+      width: DIALOG_QUESTION_WIDTH,
+      enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
+      exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
+      panelClass: DIALOG_QUESTION_CLASS,
       data: {
         dialogTitle: `Edit: ${todo.title}`,
         type: 'edit',
@@ -84,7 +86,8 @@ export class DashTodosComponent implements OnInit {
         dueDate: todo.dueDate,
         priority: todo.priority,
         boardUid: todo.boardUid,
-        columnUid: todo.columnUid
+        columnUid: todo.columnUid,
+        completed: todo.completed
       }
     })
 
@@ -95,17 +98,17 @@ export class DashTodosComponent implements OnInit {
     })
   }
 
-  editTodo(uid: string, title: string, content: string, progress: number, dueDate: Date | '', priority: string, boardUid: string, columnUid: string) {
-    this.todosService.editTodo(uid, title, content, progress, dueDate, priority, boardUid, columnUid)
+  editTodo(uid: string, title: string, content: string, progress: number, dueDate: Date | '', priority: string, boardUid: string, columnUid: string, completed: boolean = false) {
+    this.todosService.editTodo(uid, title, content, progress, dueDate, priority, boardUid, columnUid, completed)
     this.setLatestDueTodos()
   }
 
   showTodoPreview(todo: ITodo) {
     let previewDialog = this.matDialog.open(TodoPreviewDialogComponent, {
-      width: DialogQuestionWidth,
-      enterAnimationDuration: DialogQuestionAnimationTimeEnter,
-      exitAnimationDuration: DialogQuestionAnimationTimeExit,
-      panelClass: DialogQuestionClass,
+      width: DIALOG_QUESTION_WIDTH,
+      enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
+      exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
+      panelClass: DIALOG_QUESTION_CLASS,
       data: {
         dialogTitle: `Preview: ${todo.title}`,
         todo: todo
@@ -123,10 +126,10 @@ export class DashTodosComponent implements OnInit {
 
   openDeleteTodoDialog(todo: ITodo) {
     let deleteDialog = this.matDialog.open(SimpleQuestionDialogComponent, {
-      width: DialogQuestionWidth,
-      enterAnimationDuration: DialogQuestionAnimationTimeEnter,
-      exitAnimationDuration: DialogQuestionAnimationTimeExit,
-      panelClass: DialogQuestionClass,
+      width: DIALOG_QUESTION_WIDTH,
+      enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
+      exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
+      panelClass: DIALOG_QUESTION_CLASS,
       data: {
         dialogTitle: `Delete: ${todo.title}`,
         question: 'Are you sure you want to delete this todo?'
@@ -148,10 +151,10 @@ export class DashTodosComponent implements OnInit {
   updateTodoStatus(todo: ITodo) {
     if (!todo.completed && todo.progress != 100) {
       let completeQuestionDialog = this.matDialog.open(SimpleQuestionDialogComponent, {
-        width: DialogQuestionWidth,
-        enterAnimationDuration: DialogQuestionAnimationTimeEnter,
-        exitAnimationDuration: DialogQuestionAnimationTimeExit,
-        panelClass: DialogQuestionClass,
+        width: DIALOG_QUESTION_WIDTH,
+        enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
+        exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
+        panelClass: DIALOG_QUESTION_CLASS,
         data: {
           dialogTitle: `Todo progress: ${todo.progress}%`,
           question: 'Set todo progress to 100%?',

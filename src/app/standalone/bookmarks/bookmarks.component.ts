@@ -7,8 +7,8 @@ import { CheckImageDirective } from "../../directives/check-image.directive";
 import { MatDialog } from "@angular/material/dialog";
 import { SimpleQuestionDialogComponent } from "../../dialogs/simple-question-dialog/simple-question-dialog.component";
 import {
-  DialogQuestionAnimationTimeEnter, DialogQuestionAnimationTimeExit,
-  DialogQuestionClass, DialogQuestionWidth
+  DIALOG_QUESTION_ANIMATION_ENTER, DIALOG_QUESTION_ANIMATION_EXIT,
+  DIALOG_QUESTION_CLASS, DIALOG_QUESTION_WIDTH
 } from "../../utils/internal-data";
 import {
   AddEditBookmarkDialogComponent
@@ -34,10 +34,10 @@ export class BookmarksComponent implements OnInit {
 
   openAddBookmarkDialog() {
     let addDialog = this.matDialog.open(AddEditBookmarkDialogComponent, {
-      width: DialogQuestionWidth,
-      enterAnimationDuration: DialogQuestionAnimationTimeEnter,
-      exitAnimationDuration: DialogQuestionAnimationTimeExit,
-      panelClass: DialogQuestionClass,
+      width: DIALOG_QUESTION_WIDTH,
+      enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
+      exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
+      panelClass: DIALOG_QUESTION_CLASS,
       data: {
         dialogTitle: 'Add new bookmark',
         type: 'add',
@@ -61,10 +61,10 @@ export class BookmarksComponent implements OnInit {
 
   openEditBookmarkDialog(tile: IBookmark) {
     let editDialog = this.matDialog.open(AddEditBookmarkDialogComponent, {
-      width: DialogQuestionWidth,
-      enterAnimationDuration: DialogQuestionAnimationTimeEnter,
-      exitAnimationDuration: DialogQuestionAnimationTimeExit,
-      panelClass: DialogQuestionClass,
+      width: DIALOG_QUESTION_WIDTH,
+      enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
+      exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
+      panelClass: DIALOG_QUESTION_CLASS,
       data: {
         dialogTitle: 'Edit bookmark',
         type: 'edit',
@@ -87,10 +87,10 @@ export class BookmarksComponent implements OnInit {
 
   openDeleteBookmarkDialog(tile: IBookmark ) {
     let deleteDialog = this.matDialog.open(SimpleQuestionDialogComponent, {
-      width: DialogQuestionWidth,
-      enterAnimationDuration: DialogQuestionAnimationTimeEnter,
-      exitAnimationDuration: DialogQuestionAnimationTimeExit,
-      panelClass: DialogQuestionClass,
+      width: DIALOG_QUESTION_WIDTH,
+      enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
+      exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
+      panelClass: DIALOG_QUESTION_CLASS,
       data: {
         dialogTitle: `Delete: ${tile.title}`,
         question: 'Are you sure you want to delete this bookmark?'

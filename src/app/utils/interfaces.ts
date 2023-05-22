@@ -93,6 +93,7 @@ export interface IAddEditNoteDialogData {
 }
 
 export interface IAddEditTodoDialogData {
+  completed: boolean;
   dialogTitle: string,
   type: 'add' | 'edit',
   title: string,
