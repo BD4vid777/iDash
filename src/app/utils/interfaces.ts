@@ -92,6 +92,18 @@ export interface IAddEditNoteDialogData {
   contentInput: string
 }
 
+export interface IAddEditTodoDialogData {
+  dialogTitle: string,
+  type: 'add' | 'edit',
+  title: string,
+  content: string,
+  progress: number,
+  dueDate: Date | '',
+  priority: 'low' | 'medium' | 'high',
+  boardUid: string,
+  columnUid: string
+}
+
 export interface INotePreviewDialogData {
   dialogTitle: string,
   contentInput: string,

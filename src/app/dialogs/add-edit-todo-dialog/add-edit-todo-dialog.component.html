@@ -1,1 +1,19 @@
 <p>add-edit-todo-dialog works!</p>
+<h2 mat-dialog-title>{{dialogTitle}}</h2>
+<span class="material-symbols-outlined close-btn" (click)="closeDialog()">close</span>
+<mat-dialog-content>
+
+  test
+
+</mat-dialog-content>
+<mat-dialog-actions [align]="'end'" [ngStyle]="{display: 'flex', gap: '.75rem', 'margin-right': '.5rem'}">
+  <button
+    class="btn btn-no"
+    (click)="closeDialog()"
+  >Cancel</button>
+  <button
+    class="btn btn-yes"
+    [disabled]="!todoForm.valid"
+    (click)="saveTodo()"
+  >{{ type == 'add' ? 'Add New' : 'Save changes' }}</button>
+</mat-dialog-actions>

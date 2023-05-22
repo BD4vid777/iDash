@@ -8,8 +8,8 @@ import { IColumn } from "../utils/interfaces";
 })
 export class TodosService {
 
-  todos: Todo[] = []
-  boards: Board[] = []
+  private todos: Todo[] = []
+  private boards: Board[] = []
 
   private storageService = inject(StorageDataService)
 
