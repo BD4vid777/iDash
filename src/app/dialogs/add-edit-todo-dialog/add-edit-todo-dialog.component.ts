@@ -2,13 +2,14 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { IAddEditTodoDialogData } from "../../utils/interfaces";
-import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { TodosService } from "../../shared/todos.service";
+import { QuillEditorComponent } from "ngx-quill";
 
 @Component({
   selector: 'id-add-edit-todo-dialog',
   standalone: true,
-  imports: [CommonModule, MatDialogModule],
+  imports: [CommonModule, MatDialogModule, FormsModule, QuillEditorComponent, ReactiveFormsModule],
   templateUrl: './add-edit-todo-dialog.component.html',
   styleUrls: ['./add-edit-todo-dialog.component.scss']
 })
@@ -44,13 +45,13 @@ export class AddEditTodoDialogComponent implements OnInit {
 
   ngOnInit() {
     this.todoForm = this.fb.nonNullable.group({
-      title: this.fb.nonNullable.control(this.type == 'add' ? '' : this.title),
+      title: this.fb.nonNullable.control(this.type == 'add' ? '' : this.title, [Validators.required]),
       content: this.fb.nonNullable.control(this.type == 'add' ? '' : this.content),
       progress: this.fb.nonNullable.control(this.type == 'add' ? 0 : this.progress),
       dueDate: this.fb.nonNullable.control(this.type == 'add' ? '' : this.dueDate),
-      priority: this.fb.nonNullable.control(this.type == 'add' ? 'low' : this.priority),
-      boardUid: this.fb.nonNullable.control(this.type == 'add' ? this.boards[0].uid : this.boardUid),
-      columnUid: this.fb.nonNullable.control(this.type == 'add' ? this.boards[0].columns[0].uid : this.columnUid)
+      priority: this.fb.nonNullable.control(this.type == 'add' ? 'low' : this.priority, [Validators.required]),
+      boardUid: this.fb.nonNullable.control(this.type == 'add' ? this.boards[0].uid : this.boardUid, [Validators.required]),
+      columnUid: this.fb.nonNullable.control(this.type == 'add' ? this.boards[0].columns[0].uid : this.columnUid, [Validators.required])
     })
   }
 

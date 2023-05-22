@@ -22,6 +22,9 @@ export class TodoPreviewDialogComponent {
   public dialogTitle: string = this.data.dialogTitle
   public todo: ITodo = this.data.todo
 
+  public boardName = this.getBoardName(this.todo.boardUid)
+  public columnName = this.getColumnName(this.todo.columnUid, this.todo.boardUid)
+
   closeEdit() {
     this.dialogRef.close('edit')
   }
@@ -35,7 +38,6 @@ export class TodoPreviewDialogComponent {
   }
 
   getBoardName(boardUid: string): string {
-    console.log(this.todo)
     return this.todosService.getBoardName(boardUid);
   }
 

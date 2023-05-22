@@ -122,9 +122,7 @@ export class TodosService {
 
   getColumnName(columnUid: string, boardUid: string): string {
     const board = this.boards.find(board => board.uid === boardUid)
-    console.log(this.boards)
     if (!board) return ''
-    console.log(board)
     const column = board.columns.find(column => column.uid === columnUid)
     if (!column) return ''
     return column.name
@@ -149,7 +147,7 @@ export class Todo {
   completed: boolean
   uid: string
 
-  constructor(title: string, content: string, progress: number = 0, dueDate: Date | '', priority: 'low' | 'medium' | 'high', columnUid: string, boardUid: string) {
+  constructor(title: string, content: string, progress: number = 0, dueDate: Date | '', priority: 'low' | 'medium' | 'high',  boardUid: string, columnUid: string,) {
     this.title = title
     this.content = content
     this.progress = progress
