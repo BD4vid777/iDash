@@ -208,6 +208,10 @@ progress {
   display: flex;
   flex-direction: column;
 
+  &.id-justify-start {
+    justify-content: flex-start;
+  }
+
   &.id-gap {
     &-small {
       gap: $gap-secondary;
@@ -225,6 +229,26 @@ progress {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &.id-align-start {
+    align-items: flex-start;
+  }
+
+  &.id-gap {
+    &-small {
+      gap: $gap-secondary;
+    }
+    &-medium {
+      gap: $gap-primary;
+    }
+    &-big {
+      gap: $gap-double;
+    }
+  }
+}
+
+.w-100 {
+  width: 100%;
 }
 
 mat-divider {

@@ -16,6 +16,43 @@
         <span *ngIf="todoForm.controls.title.errors?.['required']">Please provide note title</span>
       </div>
     </div>
+
+    <div class="id-flex-spc id-align-start id-gap-big">
+      <div class="id-form-control id-flex-col w-100">
+        <label for="priority">Priority</label>
+        <mat-select
+          id="priority"
+          formControlName="priority"
+          placeholder="Select priority"
+          [ngClass]="todoForm.controls.priority.touched && todoForm.controls.priority.invalid ? 'error' : ''"
+        >
+          <mat-option *ngFor="let priority of priorities" [value]="priority">{{priority}}</mat-option>
+        </mat-select>
+        <div *ngIf="todoForm.controls.priority.touched && todoForm.controls.priority.invalid" class="id-form-alert">
+          <span *ngIf="todoForm.controls.priority.errors?.['required']">Please select priority</span>
+        </div>
+      </div>
+      <div class="id-form-control id-flex-col w-100">
+        <label for="progress">Progress</label>
+        <input
+          type="range"
+          min="0"
+          max="100"
+          step="25"
+          list="progress-marks"
+          id="progress"
+          formControlName="progress"
+        />
+        <datalist id="progress-marks">
+          <option value="0" label="0%"></option>
+          <option value="25"></option>
+          <option value="50" label="50%"></option>
+          <option value="75"></option>
+          <option value="100" label="100%"></option>
+        </datalist>
+      </div>
+    </div>
+
     <div class="id-form-control id-flex-col">
       <label for="content">Content</label>
       <quill-editor

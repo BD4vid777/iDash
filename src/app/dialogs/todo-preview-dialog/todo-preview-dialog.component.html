@@ -2,7 +2,7 @@
 <span class="material-symbols-outlined close-btn" (click)="close()">close</span>
 <mat-dialog-content>
   <div class="preview-container">
-    <p>{{todo.content}}</p>
+    <div [innerHTML]="todo.content | noSanitize" class="ql-editor"></div>
     <mat-divider></mat-divider>
     <div class="preview-info">
       <div

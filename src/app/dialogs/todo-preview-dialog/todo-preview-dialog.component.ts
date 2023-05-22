@@ -5,11 +5,12 @@ import { ITodo, ITodoPreviewDialogData } from "../../utils/interfaces";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { TodosService } from "../../shared/todos.service";
+import { NoSanitizePipe } from "../../pipes/noSanitize.pipe";
 
 @Component({
   selector: 'id-todo-preview-dialog',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, MatDividerModule, MatTooltipModule],
+  imports: [CommonModule, MatDialogModule, MatDividerModule, MatTooltipModule, NoSanitizePipe],
   templateUrl: './todo-preview-dialog.component.html',
   styleUrls: ['./todo-preview-dialog.component.scss']
 })

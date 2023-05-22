@@ -1,5 +1,7 @@
 @import "../../../app/styles/variables.scss";
 @import "../../../app/styles/quill_id.scss";
+@import 'quill/dist/quill.bubble.css';
+@import 'quill/dist/quill.snow.css';
 
 :host {
   font-size: 20px;

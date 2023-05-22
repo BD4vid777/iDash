@@ -5,11 +5,13 @@ import { IAddEditTodoDialogData } from "../../utils/interfaces";
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { TodosService } from "../../shared/todos.service";
 import { QuillEditorComponent } from "ngx-quill";
+import { MatOptionModule } from "@angular/material/core";
+import { MatSelectModule } from "@angular/material/select";
 
 @Component({
   selector: 'id-add-edit-todo-dialog',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, FormsModule, QuillEditorComponent, ReactiveFormsModule],
+  imports: [CommonModule, MatDialogModule, FormsModule, QuillEditorComponent, ReactiveFormsModule, MatOptionModule, MatSelectModule],
   templateUrl: './add-edit-todo-dialog.component.html',
   styleUrls: ['./add-edit-todo-dialog.component.scss']
 })
@@ -42,6 +44,7 @@ export class AddEditTodoDialogComponent implements OnInit {
   public columnUid: string = this.data.columnUid
 
   public boards = this.todosService.getBoards()
+  priorities: string[] = ['low', 'medium', 'high']
 
   ngOnInit() {
     this.todoForm = this.fb.nonNullable.group({
