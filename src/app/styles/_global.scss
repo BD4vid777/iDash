@@ -225,6 +225,12 @@ progress {
   }
 }
 
+.id-flex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .id-flex-spc {
   display: flex;
   justify-content: space-between;
@@ -243,6 +249,9 @@ progress {
     }
     &-big {
       gap: $gap-double;
+    }
+    &-xtra-big {
+      gap: $gap-quadruple;
     }
   }
 }

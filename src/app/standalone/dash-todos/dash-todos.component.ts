@@ -73,7 +73,7 @@ export class DashTodosComponent implements OnInit {
 
   openEditTodoDialog(todo: ITodo) {
     let editDialog = this.matDialog.open(AddEditTodoDialogComponent, {
-      width: DIALOG_QUESTION_WIDTH,
+      width: DIALOG_EDIT_ADD_TODO_WIDTH,
       enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
       exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
       panelClass: DIALOG_QUESTION_CLASS,

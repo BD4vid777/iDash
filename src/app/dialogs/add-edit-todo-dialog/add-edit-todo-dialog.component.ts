@@ -61,6 +61,8 @@ export class AddEditTodoDialogComponent implements OnInit {
       completed: this.fb.nonNullable.control(this.type == 'add' ? false : this.completed)
     })
 
+    if (this.type == 'edit') this.todoForm.get('boardUid')?.disable()
+
     this.todoForm.controls.boardUid.valueChanges.subscribe((value: string) => {
       this.boardColumns = this.todosService.getColumns(value)
       this.todoForm.controls.columnUid.setValue(this.boardColumns[0].uid)

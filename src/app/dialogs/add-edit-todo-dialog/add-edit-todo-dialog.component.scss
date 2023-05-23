@@ -13,4 +13,10 @@
     line-height: inherit;
     font-weight: 600;
   }
+
+  ::ng-deep quill-editor.id-quill .ql-container {
+    max-height: unset!important;
+  }
 }
+
+

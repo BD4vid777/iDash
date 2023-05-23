@@ -1,7 +1,7 @@
 
 export const USER_DATA_STORAGE_KEY: string = 'iDashUserData'
 export const DIALOG_QUESTION_WIDTH: string = '500px'
-export const DIALOG_EDIT_ADD_TODO_WIDTH: string = '750px'
+export const DIALOG_EDIT_ADD_TODO_WIDTH: string = '800px'
 export const DIALOG_QUESTION_ANIMATION_ENTER: string = '750ms'
 export const DIALOG_QUESTION_ANIMATION_EXIT: string = '500ms'
 export const DIALOG_QUESTION_CLASS: string =  'simple-question-dialog-container'

@@ -68,6 +68,23 @@ body {
   }
 }
 
+.id-checkbox-container {
+  margin-top: 3px;
+}
+
+.id-checkbox {
+  height: 18px!important;
+  width: 18px!important;
+  padding: 1px!important;
+}
+
+.id-checkbox-label {
+  height: 20px!important;
+  font-size: 1rem;
+  margin-left: 1rem;
+  margin-bottom: unset!important;
+}
+
 datalist {
   display: flex;
   flex-direction: column;
@@ -92,7 +109,8 @@ option {
 .id-scrollbar {
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
   scrollbar-width: none; /* for Firefox */
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   &::-webkit-scrollbar {
     width: 5px !important;
