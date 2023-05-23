@@ -35,7 +35,7 @@ export class DashTodosComponent implements OnInit {
 
   setLatestDueTodos() {
     this.todos = this.todosService.getTodos()
-    this.latestDueTodos = this.todos.sort((a, b) => new Date(b.dueDate).getTime() - new Date(a.dueDate).getTime() || new Date(b.editedAt).getTime() - new Date(a.editedAt).getTime()).slice(0, 10)
+    this.latestDueTodos = this.todos.sort((a, b) => new Date(b.editedAt).getTime() - new Date(a.editedAt).getTime()).slice(0, 10)
   }
 
   openAddTodoDialog() {

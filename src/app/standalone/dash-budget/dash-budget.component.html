@@ -1,9 +1,65 @@
 <id-title-header
   [route]="'/budget'"
   [title]="'Budget'"
-  [hasCounter]="false"
+  [counter]="monthlyBudgetBalance"
+  [counterColor]="monthlyBudgetBalance > 0 ? '#00c851' : '#f5a623'"
+  [counterTooltip]="currentMonth + ' budget balance'"
 ></id-title-header>
 
 <div class="dash-box-wrapper id-scrollbar">
-  BUDGET
+  <div class="budget-balance-container">
+    <div class="budget-actions">
+      <button class="btn btn-yes w-100" (click)="addValue('income')">
+        <span class="material-symbols-outlined">add</span>
+        <p>INCOME</p>
+      </button>
+      <button class="btn btn-no w-100" (click)="addValue('expense')">
+        <span class="material-symbols-outlined">remove</span>
+        <p>EXPENSE</p>
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="budget-lists">
+      <div class="budget-income">
+        <div class="budget-list-item bg-blur w-100" *ngFor="let item of budgetIncomeData">
+          <div class="budget-list-item-value" data-type="income">{{ item.value.toFixed(2) }}</div>
+          <div class="budget-list-item-name" [matTooltip]="item.title">{{ item.title }}</div>
+          <div class="budget-list-item-actions">
+            <span
+              class="material-symbols-outlined edit"
+              (click)="openEditBudgetDialog(item)"
+              matTooltip="Edit Todo"
+              matTooltipPosition="below"
+            >stylus</span>
+            <span
+              class="material-symbols-outlined delete"
+              (click)="openDeleteBudgetDialog(item)"
+              matTooltip="Delete Todo"
+              matTooltipPosition="below"
+            >delete</span>
+          </div>
+        </div>
+      </div>
+      <div class="budget-expenses">
+        <div class="budget-list-item bg-blur w-100" *ngFor="let item of budgetExpenseData">
+          <div class="budget-list-item-value" data-type="expenses">{{ item.value.toFixed(2) }}</div>
+          <div class="budget-list-item-name" [matTooltip]="item.title">{{ item.title }}</div>
+          <div class="budget-list-item-actions">
+            <span
+              class="material-symbols-outlined edit"
+              (click)="openEditBudgetDialog(item)"
+              matTooltip="Edit Item"
+              matTooltipPosition="below"
+            >stylus</span>
+            <span
+              class="material-symbols-outlined delete"
+              (click)="openDeleteBudgetDialog(item)"
+              matTooltip="Delete Item"
+              matTooltipPosition="below"
+            >delete</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

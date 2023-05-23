@@ -1,0 +1,108 @@
+@import "../../styles/variables.scss";
+
+.budget-balance-container {
+  .budget-actions, .budget-lists {
+    display: flex;
+    gap: $gap-double;
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .budget-lists {
+    .budget-income, .budget-expenses {
+      display: flex;
+      flex-direction: column;
+      gap: $gap-primary;
+      width: calc(50% - 1rem);
+    }
+    .budget-list-item {
+      display: flex;
+      gap: $gap-primary;
+      align-items: center;
+      justify-content: flex-start;
+      padding: $padding-secondary;
+      overflow: hidden;
+      transition: $smooth;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      .budget-list-item-value {
+        width: fit-content;
+        border-radius: $border-radius-primary;
+
+        background-color: rgba(255, 255, 255, 0.3);
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+
+        color: $primary-white;
+
+        padding: 5px 10px;
+        align-items: center;
+        justify-content: center;
+
+        &[data-type="income"] {
+          background-color: $success;
+        }
+        &[data-type="expenses"] {
+          background-color: $delete;
+        }
+      }
+
+      .budget-list-item-name {
+        max-width: 50%;
+        margin-right: 75px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .budget-list-item-actions {
+        display: flex;
+        gap: $gap-secondary;
+        width: fit-content;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+
+        background-color: rgba(255, 255, 255, 0.3);
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+
+        padding: 5px 10px;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        span {
+          font-size: 1.25rem;
+          cursor: pointer;
+          opacity: .7;
+          transition: $smooth;
+        }
+
+        span:hover {
+          opacity: 1;
+        }
+        span.edit:hover {
+          color: $success;
+          transform: scale(1.5);
+        }
+        span.delete:hover {
+          color: $delete;
+          transform: scale(1.5);
+        }
+      }
+    }
+  }
+
+
+}

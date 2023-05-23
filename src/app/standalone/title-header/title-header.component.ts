@@ -10,7 +10,12 @@ import { RouterLink } from "@angular/router";
   template: `
     <div class="title-wrapper">
       <span [routerLink]="route">{{title}}</span>
-      <div *ngIf="hasCounter" [matTooltip]="counterTooltip" matTooltipClass="id-tooltip">{{counter}}</div>
+      <div
+        *ngIf="hasCounter"
+        [style.background-color]="counterColor == '' ? '#4580ee' : counterColor"
+        [matTooltip]="counterTooltip"
+        matTooltipClass="id-tooltip"
+      >{{title == 'Budget' ? counter.toFixed(2) : counter}}</div>
     </div>
 
   `,
@@ -52,6 +57,7 @@ export class TitleHeaderComponent {
   @Input() route: string = '';
   @Input() title: string = '';
   @Input() hasCounter: boolean = true;
+  @Input() counterColor: string = '';
   @Input() counter: number = 0;
   @Input() counterTooltip: string = '';
 }
