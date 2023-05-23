@@ -2,7 +2,7 @@
   [route]="'/todos'"
   [title]="todos.length == 0 ? 'Todos' : 'Latest/Due Todos'"
   [counter]="todos.length"
-  [counterTooltip]="'Due soon todos'"
+  [counterTooltip]="'Todos overall'"
 ></id-title-header>
 
 <div class="dash-box-wrapper id-flex-col id-gap-medium id-scrollbar">
@@ -54,7 +54,7 @@
       </div>
       <div
         class="todo-priority"
-        [ngClass]="todo.priority == 'high' ? 'high' : todo.priority == 'medium' ? 'medium' : 'low'"
+        [ngClass]="todo.priority == 'High' ? 'high' : todo.priority == 'Medium' ? 'medium' : 'low'"
         [matTooltip]="'Priority: ' + todo.priority.toUpperCase()"
       >{{todo.priority.slice(0,1).toUpperCase()}}</div>
     </div>

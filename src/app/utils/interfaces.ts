@@ -39,7 +39,7 @@ export interface ITodo {
   createdAt: Date,
   editedAt: Date,
   dueDate: Date | '',
-  priority: 'low' | 'medium' | 'high',
+  priority: 'Low' | 'Medium' | 'High',
   columnUid: string,
   columnIndex: number,
   boardUid: string,

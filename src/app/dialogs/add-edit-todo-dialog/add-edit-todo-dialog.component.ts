@@ -7,6 +7,7 @@ import { TodosService } from "../../shared/todos.service";
 import { QuillEditorComponent } from "ngx-quill";
 import { MatOptionModule } from "@angular/material/core";
 import { MatSelectModule } from "@angular/material/select";
+import { TODO_PRIORITIES } from "../../utils/internal-data";
 
 @Component({
   selector: 'id-add-edit-todo-dialog',
@@ -47,7 +48,7 @@ export class AddEditTodoDialogComponent implements OnInit {
 
   public boards = this.todosService.getBoards()
   public boardColumns = this.todosService.getColumns(this.boardUid)
-  priorities: string[] = ['low', 'medium', 'high']
+  priorities: string[] = TODO_PRIORITIES
 
   ngOnInit() {
     this.todoForm = this.fb.nonNullable.group({

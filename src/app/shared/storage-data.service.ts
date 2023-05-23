@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { IBackground, IBoard, IBookmark, ITodo, IUserStorageData } from "../utils/interfaces";
-import { DEFAULT_TODO_CONTENT, primaryBG, USER_DATA_STORAGE_KEY } from "../utils/internal-data";
+import { IBackground, IBoard, IBookmark, IBudgetValue, ITodo, IUserStorageData } from "../utils/interfaces";
+import { BUDGET_CATEGORIES, DEFAULT_TODO_CONTENT, primaryBG, USER_DATA_STORAGE_KEY } from "../utils/internal-data";
 import { Bookmark } from "./bookmarks.service";
 import { Board, Todo } from "./todos.service";
+import { BudgetValue } from "./budget.service";
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +47,13 @@ export class StorageDataService {
     ]
 
     let tmpUserTodos: ITodo[] = [
-      new Todo('Welcome to iDash!', DEFAULT_TODO_CONTENT,25, new Date(), 'medium', tmpUserTodosBoards[0].uid, tmpUserTodosBoards[0].columns[0].uid)
+      new Todo('Welcome to iDash!', DEFAULT_TODO_CONTENT,25, new Date(), 'Medium', tmpUserTodosBoards[0].uid, tmpUserTodosBoards[0].columns[0].uid)
+    ]
+
+    let tmpUserBudget: IBudgetValue[] = [
+      new BudgetValue('Quick Eat', 126, 'McDonalds', new Date(), '', 'expense', BUDGET_CATEGORIES[0]),
+      new BudgetValue('Shopping', 126, 'Grocery Market', new Date(), '', 'expense', BUDGET_CATEGORIES[0]),
+      new BudgetValue('Invoice Payment', 500, 'Dev Services', new Date(), 'Boring Company', 'income', BUDGET_CATEGORIES[6]),
     ]
 
     return {
@@ -57,7 +64,7 @@ export class StorageDataService {
       userTodos: tmpUserTodos,
       userTodosBoards: tmpUserTodosBoards,
       userNotes: [],
-      userBudget: [],
+      userBudget: tmpUserBudget,
       userBackground: this.bgPrimary,
       showWelcomeMsg: true,
       homePageQuestion: true

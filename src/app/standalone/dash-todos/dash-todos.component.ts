@@ -65,7 +65,7 @@ export class DashTodosComponent implements OnInit {
     })
   }
 
-  addNewTodo(title: string, content: string, progress: number, dueDate: Date | '', priority: 'low' | 'medium' | 'high', boardUid: string, columnUid: string) {
+  addNewTodo(title: string, content: string, progress: number, dueDate: Date | '', priority: 'Low' | 'Medium' | 'High', boardUid: string, columnUid: string) {
     let newTodo: ITodo = new Todo(title, content, progress, dueDate, priority, boardUid, columnUid)
     this.todosService.addTodo(newTodo)
     this.setLatestDueTodos()

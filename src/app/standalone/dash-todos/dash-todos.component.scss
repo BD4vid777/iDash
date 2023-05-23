@@ -88,6 +88,8 @@
       position: absolute;
       left: -40px;
       cursor: help;
+      min-width: 32px;
+      text-align: center;
 
       &.high {
         background-color: $delete;

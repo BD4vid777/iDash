@@ -148,14 +148,14 @@ export class Todo {
   createdAt: Date
   editedAt: Date
   dueDate: Date | ''
-  priority: 'low' | 'medium' | 'high'
+  priority: 'Low' | 'Medium' | 'High'
   columnUid: string
   columnIndex: number
   boardUid: string
   completed: boolean
   uid: string
 
-  constructor(title: string, content: string, progress: number = 0, dueDate: Date | '', priority: 'low' | 'medium' | 'high',  boardUid: string, columnUid: string,) {
+  constructor(title: string, content: string, progress: number = 0, dueDate: Date | '', priority: 'Low' | 'Medium' | 'High',  boardUid: string, columnUid: string,) {
     this.title = title
     this.content = content
     this.progress = progress

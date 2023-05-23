@@ -6,6 +6,18 @@ export const DIALOG_QUESTION_ANIMATION_ENTER: string = '750ms'
 export const DIALOG_QUESTION_ANIMATION_EXIT: string = '500ms'
 export const DIALOG_QUESTION_CLASS: string =  'simple-question-dialog-container'
 export const DEFAULT_TODO_CONTENT: string = '<h2 class="ql-align-center">This is your first TODO</h2><p class="ql-align-justify"><br></p><p class="ql-align-justify">You can <span style="color: rgb(0, 138, 0);">Edit </span>or <span style="color: rgb(230, 0, 0);">Delete </span>it!</p>'
+export const TODO_PRIORITIES: string[] = ['Low', 'Medium', 'High']
+export const BUDGET_CATEGORIES: string[] =
+  [
+    'Food',
+    'Fuel',
+    'Entertainment',
+    'Bills',
+    'Clothes',
+    'Gallery & Gifts',
+    'Services',
+    'Other'
+  ]
 
 export const primaryBG = {
   photoLink: '../assets/bgImg/christian-lue-unsplash.jpg',
