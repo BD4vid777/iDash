@@ -27,6 +27,7 @@ export class DashBudgetComponent implements OnInit {
 
   setBudgetData() {
     this.budgetData = this.budgetService.getBudgetData()
+    this.setMonthlyBudgetBalance()
   }
 
   setMonthlyBudgetBalance() {
