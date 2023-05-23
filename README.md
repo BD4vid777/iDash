@@ -1,9 +1,9 @@
 # iDash
-## pre-release 1.3.0 BETA
+## pre-release 1.3.1 BETA
 
 This project is being created by [BD4vid777](https://github.com/BD4vid777) as a personal private dashboard project.
 
-### Actual version 1.3.0:
+### Actual version 1.3.1:
 - [x] Bookmarks - Dashboard
 - [x] Notes - Dashboard
 - [x] Todos - Dashboard
