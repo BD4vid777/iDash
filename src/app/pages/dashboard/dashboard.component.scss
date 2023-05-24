@@ -9,23 +9,32 @@
 
   gap: $gap-primary;
 
+  id-bookmarks {
+    opacity: 0;
+  }
+
+  &:hover {
+    .dashboard-standalones, id-bookmarks {
+      opacity: 1;
+    }
+  }
+
   .time-container {
     text-align: center;
     line-height: 1;
     margin-block: 2rem;
+    font-weight: 500;
+    color: white;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
 
     h1 {
       font-size: 7rem;
-      font-weight: 500;
-      color: white;
       margin: 0;
     }
 
     h4 {
       font-size: 1.5rem;
-      font-weight: 300;
       margin: 0;
-      color: white;
     }
   }
 
@@ -34,6 +43,9 @@
     justify-content: space-between;
     gap: $gap-double;
     padding: $padding-primary;
+
+    opacity: 0;
+    transition: $smooth;
 
     margin-top: auto;
 

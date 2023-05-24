@@ -28,6 +28,10 @@
 
       &:hover {
         transform: scale(1.05);
+
+        .budget-list-item-value {
+          opacity: 1;
+        }
       }
 
       .budget-list-item-value {
@@ -43,6 +47,9 @@
         padding: 5px 10px;
         align-items: center;
         justify-content: center;
+
+        opacity: .7;
+        transition: $smooth;
 
         &[data-type="income"] {
           background-color: $success;

@@ -163,6 +163,7 @@ option {
       gap: 1rem;
 
       p {
+        color: $primary-black;
         display: none;
         transition: $smooth;
         opacity: 0;
@@ -210,7 +211,6 @@ option {
 
     &:hover {
       .background-header {
-        color: white;
 
         p {
           display: block;
