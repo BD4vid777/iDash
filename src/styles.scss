@@ -288,19 +288,29 @@ option {
 }
 
 footer {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
 
-  font-size: 12px;
-  color: #a3a3a3;
+  .dash-info, .photo-info {
+    position: absolute;
+    bottom: 10px;
 
-  a {
-    color: white;
+    font-size: 12px;
+    color: #a3a3a3;
 
-    &:hover {
-      color: $active;
+    a {
+      color: white;
+
+      &:hover {
+        color: $active;
+      }
     }
+  }
+
+  .dash-info {
+    left: 10px;
+  }
+
+  .photo-info {
+    right: 10px;
   }
 }
 

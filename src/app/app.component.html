@@ -33,7 +33,10 @@
   <main>
     <router-outlet></router-outlet>
   </main>
-  <footer [innerHTML]="bgPhoto.photoAuthor"></footer>
+  <footer>
+    <div class="dash-info"><a href="https://github.com/BD4vid777/iDash" target="_blank">iDash(pre-release 1.5.0)</a>, 2023 - created by <a href="https://www.linkedin.com/in/dawidbudzinski/" target="_blank">Dawid Budziński</a></div>
+    <div class="photo-info" [innerHTML]="bgPhoto.photoAuthor"></div>
+  </footer>
 </div>
 
 
