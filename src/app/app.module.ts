@@ -18,6 +18,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from "@angular/material/dialog";
 import { QuillModule } from "ngx-quill";
 import { QuillConfigModule } from 'ngx-quill/config';
+import { UnderConstructionComponent } from "./pages/under-construction/under-construction.component";
 
 @NgModule({
   declarations: [
@@ -27,42 +28,43 @@ import { QuillConfigModule } from 'ngx-quill/config';
     BudgetComponent,
     DashboardComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatDividerModule,
-    MatTooltipModule,
-    MatDialogModule,
-    QuillModule.forRoot(),
-    BookmarksComponent,
-    DashNotesComponent,
-    DashTodosComponent,
-    DashBudgetComponent,
-    QuillConfigModule.forRoot({
-      modules: {
-        toolbar: [
-          [{ 'color': [] }, { 'background': [] }],
-          ['bold', 'italic'],
-          ['code-block'],
-          [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-          [{ 'align': [] }],
-          [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatDividerModule,
+        MatTooltipModule,
+        MatDialogModule,
+        QuillModule.forRoot(),
+        BookmarksComponent,
+        DashNotesComponent,
+        DashTodosComponent,
+        DashBudgetComponent,
+        QuillConfigModule.forRoot({
+            modules: {
+                toolbar: [
+                    [{'color': []}, {'background': []}],
+                    ['bold', 'italic'],
+                    ['code-block'],
+                    [{'header': 1}, {'header': 2}],               // custom button values
+                    [{'list': 'ordered'}, {'list': 'bullet'}],
+                    [{'align': []}],
+                    [{'indent': '-1'}, {'indent': '+1'}],          // outdent/indent
 
-          [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                    [{'size': ['small', false, 'large', 'huge']}],  // custom dropdown
 
-          ['clean'],                                         // remove formatting button
+                    ['clean'],                                         // remove formatting button
 
-          ['link', 'image', 'video']                         // link and image, video
-        ]
-      },
-      placeholder: 'Enter content here...',
-      sanitize: false,
-      format: 'html',
-      theme: 'snow'
-    })
-  ],
+                    ['link', 'image', 'video']                         // link and image, video
+                ]
+            },
+            placeholder: 'Enter content here...',
+            sanitize: false,
+            format: 'html',
+            theme: 'snow'
+        }),
+        UnderConstructionComponent
+    ],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}
   ],
