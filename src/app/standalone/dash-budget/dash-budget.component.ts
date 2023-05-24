@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TitleHeaderComponent } from "../title-header/title-header.component";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { IBudgetValue } from "../../utils/interfaces";
-import { BudgetService } from "../../shared/budget.service";
+import { BudgetService, BudgetValue } from "../../shared/budget.service";
 import { MatDialog } from "@angular/material/dialog";
 import { MatDividerModule } from "@angular/material/divider";
 import { SimpleQuestionDialogComponent } from "../../dialogs/simple-question-dialog/simple-question-dialog.component";
@@ -12,6 +12,7 @@ import {
   DIALOG_QUESTION_ANIMATION_EXIT, DIALOG_QUESTION_CLASS,
   DIALOG_QUESTION_WIDTH
 } from "../../utils/internal-data";
+import { AddEditBudgetDialogComponent } from "../../dialogs/add-edit-budget-dialog/add-edit-budget-dialog.component";
 
 @Component({
   selector: 'id-dash-budget',
@@ -51,11 +52,58 @@ export class DashBudgetComponent implements OnInit {
   }
 
   addValue(type: 'income' | 'expense') {
+    let addDialog = this.matDialog.open(AddEditBudgetDialogComponent, {
+      width: DIALOG_QUESTION_WIDTH,
+      enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
+      exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
+      panelClass: DIALOG_QUESTION_CLASS,
+      data: {
+        dialogTitle: `Add ${type.toUpperCase()}`,
+        type: 'add',
+        title: '',
+        value: 0,
+        content: '',
+        createdAt: new Date(),
+        createdBy: '',
+        typeOfValue: type,
+        tag: ''
+      }
+    })
 
+    addDialog.afterClosed().subscribe(result => {
+      if (result && result.type == 'add') {
+        let newBudgetValue: IBudgetValue = new BudgetValue(result.title, result.value, result.content, result.createdAt, result.createdBy, result.typeOfValue, result.tag)
+        this.budgetService.addBudgetValue(newBudgetValue)
+        this.setBudgetData()
+      }
+    })
   }
 
   openEditBudgetDialog(item: IBudgetValue) {
+    let editDialog = this.matDialog.open(AddEditBudgetDialogComponent, {
+      width: DIALOG_QUESTION_WIDTH,
+      enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
+      exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
+      panelClass: DIALOG_QUESTION_CLASS,
+      data: {
+        dialogTitle: `Edit ${item.type.toUpperCase()} - ${item.title}`,
+        type: 'edit',
+        title: item.title,
+        value: item.value,
+        content: item.content,
+        createdAt: new Date(),
+        createdBy: item.createdBy,
+        typeOfValue: item.type,
+        tag: item.tag
+      }
+    })
 
+    editDialog.afterClosed().subscribe(result => {
+      if (result && result.type == 'edit') {
+        this.budgetService.editBudgetValue(item.uid, result.title, result.value, result.content, result.createdAt, result.createdBy, result.typeOfValue, result.tag)
+        this.setBudgetData()
+      }
+    })
   }
 
   openDeleteBudgetDialog(item: IBudgetValue) {
