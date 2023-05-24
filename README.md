@@ -5,6 +5,9 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/BD4vid777/iDash)
 ![GitHub top language](https://img.shields.io/github/languages/top/BD4vid777/iDash)
 ![GitHub package.json dynamic](https://img.shields.io/github/package-json/keywords/BD4vid777/iDash)
+![GitHub last commit](https://img.shields.io/github/last-commit/bd4vid777/iDash)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/bd4vid777/iDash)
+
 
 This project is being created by [BD4vid777](https://github.com/BD4vid777) as a personal private dashboard project.
 
