@@ -94,7 +94,8 @@ export class DashBudgetComponent implements OnInit {
         createdAt: new Date(),
         createdBy: item.createdBy,
         typeOfValue: item.type,
-        tag: item.tag
+        tag: item.tag,
+        uid: item.uid
       }
     })
 

@@ -105,6 +105,18 @@ export interface IAddEditTodoDialogData {
   columnUid: string
 }
 
+export interface IAddEditBudgetDialogData {
+  dialogTitle: string,
+  type: 'add' | 'edit',
+  title: string,
+  value: number,
+  content: string,
+  createdAt: Date,
+  createdBy: string,
+  typeOfValue: 'income' | 'expense',
+  tag: string
+}
+
 export interface INotePreviewDialogData {
   dialogTitle: string,
   contentInput: string,

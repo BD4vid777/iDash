@@ -1,1 +1,66 @@
-<p>add-edit-budget-dialog works!</p>
+<h2 mat-dialog-title>{{dialogTitle}}</h2>
+<span class="material-symbols-outlined close-btn" (click)="closeDialog()">close</span>
+<mat-dialog-content class="id-scrollbar">
+
+  <form class="id-flex-col id-gap-big id-scrollbar" [formGroup]="budgetForm">
+    <div class="id-flex-spc id-align-start id-gap-xtra-big">
+      <div class="id-form-control id-flex-col">
+        <label for="title">Name</label>
+        <input
+          type="text"
+          id="title"
+          formControlName="title"
+          placeholder="Enter {{typeOfValue}} name here..."
+          [ngClass]="budgetForm.controls.title.touched && budgetForm.controls.title.invalid ? 'error' : ''"
+        >
+        <div *ngIf="budgetForm.controls.title.touched && budgetForm.controls.title.invalid" class="id-form-alert">
+          <span *ngIf="budgetForm.controls.title.errors?.['required']">Please provide {{typeOfValue}} name</span>
+        </div>
+      </div>
+      <div class="id-form-control id-flex-col">
+        <label for="value">Value (e.g. 50.00)</label>
+        <input
+          type="number"
+          min="0"
+          step="0.01"
+          id="value"
+          formControlName="value"
+          [ngClass]="budgetForm.controls.value.touched && budgetForm.controls.value.invalid ? 'error' : ''"
+        >
+        <div *ngIf="budgetForm.controls.value.touched && budgetForm.controls.value.invalid" class="id-form-alert">
+          <span *ngIf="budgetForm.controls.value.errors?.['required']">Please provide {{typeOfValue}} value</span>
+        </div>
+      </div>
+    </div>
+    <div class="id-flex-spc id-align-start id-gap-xtra-big">
+      <div class="id-form-control id-flex-col w-100">
+        <label for="value">Description</label>
+        <textarea
+          type="text"
+          placeholder="Enter {{typeOfValue}} description here..."
+          id="content"
+          formControlName="content"
+          class="id-scrollbar"
+        ></textarea>
+      </div>
+    </div>
+    <div class="id-flex-spc id-align-start id-gap-xtra-big">
+
+    </div>
+    <div class="id-flex-spc id-align-start id-gap-xtra-big">
+
+    </div>
+  </form>
+
+</mat-dialog-content>
+<mat-dialog-actions [align]="'end'" [ngStyle]="{display: 'flex', gap: '.75rem', 'margin-right': '.5rem'}">
+  <button
+    class="btn btn-no"
+    (click)="closeDialog()"
+  >Cancel</button>
+  <button
+    class="btn btn-yes"
+    [disabled]="!budgetForm.valid"
+    (click)="saveValue()"
+  >{{ type == 'add' ? 'Add New' : 'Save changes' }}</button>
+</mat-dialog-actions>
