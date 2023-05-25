@@ -2,6 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { v4 as uuid4 } from 'uuid'
 import { StorageDataService } from "./storage-data.service";
 import { IColumn } from "../utils/interfaces";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { IdSnackNotificationComponent } from "../standalone/id-snack-notification/id-snack-notification.component";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,7 @@ export class TodosService {
   private todos: Todo[] = []
   private boards: Board[] = []
 
+  private snack = inject(MatSnackBar)
   private storageService = inject(StorageDataService)
 
   constructor() {
@@ -33,19 +36,49 @@ export class TodosService {
 
   addTodo (todo: Todo) {
     this.todos.push(todo)
+    this.snack.openFromComponent(IdSnackNotificationComponent, {
+      data: {
+        message: 'Todo added successfully!',
+        type: 'success',
+        icon: 'todo'
+      }
+    })
     this.setTodosToStorage()
   }
 
   editTodo(uid: string, title: string, content: string, progress: number, dueDate: Date | "", priority: string, boardUid: string, columnUid: string, completed: boolean) {
     const todo = this.todos.find(todo => todo.uid === uid)
-    if (!todo) return
+    if (!todo) {
+      this.snack.openFromComponent(IdSnackNotificationComponent, {
+        data: {
+          message: 'Todo not found!',
+          type: 'warning',
+          icon: 'todo'
+        }
+      })
+      return
+    }
     let editedAt = new Date()
     Object.assign(todo, { title, content, progress, dueDate, priority, boardUid, columnUid, completed, editedAt })
+    this.snack.openFromComponent(IdSnackNotificationComponent, {
+      data: {
+        message: 'Todo edited successfully!',
+        type: 'info',
+        icon: 'todo'
+      }
+    })
     this.setTodosToStorage()
   }
 
   deleteTodo(uid: string) {
     this.todos = this.todos.filter(todo => todo.uid !== uid)
+    this.snack.openFromComponent(IdSnackNotificationComponent, {
+      data: {
+        message: 'Todo deleted successfully!',
+        type: 'error',
+        icon: 'todo'
+      }
+    })
     this.setTodosToStorage()
   }
 
@@ -56,6 +89,13 @@ export class TodosService {
       this.todos[updatedTodo].progress = 100
     }
     this.todos[updatedTodo].editedAt = new Date()
+    this.snack.openFromComponent(IdSnackNotificationComponent, {
+      data: {
+        message: 'Todo status updated!',
+        type: 'info',
+        icon: 'todo'
+      }
+    })
     this.setTodosToStorage()
   }
 

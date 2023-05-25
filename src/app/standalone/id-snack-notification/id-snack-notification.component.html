@@ -1,0 +1,21 @@
+<div class="id-flex-spc">
+    <div class="id-flex id-gap-medium">
+        <span
+          class="material-symbols-outlined"
+          [style.color]="data.type === 'success' ? '#00c851' : data.type === 'error' ? '#ea344b' : data.type === 'warning' ? '#f5a623' : '#4580ee'"
+        >
+            <ng-container [ngSwitch]="data.icon">
+                <ng-container *ngSwitchCase="'bookmark'">bookmark</ng-container>
+                <ng-container *ngSwitchCase="'note'">text_snippet</ng-container>
+                <ng-container *ngSwitchCase="'todo'">fact_check</ng-container>
+                <ng-container *ngSwitchCase="'budget'">account_balance_wallet</ng-container>
+            </ng-container>
+        </span>
+        <div class="snack-notification__message">
+            <p class="snack-notification__message__text">{{data.message}}</p>
+        </div>
+    </div>
+    <span class="material-symbols-outlined" (click)="snackRef.dismiss()" [style.cursor]="'pointer'">
+        close
+    </span>
+</div>

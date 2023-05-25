@@ -2,6 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { v4 as uuid4 } from 'uuid'
 import { IBookmark } from "../utils/interfaces";
 import { StorageDataService } from "./storage-data.service";
+import { IdSnackNotificationComponent } from "../standalone/id-snack-notification/id-snack-notification.component";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,7 @@ import { StorageDataService } from "./storage-data.service";
 export class BookmarksService {
 
   bookmarks: IBookmark[] = []
+  private snack = inject(MatSnackBar)
   private storageService = inject(StorageDataService)
 
   constructor() {
@@ -29,6 +32,13 @@ export class BookmarksService {
 
   addBookmark(bookmark: Bookmark) {
     this.bookmarks.push(bookmark)
+    this.snack.openFromComponent(IdSnackNotificationComponent, {
+      data: {
+        message: 'Bookmark added successfully!',
+        type: 'success',
+        icon: 'bookmark'
+      }
+    })
     this.setBookmarksToStorage()
   }
 
@@ -36,11 +46,25 @@ export class BookmarksService {
     const bookmark = this.bookmarks.find(bookmark => bookmark.uid === uid)
     if (!bookmark) return
     Object.assign(bookmark, { title, src })
+    this.snack.openFromComponent(IdSnackNotificationComponent, {
+      data: {
+        message: 'Bookmark edited successfully!',
+        type: 'info',
+        icon: 'bookmark'
+      }
+    })
     this.setBookmarksToStorage()
   }
 
   deleteBookmark(uid: string) {
     this.bookmarks = this.bookmarks.filter(bookmark => bookmark.uid !== uid)
+    this.snack.openFromComponent(IdSnackNotificationComponent, {
+      data: {
+        message: 'Bookmark deleted successfully!',
+        type: 'error',
+        icon: 'bookmark'
+      }
+    })
     this.setBookmarksToStorage()
   }
 

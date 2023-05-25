@@ -29,6 +29,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.userDataFromStorage = this.localStorageService.getUserDataFromStorage()
     this.bgPhoto = this.userDataFromStorage.userBackground
+    if (this.userDataFromStorage.showWelcomeMsg) {
+
+    }
   }
 
   changeBackground(photoLink: string, photoAuthor: string, photoIndex: number) {

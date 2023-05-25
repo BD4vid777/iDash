@@ -2,6 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { IBudgetValue } from "../utils/interfaces";
 import { v4 as uuid4 } from "uuid";
 import { StorageDataService } from "./storage-data.service";
+import { IdSnackNotificationComponent } from "../standalone/id-snack-notification/id-snack-notification.component";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,7 @@ import { StorageDataService } from "./storage-data.service";
 export class BudgetService {
 
   private budgetData: IBudgetValue[] = []
+  private snack = inject(MatSnackBar)
   private storageService = inject(StorageDataService)
 
   constructor() {
@@ -29,6 +32,13 @@ export class BudgetService {
 
   addBudgetValue(budget: BudgetValue) {
     this.budgetData.push(budget)
+    this.snack.openFromComponent(IdSnackNotificationComponent, {
+      data: {
+        message: 'Budget value added successfully!',
+        type: 'success',
+        icon: 'budget'
+      }
+    })
     this.setBudgetDataToStorage()
   }
 
@@ -36,11 +46,25 @@ export class BudgetService {
     const budget = this.budgetData.find(budget => budget.uid === uid)
     if (!budget) return
     Object.assign(budget, { title, value, content, createdAt, createdBy, type, tag })
+    this.snack.openFromComponent(IdSnackNotificationComponent, {
+      data: {
+        message: 'Budget value edited successfully!',
+        type: 'success',
+        icon: 'budget'
+      }
+    })
     this.setBudgetDataToStorage()
   }
 
   deleteBudgetValue(uid: string) {
     this.budgetData = this.budgetData.filter(budget => budget.uid !== uid)
+    this.snack.openFromComponent(IdSnackNotificationComponent, {
+      data: {
+        message: 'Budget value deleted successfully!',
+        type: 'error',
+        icon: 'budget'
+      }
+    })
     this.setBudgetDataToStorage()
   }
 

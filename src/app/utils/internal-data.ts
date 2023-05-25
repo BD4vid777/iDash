@@ -1,5 +1,6 @@
 
 export const USER_DATA_STORAGE_KEY: string = 'iDashUserData'
+export const SNACK_NOTIFICATION_DURATION: number = 3000
 export const DIALOG_QUESTION_WIDTH: string = '500px'
 export const DIALOG_EDIT_ADD_TODO_WIDTH: string = '800px'
 export const DIALOG_QUESTION_ANIMATION_ENTER: string = '750ms'

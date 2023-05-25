@@ -19,6 +19,13 @@ import { MAT_DIALOG_DEFAULT_OPTIONS } from "@angular/material/dialog";
 import { QuillModule } from "ngx-quill";
 import { QuillConfigModule } from 'ngx-quill/config';
 import { UnderConstructionComponent } from "./pages/under-construction/under-construction.component";
+import { IdSnackNotificationComponent } from "./standalone/id-snack-notification/id-snack-notification.component";
+import {
+  MAT_SNACK_BAR_DATA,
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
+  MatSnackBarModule,
+  MatSnackBarRef
+} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -28,45 +35,56 @@ import { UnderConstructionComponent } from "./pages/under-construction/under-con
     BudgetComponent,
     DashboardComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatDividerModule,
-        MatTooltipModule,
-        MatDialogModule,
-        QuillModule.forRoot(),
-        BookmarksComponent,
-        DashNotesComponent,
-        DashTodosComponent,
-        DashBudgetComponent,
-        QuillConfigModule.forRoot({
-            modules: {
-                toolbar: [
-                    [{'color': []}, {'background': []}],
-                    ['bold', 'italic'],
-                    ['code-block'],
-                    [{'header': 1}, {'header': 2}],               // custom button values
-                    [{'list': 'ordered'}, {'list': 'bullet'}],
-                    [{'align': []}],
-                    [{'indent': '-1'}, {'indent': '+1'}],          // outdent/indent
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatDividerModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    QuillModule.forRoot(),
+    BookmarksComponent,
+    DashNotesComponent,
+    DashTodosComponent,
+    DashBudgetComponent,
+    QuillConfigModule.forRoot({
+      modules: {
+        toolbar: [
+          [{'color': []}, {'background': []}],
+          ['bold', 'italic'],
+          ['code-block'],
+          [{'header': 1}, {'header': 2}],               // custom button values
+          [{'list': 'ordered'}, {'list': 'bullet'}],
+          [{'align': []}],
+          [{'indent': '-1'}, {'indent': '+1'}],          // outdent/indent
 
-                    [{'size': ['small', false, 'large', 'huge']}],  // custom dropdown
+          [{'size': ['small', false, 'large', 'huge']}],  // custom dropdown
 
-                    ['clean'],                                         // remove formatting button
+          ['clean'],                                         // remove formatting button
 
-                    ['link', 'image', 'video']                         // link and image, video
-                ]
-            },
-            placeholder: 'Enter content here...',
-            sanitize: false,
-            format: 'html',
-            theme: 'snow'
-        }),
-        UnderConstructionComponent
-    ],
+          ['link', 'image', 'video']                         // link and image, video
+        ]
+      },
+      placeholder: 'Enter content here...',
+      sanitize: false,
+      format: 'html',
+      theme: 'snow'
+    }),
+    UnderConstructionComponent,
+    IdSnackNotificationComponent
+  ],
   providers: [
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},
+    {provide: MAT_SNACK_BAR_DATA, useValue: {}},
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {
+        duration: 3000,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom',
+        panelClass: ['id-snack-notification']
+    }
+    },
+    {provide: MatSnackBarRef, useValue: {}}
   ],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,7 @@
 @import "variables.scss";
 
 .bg-blur {
-  background-color: rgba(255,255,255, 0.15);
+  background-color: rgba(255,255,255, 0.15)!important;
   backdrop-filter: blur(5px);
   border-radius: $border-radius-primary;
   box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.3), -3px -3px 10px -5px rgba(255, 255, 255, 0.3);
@@ -12,6 +12,8 @@
   &.padding-secondary {
     padding: $padding-secondary;
   }
+
+
 }
 
 .btn {
@@ -231,6 +233,21 @@ progress {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+
+  &.id-gap {
+    &-small {
+      gap: $gap-secondary;
+    }
+    &-medium {
+      gap: $gap-primary;
+    }
+    &-big {
+      gap: $gap-double;
+    }
+    &-xtra-big {
+      gap: $gap-quadruple;
+    }
+  }
 }
 
 .id-flex-spc {

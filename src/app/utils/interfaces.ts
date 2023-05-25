@@ -126,3 +126,9 @@ export interface ITodoPreviewDialogData {
   dialogTitle: string,
   todo: ITodo
 }
+
+export interface ISnackNotificationData {
+  message: string,
+  icon: 'todo' | 'bookmark' | 'note' | 'budget',
+  type: 'success' | 'error' | 'warning' | 'info'
+}

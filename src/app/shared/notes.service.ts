@@ -2,6 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { v4 as uuid4 } from 'uuid'
 import { INote } from "../utils/interfaces";
 import { StorageDataService } from "./storage-data.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { IdSnackNotificationComponent } from "../standalone/id-snack-notification/id-snack-notification.component";
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,7 @@ import { StorageDataService } from "./storage-data.service";
 export class NotesService {
 
   notes: INote[] = []
+  private snack = inject(MatSnackBar)
   private storageService = inject(StorageDataService)
 
   constructor() {
@@ -29,6 +32,13 @@ export class NotesService {
 
   addNote (note: Note) {
     this.notes.push(note)
+    this.snack.openFromComponent(IdSnackNotificationComponent, {
+      data: {
+        message: 'Note added successfully!',
+        type: 'success',
+        icon: 'note'
+      }
+    })
     this.setNotesToStorage()
   }
 
@@ -36,11 +46,25 @@ export class NotesService {
     const note = this.notes.find(note => note.uid === uid)
     if (!note) return
     Object.assign(note, { title, content })
+    this.snack.openFromComponent(IdSnackNotificationComponent, {
+      data: {
+        message: 'Note edited successfully!',
+        type: 'info',
+        icon: 'note'
+      }
+    })
     this.setNotesToStorage()
   }
 
   deleteNote(uid: string) {
     this.notes = this.notes.filter(note => note.uid !== uid)
+    this.snack.openFromComponent(IdSnackNotificationComponent, {
+      data: {
+        message: 'Note deleted successfully!',
+        type: 'error',
+        icon: 'note'
+      }
+    })
     this.setNotesToStorage()
   }
 
