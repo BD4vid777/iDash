@@ -20,8 +20,8 @@ export const BUDGET_CATEGORIES: string[] =
   ]
 
 export const primaryBG = {
-  photoLink: '../assets/bgImg/christian-lue-unsplash.webp',
-  photoAuthor: 'Photo by <a href="https://unsplash.com/@christianlue?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Christian Lue</a> on <a href="https://unsplash.com/" target="_blank">Unsplash</a>',
+  photoLink: '../assets/bgImg/neom-unsplash.webp',
+  photoAuthor: 'Photo by <a href="https://unsplash.com/@neom?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">NEOM</a> on <a href="https://unsplash.com/" target="_blank">Unsplash</a>',
   photoIndex: 0
 }
 
@@ -52,8 +52,8 @@ export const backgroundImages = [
     photoIndex: 5
   },
   {
-    photoLink: '../assets/bgImg/neom-unsplash.webp',
-    photoAuthor: 'Photo by <a href="https://unsplash.com/@neom?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">NEOM</a> on <a href="https://unsplash.com/" target="_blank">Unsplash</a>',
+    photoLink: '../assets/bgImg/christian-lue-unsplash.webp',
+    photoAuthor: 'Photo by <a href="https://unsplash.com/@christianlue?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Christian Lue</a> on <a href="https://unsplash.com/" target="_blank">Unsplash</a>',
     photoIndex: 6
   }
 ]

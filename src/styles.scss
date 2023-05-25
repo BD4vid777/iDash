@@ -29,6 +29,12 @@ body {
   line-height: 1.2;
 }
 
+h1, h2, h3, p, li, ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: unset;
+}
+
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0,
   'wght' 300,
@@ -146,6 +152,15 @@ option {
   background-size: cover;
   background-repeat: no-repeat;
 
+  .full-page {
+    position: absolute;
+    padding: $padding-primary;
+    right: 1rem;
+    top: 4.5rem;
+    height: 44px;
+    cursor: pointer;
+  }
+
   .background-refresh {
     position: absolute;
     padding: $padding-primary;
@@ -238,7 +253,7 @@ option {
     border-radius: 5px;
     height: max-content;
 
-    span {
+    li {
       cursor: pointer;
       transition: $smooth;
 

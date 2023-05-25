@@ -18,6 +18,8 @@ export class AppComponent implements OnInit {
   public bgPhoto: IBackground = primaryBG
   public bgArray: IBackground[] = backgroundImages
 
+  public fullscreen: boolean = false
+
   public localStorageService = inject(StorageDataService)
 
   constructor(@Inject(WINDOW) private window: Window) {
@@ -44,5 +46,13 @@ export class AppComponent implements OnInit {
 
   resetBackground() {
     this.changeBackground(this.bgPrimary.photoLink, this.bgPrimary.photoAuthor, this.bgPrimary.photoIndex)
+  }
+
+  fullscreenToggle() {
+    if (document.fullscreenElement) {
+      document.exitFullscreen().then(() => {this.fullscreen = false})
+    } else {
+      document.documentElement.requestFullscreen().then(() => {this.fullscreen = true})
+    }
   }
 }
