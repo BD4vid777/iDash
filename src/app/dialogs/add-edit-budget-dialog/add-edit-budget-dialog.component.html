@@ -4,7 +4,7 @@
 
   <form class="id-flex-col id-gap-big id-scrollbar" [formGroup]="budgetForm">
     <div class="id-flex-spc id-align-start id-gap-xtra-big">
-      <div class="id-form-control id-flex-col">
+      <div class="id-form-control id-flex-col w-100">
         <label for="title">Name</label>
         <input
           type="text"
@@ -17,7 +17,7 @@
           <span *ngIf="budgetForm.controls.title.errors?.['required']">Please provide {{typeOfValue}} name</span>
         </div>
       </div>
-      <div class="id-form-control id-flex-col">
+      <div class="id-form-control id-flex-col w-100">
         <label for="value">Value (e.g. 50.00)</label>
         <input
           type="number"
@@ -34,6 +34,27 @@
     </div>
     <div class="id-flex-spc id-align-start id-gap-xtra-big">
       <div class="id-form-control id-flex-col w-100">
+        <label for="createdAt">{{typeOfValue}} date</label>
+        <input
+          type="date"
+          id="createdAt"
+          formControlName="createdAt"
+        >
+      </div>
+      <div class="id-form-control id-flex-col w-100">
+        <label for="tag">Budget category</label>
+        <mat-select
+          id="tag"
+          formControlName="tag"
+          class="id-select-panel"
+          panelClass="id-select-panel"
+        >
+          <mat-option *ngFor="let tag of BUDGET_CATEGORIES" [value]="tag">{{tag}}</mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <div class="id-flex-spc id-align-start id-gap-xtra-big">
+      <div class="id-form-control id-flex-col w-100">
         <label for="value">Description</label>
         <textarea
           type="text"
@@ -44,11 +65,16 @@
         ></textarea>
       </div>
     </div>
-    <div class="id-flex-spc id-align-start id-gap-xtra-big">
-
-    </div>
-    <div class="id-flex-spc id-align-start id-gap-xtra-big">
-
+    <div class="id-flex-spc id-align-start id-gap-xtra-big w-100">
+      <div class="id-form-control id-flex-col w-100">
+        <label for="createdBy">Created by</label>
+        <input
+          type="text"
+          id="createdBy"
+          formControlName="createdBy"
+          placeholder="Enter who is responsible for this {{typeOfValue}}..."
+        >
+      </div>
     </div>
   </form>
 

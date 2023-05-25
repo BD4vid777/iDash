@@ -3,12 +3,15 @@ import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { BudgetService } from "../../shared/budget.service";
-import { BUDGET_CATEGORIES } from "../../utils/internal-data";
+import { BUDGET_CATEGORIES, TODO_PRIORITIES } from "../../utils/internal-data";
+import { MatOptionModule } from "@angular/material/core";
+import { MatSelectModule } from "@angular/material/select";
+import { debounceTime } from "rxjs";
 
 @Component({
   selector: 'id-add-edit-budget-dialog',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, ReactiveFormsModule],
+  imports: [CommonModule, MatDialogModule, ReactiveFormsModule, MatOptionModule, MatSelectModule],
   templateUrl: './add-edit-budget-dialog.component.html',
   styleUrls: ['./add-edit-budget-dialog.component.scss']
 })
@@ -99,4 +102,7 @@ export class AddEditBudgetDialogComponent {
   closeDialog() {
     this.dialogRef.close(false)
   }
+
+  protected readonly TODO_PRIORITIES = TODO_PRIORITIES;
+  protected readonly BUDGET_CATEGORIES = BUDGET_CATEGORIES;
 }
