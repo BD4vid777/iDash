@@ -1,0 +1,93 @@
+@import "../../styles/variables.scss";
+
+:host {
+  position: absolute;
+  top: 1rem;
+  left: 5rem;
+}
+
+.timeKeeper-container {
+  display: flex;
+  padding: $padding-primary;
+  justify-content: space-between;
+  align-items: center;
+
+  overflow: hidden;
+  transition: $smooth;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  .timeKeeper-data {
+    display: flex;
+    align-items: baseline;
+    gap: $gap-primary;
+    margin-right: 100px;
+
+    .timeKeeper-title {
+      font-size: 1.25rem;
+      font-weight: 300;
+    }
+
+    .timeKeeper-time {
+      font-size: 1.25rem;
+      font-weight: 500;
+
+      &.timeKeeper-time--paused {
+        color: $warning;
+      }
+      &.timeKeeper-time--active {
+        color: $success;
+      }
+    }
+  }
+
+  .timeKeeper-actions {
+    display: flex;
+    gap: $gap-secondary;
+    width: fit-content;
+
+    align-items: center;
+
+    background-color: rgba(255, 255, 255, 0.3);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 5px 5px 5px 10px;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    span {
+      font-size: 1.25rem;
+      height: 20px;
+      cursor: pointer;
+      opacity: .7;
+      transition: $smooth;
+    }
+
+    span:hover {
+      opacity: 1;
+    }
+
+    span.play:hover {
+      color: $success;
+      transform: scale(1.5);
+    }
+
+    span.pause:hover {
+      color: $warning;
+      transform: scale(1.5);
+    }
+
+    span.stop:hover {
+      color: $delete;
+      transform: scale(1.5);
+    }
+  }
+}

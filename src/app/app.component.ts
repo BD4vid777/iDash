@@ -1,6 +1,6 @@
-import { Component, Inject, inject, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, inject, OnDestroy, OnInit } from '@angular/core';
 import { backgroundImages, primaryBG } from "./utils/internal-data";
-import { IBackground, IUserStorageData } from "./utils/interfaces";
+import { IBackground, ITodo, IUserStorageData } from "./utils/interfaces";
 import { StorageDataService } from "./shared/storage-data.service";
 import { WINDOW } from "./shared/window.token";
 
@@ -9,7 +9,7 @@ import { WINDOW } from "./shared/window.token";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   public title: string = 'iDash';
 
   private userDataFromStorage!: IUserStorageData
@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   public fullscreen: boolean = false
 
   public localStorageService = inject(StorageDataService)
+  triggerData: ITodo | undefined
 
   constructor(@Inject(WINDOW) private window: Window) {
     // console.log('Window: ', this.window)
@@ -32,7 +33,29 @@ export class AppComponent implements OnInit {
     if (this.userDataFromStorage.showWelcomeMsg) {
 
     }
+    // Do usuniecia jak bedzie service
+    this.triggerData = {
+      boardUid: "",
+      columnIndex: 0,
+      columnUid: "",
+      completed: false,
+      content: "",
+      createdAt: new Date(),
+      dueDate: '',
+      editedAt: new Date(),
+      priority: 'Low',
+      progress: 0,
+      uid: '123',
+      title: 'Test'
+    }
   }
+
+  @HostListener('window:beforeunload')
+  async ngOnDestroy() {
+    await localStorage.setItem('appClosed', 'works')
+  }
+
+
 
   changeBackground(photoLink: string, photoAuthor: string, photoIndex: number) {
     this.bgPhoto = {
@@ -57,5 +80,9 @@ export class AppComponent implements OnInit {
     } else {
       document.documentElement.requestFullscreen().then(() => {this.fullscreen = true})
     }
+  }
+
+  triggerKeeper(trigger: 'play' | 'pause' | 'stop', time: number, uid: string) {
+    console.log('Trigger: ', trigger, time, uid)
   }
 }

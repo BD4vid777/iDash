@@ -1,0 +1,26 @@
+<div class="timeKeeper-container bg-blur">
+  <div class="timeKeeper-data">
+    <div class="timeKeeper-title">TEST TODO</div>
+    <div class="timeKeeper-time">00:25:37</div>
+  </div>
+  <div class="timeKeeper-actions">
+      <span
+        class="material-symbols-outlined play"
+        (click)="triggerKeeper.emit({trigger: 'play', time: 37, uid: 'erwfwerf'})"
+        matTooltip="Continue"
+        matTooltipPosition="below"
+      >play_arrow</span>
+    <span
+      class="material-symbols-outlined pause"
+      (click)="triggerKeeper.emit({trigger: 'pause', time: 38, uid: 'erwfwerf'})"
+      matTooltip="Pause"
+      matTooltipPosition="below"
+    >pause</span>
+    <span
+      class="material-symbols-outlined stop"
+      (click)="triggerKeeper.emit({trigger: 'stop', time: 39, uid: 'erwfwerf'})"
+      matTooltip="Stop&Save"
+      matTooltipPosition="below"
+    >stop</span>
+  </div>
+</div>

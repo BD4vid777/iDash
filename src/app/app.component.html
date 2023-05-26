@@ -2,6 +2,11 @@
   class="dashboard-main-container"
   [ngStyle]="{'background-image': 'url(' + bgPhoto.photoLink + ')'}"
 >
+  <id-time-keeper *ngIf="triggerData"
+    [triggerData]="triggerData"
+    (triggerKeeper)="triggerKeeper($event.trigger, $event.time, $event.uid)"
+  ></id-time-keeper>
+
   <div class="background-refresh bg-blur">
     <div class="background-header">
       <p>Change Background Photo</p>

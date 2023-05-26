@@ -24,6 +24,7 @@ This project is being created by [BD4vid777](https://github.com/BD4vid777) as a 
 
 ### Next version 1.5.4:
 - [ ] Todos Update with TimeKeeper - Dashboard
+- [ ] Welcome screen - Dashboard
 
 ### Future version 2.x.x:
 - [ ] Todos Page
