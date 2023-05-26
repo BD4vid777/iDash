@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'notes', component: NotesComponent },
   { path: 'budget', component: BudgetComponent},
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '**', redirectTo: '/dashboard' }
 ];
 
 @NgModule({
