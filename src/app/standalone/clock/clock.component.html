@@ -1,0 +1,12 @@
+<ng-container *ngIf="isDashboard; else otherRoute">
+  <div class="time-container-dashboard">
+    <h1>{{time.slice(0,5)}}</h1>
+    <h4>{{date}}</h4>
+  </div>
+</ng-container>
+<ng-template #otherRoute>
+  <div class="time-container-other bg-blur">
+    <div>{{time.slice(0,5)}}</div>
+    <div>{{date}}</div>
+  </div>
+</ng-template>

@@ -1,0 +1,45 @@
+@import "src/app/styles/variables.scss";
+
+.time-container-dashboard {
+  text-align: center;
+  line-height: 1;
+  margin-block: 2rem;
+  font-weight: 500;
+  color: white;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
+
+  h1 {
+    font-size: 7rem;
+    margin: 0;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+}
+
+:host.not-dashboard {
+  position: absolute;
+  top: 1rem;
+  right: 5rem;
+}
+
+.time-container-other {
+  display: flex;
+  justify-content: flex-start;
+  gap: $gap-primary;
+  padding: $padding-primary;
+  line-height: 1.2;
+  font-weight: 500;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
+
+  div {
+    font-size: 1.25rem;
+    margin: 0;
+
+    &:last-child {
+      font-weight: 300;
+    }
+  }
+}

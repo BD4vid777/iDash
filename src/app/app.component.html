@@ -6,6 +6,7 @@
     [triggerData]="triggerData"
     (triggerKeeper)="triggerKeeper($event.trigger, $event.time, $event.uid)"
   ></id-time-keeper>
+  <id-clock class="not-dashboard" *ngIf="!isDashboard"></id-clock>
 
   <div class="background-refresh bg-blur">
     <div class="background-header">
@@ -47,7 +48,6 @@
   <main>
     <router-outlet></router-outlet>
   </main>
-  <id-snack-notification></id-snack-notification>
   <footer>
     <div class="dash-info"><a href="https://github.com/BD4vid777/iDash" target="_blank">iDash(pre-release 1.5.0)</a>, 2023 - created by <a href="https://www.linkedin.com/in/dawidbudzinski/" target="_blank">Dawid Budziński</a></div>
     <div class="photo-info" [innerHTML]="bgPhoto.photoAuthor"></div>

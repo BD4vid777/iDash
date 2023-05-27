@@ -27,6 +27,7 @@ import {
   MatSnackBarRef
 } from "@angular/material/snack-bar";
 import { TimeKeeperComponent } from "./standalone/time-keeper/time-keeper.component";
+import { ClockComponent } from "./standalone/clock/clock.component";
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { TimeKeeperComponent } from "./standalone/time-keeper/time-keeper.compon
     }),
     UnderConstructionComponent,
     IdSnackNotificationComponent,
-    TimeKeeperComponent
+    TimeKeeperComponent,
+    ClockComponent
   ],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},
