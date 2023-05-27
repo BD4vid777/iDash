@@ -47,7 +47,7 @@ export class StorageDataService {
     ]
 
     let tmpUserTodos: ITodo[] = [
-      new Todo('Welcome to iDash!', DEFAULT_TODO_CONTENT,25, new Date(), 'Medium', tmpUserTodosBoards[0].uid, tmpUserTodosBoards[0].columns[0].uid)
+      new Todo('Welcome to iDash!', DEFAULT_TODO_CONTENT,25, new Date(), 0, 'Medium', tmpUserTodosBoards[0].uid, tmpUserTodosBoards[0].columns[0].uid)
     ]
 
     let tmpUserBudget: IBudgetValue[] = [
