@@ -42,6 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
       content: "",
       createdAt: new Date(),
       dueDate: '',
+      timeSpent: 0,
       editedAt: new Date(),
       priority: 'Low',
       progress: 0,

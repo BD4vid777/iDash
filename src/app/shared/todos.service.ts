@@ -46,7 +46,7 @@ export class TodosService {
     this.setTodosToStorage()
   }
 
-  editTodo(uid: string, title: string, content: string, progress: number, dueDate: Date | "", priority: string, boardUid: string, columnUid: string, completed: boolean) {
+  editTodo(uid: string, title: string, content: string, progress: number, dueDate: Date | "",timeSpent: number, priority: string, boardUid: string, columnUid: string, completed: boolean) {
     const todo = this.todos.find(todo => todo.uid === uid)
     if (!todo) {
       this.snack.openFromComponent(IdSnackNotificationComponent, {
@@ -59,7 +59,7 @@ export class TodosService {
       return
     }
     let editedAt = new Date()
-    Object.assign(todo, { title, content, progress, dueDate, priority, boardUid, columnUid, completed, editedAt })
+    Object.assign(todo, { title, content, progress, dueDate, timeSpent, priority, boardUid, columnUid, completed, editedAt })
     this.snack.openFromComponent(IdSnackNotificationComponent, {
       data: {
         message: 'Todo edited successfully!',
@@ -186,6 +186,7 @@ export class Todo {
   content: string
   progress: number
   createdAt: Date
+  timeSpent: number
   editedAt: Date
   dueDate: Date | ''
   priority: 'Low' | 'Medium' | 'High'
@@ -195,11 +196,12 @@ export class Todo {
   completed: boolean
   uid: string
 
-  constructor(title: string, content: string, progress: number = 0, dueDate: Date | '', priority: 'Low' | 'Medium' | 'High',  boardUid: string, columnUid: string,) {
+  constructor(title: string, content: string, progress: number = 0, dueDate: Date | '', timeSpent: number = 0, priority: 'Low' | 'Medium' | 'High',  boardUid: string, columnUid: string,) {
     this.title = title
     this.content = content
     this.progress = progress
     this.dueDate = dueDate
+    this.timeSpent = timeSpent
     this.priority = priority
     this.columnUid = columnUid
     this.columnIndex = 0

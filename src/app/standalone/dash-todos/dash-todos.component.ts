@@ -60,13 +60,13 @@ export class DashTodosComponent implements OnInit {
 
     addDialog.afterClosed().subscribe(result => {
       if (result && result.type == 'add') {
-        this.addNewTodo(result.title, result.content, result.progress, result.dueDate, result.priority, result.boardUid, result.columnUid)
+        this.addNewTodo(result.title, result.content, result.progress, result.dueDate, result.timeSpent, result.priority, result.boardUid, result.columnUid)
       }
     })
   }
 
-  addNewTodo(title: string, content: string, progress: number, dueDate: Date | '', priority: 'Low' | 'Medium' | 'High', boardUid: string, columnUid: string) {
-    let newTodo: ITodo = new Todo(title, content, progress, dueDate, priority, boardUid, columnUid)
+  addNewTodo(title: string, content: string, progress: number, dueDate: Date | '', timeSpent: number, priority: 'Low' | 'Medium' | 'High', boardUid: string, columnUid: string) {
+    let newTodo: ITodo = new Todo(title, content, progress, dueDate, timeSpent, priority, boardUid, columnUid)
     this.todosService.addTodo(newTodo)
     this.setLatestDueTodos()
   }
@@ -84,6 +84,7 @@ export class DashTodosComponent implements OnInit {
         content: todo.content,
         progress: todo.progress,
         dueDate: todo.dueDate,
+        timeSpent: todo.timeSpent,
         priority: todo.priority,
         boardUid: todo.boardUid,
         columnUid: todo.columnUid,
@@ -93,13 +94,13 @@ export class DashTodosComponent implements OnInit {
 
     editDialog.afterClosed().subscribe(result => {
       if (result && result.type == 'edit') {
-        this.editTodo(todo.uid, result.title, result.content, result.progress, result.dueDate, result.priority, result.boardUid, result.columnUid)
+        this.editTodo(todo.uid, result.title, result.content, result.progress, result.dueDate, result.timeSpent, result.priority, result.boardUid, result.columnUid)
       }
     })
   }
 
-  editTodo(uid: string, title: string, content: string, progress: number, dueDate: Date | '', priority: string, boardUid: string, columnUid: string, completed: boolean = false) {
-    this.todosService.editTodo(uid, title, content, progress, dueDate, priority, boardUid, columnUid, completed)
+  editTodo(uid: string, title: string, content: string, progress: number, dueDate: Date | '', timeSpent: number, priority: string, boardUid: string, columnUid: string, completed: boolean = false) {
+    this.todosService.editTodo(uid, title, content, progress, dueDate, timeSpent, priority, boardUid, columnUid, completed)
     this.setLatestDueTodos()
   }
 

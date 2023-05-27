@@ -39,6 +39,7 @@ export interface ITodo {
   createdAt: Date,
   editedAt: Date,
   dueDate: Date | '',
+  timeSpent: number,
   priority: 'Low' | 'Medium' | 'High',
   columnUid: string,
   columnIndex: number,
@@ -100,6 +101,7 @@ export interface IAddEditTodoDialogData {
   content: string,
   progress: number,
   dueDate: Date | '',
+  timeSpent: number,
   priority: 'low' | 'medium' | 'high',
   boardUid: string,
   columnUid: string

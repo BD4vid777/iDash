@@ -29,6 +29,9 @@ export class AddEditTodoDialogComponent implements OnInit {
     content: FormControl<string>,
     progress: FormControl<number>,
     dueDate: FormControl<Date | ''>,
+    timeSpentH: FormControl<number>,
+    timeSpentM: FormControl<number>,
+    timeSpentS: FormControl<number>,
     priority: FormControl<'low' | 'medium' | 'high'>
     boardUid: FormControl<string>,
     columnUid: FormControl<string>,
@@ -41,6 +44,7 @@ export class AddEditTodoDialogComponent implements OnInit {
   public content: string = this.data.content
   public progress: number = this.data.progress
   public dueDate: Date | '' = this.data.dueDate
+  public timeSpent: number = this.data.timeSpent
   public priority: 'low' | 'medium' | 'high' = this.data.priority
   public boardUid: string = this.data.boardUid
   public columnUid: string = this.data.columnUid
@@ -56,6 +60,9 @@ export class AddEditTodoDialogComponent implements OnInit {
       content: this.fb.nonNullable.control(this.type == 'add' ? '' : this.content),
       progress: this.fb.nonNullable.control(this.type == 'add' ? 0 : this.progress),
       dueDate: this.fb.nonNullable.control(this.type == 'add' ? '' : this.dueDate),
+      timeSpentH: this.fb.nonNullable.control(this.type == 'add' ? 0 : Math.floor(this.timeSpent / 3600)),
+      timeSpentM: this.fb.nonNullable.control(this.type == 'add' ? 0 : Math.floor(this.timeSpent / 60)),
+      timeSpentS: this.fb.nonNullable.control(this.type == 'add' ? 0 : this.timeSpent % 60),
       priority: this.fb.nonNullable.control(this.type == 'add' ? 'low' : this.priority, [Validators.required]),
       boardUid: this.fb.nonNullable.control(this.type == 'add' ? this.boards[0].uid : this.boardUid, [Validators.required]),
       columnUid: this.fb.nonNullable.control(this.type == 'add' ? this.boards[0].columns[0].uid : this.columnUid, [Validators.required]),
@@ -89,6 +96,7 @@ export class AddEditTodoDialogComponent implements OnInit {
       content: this.todoForm.value.content,
       progress: this.todoForm.value.progress,
       dueDate: this.todoForm.value.dueDate,
+      timeSpent: <number>this.todoForm.value.timeSpentH * 3600 + <number>this.todoForm.value.timeSpentM * 60 + <number>this.todoForm.value.timeSpentS,
       priority: this.todoForm.value.priority,
       boardUid: this.todoForm.value.boardUid,
       columnUid: this.todoForm.value.columnUid
@@ -104,6 +112,7 @@ export class AddEditTodoDialogComponent implements OnInit {
       content: this.todoForm.value.content,
       progress: this.todoForm.value.progress,
       dueDate: this.todoForm.value.dueDate,
+      timeSpent: <number>this.todoForm.value.timeSpentH * 3600 + <number>this.todoForm.value.timeSpentM * 60 + <number>this.todoForm.value.timeSpentS,
       priority: this.todoForm.value.priority,
       boardUid: this.todoForm.value.boardUid,
       columnUid: this.todoForm.value.columnUid
