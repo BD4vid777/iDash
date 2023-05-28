@@ -1,25 +1,30 @@
-<div class="timeKeeper-container bg-blur">
+<div
+  class="timeKeeper-container bg-blur"
+  [class.paused]="!interval"
+  [class.counting]="interval">
   <div class="timeKeeper-data">
     <div class="timeKeeper-title">{{triggerData.title}}</div>
-    <div class="timeKeeper-time">00:25:37</div>
+    <div class="timeKeeper-time">{{time}}</div>
   </div>
   <div class="timeKeeper-actions">
       <span
         class="material-symbols-outlined play"
-        (click)="triggerKeeper.emit({trigger: 'play', time: 37, uid: 'erwfwerf'})"
+        [ngStyle]="interval ? {'opacity': '.2', 'pointer-events': 'none'} : {'opacity': '.7', 'pointer-events': 'auto'}"
+        (click)="triggerKeeper({trigger: 'play', time: timeCounter, uid: triggerData.uid})"
         matTooltip="Continue"
         matTooltipPosition="below"
       >play_arrow</span>
     <span
       class="material-symbols-outlined pause"
-      (click)="triggerKeeper.emit({trigger: 'pause', time: 38, uid: 'erwfwerf'})"
+      [ngStyle]="!interval ? {'opacity': '.2', 'pointer-events': 'none'} : {'opacity': '.7', 'pointer-events': 'auto'}"
+      (click)="triggerKeeper({trigger: 'pause', time: timeCounter, uid: triggerData.uid})"
       matTooltip="Pause"
       matTooltipPosition="below"
     >pause</span>
     <span
       class="material-symbols-outlined stop"
-      (click)="triggerKeeper.emit({trigger: 'stop', time: 39, uid: 'erwfwerf'})"
-      matTooltip="Stop&Save"
+      (click)="triggerKeeper({trigger: 'stop', time: timeCounter, uid: triggerData.uid})"
+      matTooltip="Stop & Save"
       matTooltipPosition="below"
     >stop</span>
   </div>

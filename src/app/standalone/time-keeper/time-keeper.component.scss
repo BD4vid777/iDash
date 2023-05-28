@@ -15,6 +15,14 @@
   overflow: hidden;
   transition: $smooth;
 
+  &.counting {
+    border: 1px solid $success;
+  }
+
+  &.paused {
+    border: 1px solid $warning;
+  }
+
   &:hover {
     transform: scale(1.03);
   }
@@ -33,6 +41,7 @@
     .timeKeeper-time {
       font-size: 1.25rem;
       font-weight: 500;
+      width: 70px;
 
       &.timeKeeper-time--paused {
         color: $warning;

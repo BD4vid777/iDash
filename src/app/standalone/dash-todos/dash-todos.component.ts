@@ -14,6 +14,7 @@ import {
 } from "../../utils/internal-data";
 import { AddEditTodoDialogComponent } from "../../dialogs/add-edit-todo-dialog/add-edit-todo-dialog.component";
 import { TodoPreviewDialogComponent } from "../../dialogs/todo-preview-dialog/todo-preview-dialog.component";
+import { TimeKeeperService } from "../../shared/time-keeper.service";
 
 @Component({
   selector: 'id-dash-todos',
@@ -26,11 +27,17 @@ export class DashTodosComponent implements OnInit {
   todos: ITodo[] = []
   latestDueTodos: ITodo[] = []
 
+  private timeKeeperService = inject(TimeKeeperService)
   todosService = inject(TodosService)
   matDialog = inject(MatDialog)
 
+  timeKeeperTodoUidRunning: string = ''
+
   ngOnInit() {
     this.setLatestDueTodos()
+    this.timeKeeperService.getTimeKeeper().subscribe((data) => {
+      this.timeKeeperTodoUidRunning = data?.uid || ''
+    })
   }
 
   setLatestDueTodos() {
@@ -176,6 +183,17 @@ export class DashTodosComponent implements OnInit {
     } else {
       this.todosService.updateTodoStatus(todo.uid, todo.completed)
       this.setLatestDueTodos()
+    }
+  }
+
+  launchTimeKeeper(todo: ITodo) {
+    if (this.timeKeeperService.timeKeeperIsRunning) {
+      this.timeKeeperService.setTimeKeeper(undefined)
+      setTimeout(() => {
+        this.timeKeeperService.setTimeKeeper(todo)
+      }, 100)
+    } else {
+      this.timeKeeperService.setTimeKeeper(todo)
     }
   }
 }

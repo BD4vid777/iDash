@@ -1,16 +1,17 @@
-import { Component, HostListener, Inject, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, inject, OnInit } from '@angular/core';
 import { backgroundImages, primaryBG } from "./utils/internal-data";
 import { IBackground, ITodo, IUserStorageData } from "./utils/interfaces";
 import { StorageDataService } from "./shared/storage-data.service";
 import { WINDOW } from "./shared/window.token";
 import { NavigationEnd, Router } from "@angular/router";
+import { TimeKeeperService } from "./shared/time-keeper.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
   public title: string = 'iDash';
   public isDashboard: boolean = false;
 
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public fullscreen: boolean = false
 
   public localStorageService = inject(StorageDataService)
+  public timeKeeperService = inject(TimeKeeperService)
   public route = inject(Router)
   triggerData: ITodo | undefined
 
@@ -39,38 +41,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.route.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        if (event.urlAfterRedirects == '/dashboard') {
-          this.isDashboard = true
-        } else {
-          this.isDashboard = false
-        }
+        this.isDashboard = event.urlAfterRedirects == '/dashboard';
       }
     })
 
-    // Do usuniecia jak bedzie service
-    this.triggerData = {
-      boardUid: "",
-      columnIndex: 0,
-      columnUid: "",
-      completed: false,
-      content: "",
-      createdAt: new Date(),
-      dueDate: '',
-      timeSpent: 0,
-      editedAt: new Date(),
-      priority: 'Low',
-      progress: 0,
-      uid: '123',
-      title: 'Test'
-    }
+    this.timeKeeperService.getTimeKeeper().subscribe((data) => {
+      this.triggerData = data
+    })
   }
-
-  @HostListener('window:beforeunload')
-  async ngOnDestroy() {
-    await localStorage.setItem('appClosed', 'works')
-  }
-
-
 
   changeBackground(photoLink: string, photoAuthor: string, photoIndex: number) {
     this.bgPhoto = {
@@ -95,9 +73,5 @@ export class AppComponent implements OnInit, OnDestroy {
     } else {
       document.documentElement.requestFullscreen().then(() => {this.fullscreen = true})
     }
-  }
-
-  triggerKeeper(trigger: 'play' | 'pause' | 'stop', time: number, uid: string) {
-    console.log('Trigger: ', trigger, time, uid)
   }
 }

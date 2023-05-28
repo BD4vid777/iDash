@@ -4,7 +4,6 @@
 >
   <id-time-keeper *ngIf="triggerData"
     [triggerData]="triggerData"
-    (triggerKeeper)="triggerKeeper($event.trigger, $event.time, $event.uid)"
   ></id-time-keeper>
   <id-clock class="not-dashboard" *ngIf="!isDashboard"></id-clock>
 

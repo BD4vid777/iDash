@@ -40,6 +40,13 @@
           matTooltipPosition="below"
         >manage_search</span>
         <span
+          [ngStyle]="timeKeeperTodoUidRunning == todo.uid ? {'pointer-events': 'none', opacity: .2} : {}"
+          class="material-symbols-outlined play"
+          (click)="launchTimeKeeper(todo)"
+          matTooltip="Launch Time Keeper"
+          matTooltipPosition="below"
+        >play_arrow</span>
+        <span
           class="material-symbols-outlined edit"
           (click)="openEditTodoDialog(todo)"
           matTooltip="Edit Todo"
