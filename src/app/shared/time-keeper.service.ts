@@ -9,7 +9,6 @@ export class TimeKeeperService {
   private timeKeeper: BehaviorSubject<ITodo | undefined> = new BehaviorSubject<ITodo | undefined>(undefined)
   private timeKeeper$: Observable<ITodo | undefined> = this.timeKeeper.asObservable()
   public timeKeeperIsRunning: boolean = false
-  public timeKeeperRunningTodoUid: string = ''
 
   setTimeKeeper(timeKeeper: ITodo | undefined) {
     this.timeKeeperIsRunning = !!timeKeeper;

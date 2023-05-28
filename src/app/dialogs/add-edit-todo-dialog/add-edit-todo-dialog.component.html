@@ -19,21 +19,6 @@
 
     <div class="id-flex-spc id-align-start id-gap-xtra-big">
       <div class="id-form-control id-flex-col w-100">
-        <label for="priority">Priority</label>
-        <mat-select
-          id="priority"
-          formControlName="priority"
-          class="id-select-panel"
-          panelClass="id-select-panel"
-          [ngClass]="todoForm.controls.priority.touched && todoForm.controls.priority.invalid ? 'error' : ''"
-        >
-          <mat-option *ngFor="let priority of priorities" [value]="priority">{{priority}}</mat-option>
-        </mat-select>
-        <div *ngIf="todoForm.controls.priority.touched && todoForm.controls.priority.invalid" class="id-form-alert">
-          <span *ngIf="todoForm.controls.priority.errors?.['required']">Please select priority</span>
-        </div>
-      </div>
-      <div class="id-form-control id-flex-col w-100">
         <label for="progress">Progress</label>
         <input
           type="range"
@@ -53,19 +38,20 @@
         </datalist>
       </div>
       <div class="id-form-control id-flex-col w-100">
-        <label for="completed">Todo status</label>
-        <div class="id-flex id-checkbox-container">
-          <input
-          type="checkbox"
-          id="completed"
-          formControlName="completed"
-          class="id-checkbox">
-          <label for="completed" class="id-checkbox-label">Completed</label>
+        <label for="priority">Priority</label>
+        <mat-select
+          id="priority"
+          formControlName="priority"
+          class="id-select-panel"
+          panelClass="id-select-panel"
+          [ngClass]="todoForm.controls.priority.touched && todoForm.controls.priority.invalid ? 'error' : ''"
+        >
+          <mat-option *ngFor="let priority of priorities" [value]="priority">{{priority}}</mat-option>
+        </mat-select>
+        <div *ngIf="todoForm.controls.priority.touched && todoForm.controls.priority.invalid" class="id-form-alert">
+          <span *ngIf="todoForm.controls.priority.errors?.['required']">Please select priority</span>
         </div>
       </div>
-    </div>
-
-    <div class="id-flex-spc id-align-start id-gap-xtra-big">
       <div class="id-form-control id-flex-col w-100">
         <label for="dueDate">Due date</label>
         <input
@@ -73,6 +59,43 @@
           id="dueDate"
           formControlName="dueDate"
         >
+      </div>
+      <div class="id-form-control id-flex-col w-100">
+        <label for="time_spent">Spent (HH:MM:ss)</label>
+        <div id="time_spent">
+          <input
+            type="number"
+            min="0"
+            max="100"
+            formControlName="timeSpentH"
+          >
+          <input
+            type="number"
+            min="0"
+            max="59"
+            formControlName="timeSpentM"
+          >
+          <input
+            type="number"
+            min="0"
+            max="59"
+            formControlName="timeSpentS"
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="id-flex-spc id-align-start id-gap-xtra-big">
+      <div class="id-form-control id-flex-col w-100">
+        <label for="completed">Todo status</label>
+        <div class="id-flex id-checkbox-container">
+          <input
+            type="checkbox"
+            id="completed"
+            formControlName="completed"
+            class="id-checkbox">
+          <label for="completed" class="id-checkbox-label">Completed</label>
+        </div>
       </div>
       <div class="id-form-control id-flex-col w-100">
         <label for="boardUid">Board</label>

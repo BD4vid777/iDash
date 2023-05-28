@@ -1,4 +1,12 @@
-<h2 mat-dialog-title>{{dialogTitle}}</h2>
+<h2 mat-dialog-title [ngStyle]="{display: 'flex', 'align-items': 'flex-end'}">
+  <span
+    *ngIf="todo.timeSpent > 0"
+    [style.margin-right]="'1rem'"
+    [style.cursor]="'help'"
+    class="material-symbols-outlined"
+    [matTooltip]="'Time spent: ' + timeSpent">timelapse</span>
+  {{dialogTitle}}
+</h2>
 <span class="material-symbols-outlined close-btn" (click)="close()">close</span>
 <mat-dialog-content>
   <div class="preview-container">

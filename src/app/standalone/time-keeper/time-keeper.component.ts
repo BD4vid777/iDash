@@ -4,6 +4,7 @@ import { ITodo } from "../../utils/interfaces";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { TodosService } from "../../shared/todos.service";
 import { TimeKeeperService } from "../../shared/time-keeper.service";
+import { setTimeCounterToString } from "../../utils/global-methods";
 
 @Component({
   selector: 'id-time-keeper',
@@ -37,10 +38,7 @@ async ngOnDestroy() {
   }
 
   setTimeCounterToString(time: number) {
-    let hours = Math.floor(time / 3600)
-    let minutes = Math.floor((time - hours * 3600) / 60)
-    let seconds = time - hours * 3600 - minutes * 60
-    return `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`
+    return setTimeCounterToString(time)
   }
 
   triggerKeeper(param: { uid: string; trigger: string; time: number }) {

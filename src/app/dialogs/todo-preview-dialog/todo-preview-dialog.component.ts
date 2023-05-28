@@ -6,6 +6,7 @@ import { MatDividerModule } from "@angular/material/divider";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { TodosService } from "../../shared/todos.service";
 import { NoSanitizePipe } from "../../pipes/noSanitize.pipe";
+import { setTimeCounterToString } from "../../utils/global-methods";
 
 @Component({
   selector: 'id-todo-preview-dialog',
@@ -25,6 +26,7 @@ export class TodoPreviewDialogComponent {
 
   public boardName = this.getBoardName(this.todo.boardUid)
   public columnName = this.getColumnName(this.todo.columnUid, this.todo.boardUid)
+  timeSpent: string = setTimeCounterToString(this.todo.timeSpent)
 
   closeEdit() {
     this.dialogRef.close('edit')

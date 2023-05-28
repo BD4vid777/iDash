@@ -162,6 +162,10 @@ progress {
 }
 
 .id-form-control {
+  #time_spent {
+    display: flex;
+    gap: .5rem;
+  }
   label {
     margin-bottom: .2rem;
   }
@@ -275,8 +279,16 @@ progress {
   }
 }
 
-.w-100 {
-  width: 100%;
+.w {
+  &-100 {
+    width: 100%!important;
+  }
+  &-75 {
+    width: 75%!important;
+  }
+  &-50 {
+    width: 50%!important;
+  }
 }
 
 mat-divider {
