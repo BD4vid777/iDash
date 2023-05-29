@@ -31,9 +31,9 @@ export class DashNotesComponent implements OnInit {
   ngOnInit() {
     this.setLatestNotes()
 
-    addEventListener('storage', (event) => {
-      console.log('storage event', event)
-    })
+    // addEventListener('storage', (event) => {
+    //   console.log('storage event', event)
+    // })
   }
 
   setLatestNotes() {

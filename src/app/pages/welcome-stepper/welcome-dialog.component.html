@@ -1,0 +1,80 @@
+<h2 mat-dialog-title>{{dialogTitle}}</h2>
+<span class="material-symbols-outlined close-btn" (click)="closeDialog()">close</span>
+<mat-dialog-content class="id-scrollbar" [style.height.%]="'100'">
+
+  <mat-tab-group headerPosition="below">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>circle</mat-icon>
+      </ng-template>
+      <h3>Explore Your Personal WEB Dashboard</h3>
+      <mat-divider></mat-divider>
+      <ul>
+        <li>Simple - CRUD - Create, Read, Update, Delete</li>
+        <li>Personal - keep data on your browser</li>
+        <li>Secure - no data is sent to the server</li>
+        <li>Fast - no server round trips</li>
+        <li>Free - no ads, no tracking</li>
+      </ul>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>circle</mat-icon>
+      </ng-template>
+      <h3>Tools - only useful ones</h3>
+      <mat-divider></mat-divider>
+      <ul>
+        <li>Bookmarks - Quick Links</li>
+        <li>Notes - Simple Note Editor to keep your ideas</li>
+        <li>Todos - Intuitive tool for your daily tasks</li>
+        <li>Time Keeper - Keep track of yor time</li>
+        <li>Budget - Keep track of your finances</li>
+      </ul>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>circle</mat-icon>
+      </ng-template>
+      <h3>Bookmarks & Notes</h3>
+      <mat-divider></mat-divider>
+      <p>Something here about it</p>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>circle</mat-icon>
+      </ng-template>
+      <h3>Todos & TimeKeeper</h3>
+      <mat-divider></mat-divider>
+      <p>Something here about it</p>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>circle</mat-icon>
+      </ng-template>
+      <h3>Budget</h3>
+      <mat-divider></mat-divider>
+      <p>Something here about it</p>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>circle</mat-icon>
+      </ng-template>
+      <h3>Feature Upgrades</h3>
+      <mat-divider></mat-divider>
+      <p>Something here about it</p>
+    </mat-tab>
+  </mat-tab-group>
+
+</mat-dialog-content>
+<mat-dialog-actions
+  class="welcome-dialog-actions"
+  [ngStyle]="{display: 'flex', gap: '.75rem', 'margin-right': '.5rem', width: '100%'}">
+  <form [formGroup]='msgForm' class="id-flex id-checkbox-container">
+    <input id="welcomeMsg" type="checkbox" formControlName="showWelcomeMsg" (change)="changeWelcomeMsgStatus()">
+    <label for="welcomeMsg" class="id-checkbox-label">Show Welcome Screen on start</label>
+  </form>
+  <button
+    class="btn btn-no"
+    (click)="closeDialog()"
+  >Close</button>
+</mat-dialog-actions>

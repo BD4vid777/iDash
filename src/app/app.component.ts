@@ -1,10 +1,17 @@
 import { Component, Inject, inject, OnInit } from '@angular/core';
-import { backgroundImages, primaryBG } from "./utils/internal-data";
+import {
+  backgroundImages,
+  DIALOG_QUESTION_ANIMATION_ENTER,
+  DIALOG_QUESTION_ANIMATION_EXIT, DIALOG_QUESTION_CLASS,
+  primaryBG
+} from "./utils/internal-data";
 import { IBackground, ITodo, IUserStorageData } from "./utils/interfaces";
 import { StorageDataService } from "./shared/storage-data.service";
 import { WINDOW } from "./shared/window.token";
 import { NavigationEnd, Router } from "@angular/router";
 import { TimeKeeperService } from "./shared/time-keeper.service";
+import { MatDialog } from "@angular/material/dialog";
+import { WelcomeDialogComponent } from "./pages/welcome-stepper/welcome-dialog.component";
 
 @Component({
   selector: 'app-root',
@@ -25,6 +32,7 @@ export class AppComponent implements OnInit {
 
   public localStorageService = inject(StorageDataService)
   public timeKeeperService = inject(TimeKeeperService)
+  matDialog = inject(MatDialog)
   public route = inject(Router)
   triggerData: ITodo | undefined
 
@@ -36,7 +44,18 @@ export class AppComponent implements OnInit {
     this.userDataFromStorage = this.localStorageService.getUserDataFromStorage()
     this.bgPhoto = this.userDataFromStorage.userBackground
     if (this.userDataFromStorage.showWelcomeMsg) {
-
+      this.matDialog.open(WelcomeDialogComponent, {
+        width: '60vw',
+        height: '60vh',
+        enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
+        exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
+        panelClass: DIALOG_QUESTION_CLASS,
+        disableClose: false,
+        data: {
+          dialogTitle: 'Welcome to iDash!',
+          showWelcomeMsg: this.userDataFromStorage.showWelcomeMsg
+        }
+      })
     }
 
     this.route.events.subscribe((event) => {
