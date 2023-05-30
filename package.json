@@ -1,6 +1,6 @@
 {
   "name": "idash",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "keywords": ["iDash", "Personal Web Dashboard", "Angular 16", "Notes", "Todos", "Budget"],
   "scripts": {
     "ng": "ng",
