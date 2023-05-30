@@ -1,4 +1,7 @@
-<h2 mat-dialog-title>{{dialogTitle}}</h2>
+<h2 mat-dialog-title>
+  <img ngSrc="assets/logo.png" alt="iDash Logo" height="25" width="25">
+  {{dialogTitle}}
+</h2>
 <span class="material-symbols-outlined close-btn" (click)="closeDialog()">close</span>
 <mat-dialog-content class="id-scrollbar" [style.height.%]="'100'">
 
@@ -17,7 +20,7 @@
           <h3>Explore Your Personal Dashboard</h3>
           <mat-divider></mat-divider>
           <p class="quote">
-            With iDash you can organize your time, keep track of your budget, manage your day-to-day task and plan your far-reaching goals. It's never been easier!
+            With iDash you can organize your time, keep track of your budget, manage your day-to-day task and plan your far-reaching goals. It's never been <span data-after="easier!">easier!</span>
           </p>
           <ul>
             <li>Simple - CRUD - Create, Read, Update, Delete</li>
@@ -28,7 +31,7 @@
           </ul>
         </section>
         <aside>
-          <img ngSrc="https://images.unsplash.com/photo-1507652955-f3dcef5a3be5" alt="Photo by: 'https://unsplash.com/@srz' from Unsplash" height="1080" width="1920">
+          <img ngSrc="assets/welcome_webp/Welcome_0.webp" alt="Welcome Intro" height="1080" width="1920">
         </aside>
       </div>
     </mat-tab>
@@ -43,10 +46,10 @@
       </ng-template>
       <div class="tab-content">
         <section>
-          <h3>Tools - only useful ones</h3>
+          <h3>Dedicated Tools</h3>
           <mat-divider></mat-divider>
           <p class="quote">
-            With iDash you can organize your time, keep track of your budget, manage your day-to-day task and plan your far-reaching goals. It's never been easier!
+            If available on market apps have to many unnecessary options for You, iDash has 5 <span data-after="simple">simple</span> tools dedicated to streamline your workflow at ease!
           </p>
           <ul>
             <li>Bookmarks - Quick Links</li>
@@ -75,15 +78,13 @@
           <h3>Bookmarks & Notes</h3>
           <mat-divider></mat-divider>
           <p class="quote">
-            With iDash you can organize your time, keep track of your budget, manage your day-to-day task and plan your far-reaching goals. It's never been easier!
-          </p>
-          <ul>
-            <li>Bookmarks - Set Quick Access Links at glance</li>
-            <li>Notes - Keep your thoughts organized</li>
-          </ul>
+            Thanks to Bookmarks you can set your <span data-after="quick" data-width="104">quick</span> access links and have the most important things around
+            </p>
+          <p class="quote">
+            Notes gives you opportunity to keep your thoughts <span data-after="organized" [style.width]="'150px'">organized</span> in one place with instant access</p>
         </section>
         <aside>
-          <img ngSrc="https://images.unsplash.com/photo-1512758017271-d7b84c2113f1" alt="Photo by: 'https://unsplash.com/@epicantus' from Unsplash" height="1080" width="1920">
+          <img ngSrc="assets/welcome_webp/Welcome_1.webp" alt="Quick look at bookmarks and notes" height="1080" width="1920">
         </aside>
       </div>
     </mat-tab>

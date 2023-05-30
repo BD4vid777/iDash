@@ -15,6 +15,16 @@
   }
 }
 
+h2 {
+  display: flex;
+  align-items: center;
+  padding-top: 5px;
+
+  img {
+    margin-right: 1rem;
+  }
+}
+
 .welcome-dialog-actions {
   display: flex;
   justify-content: space-between;
@@ -90,6 +100,20 @@ mat-tab-group {
                 line-height: 30px;
                 padding: $padding-primary;
                 margin-block: 1rem;
+                span {
+                  position: relative;
+                  color: transparent;
+                  width: 104px;
+                  display: inline-block;
+                  &:after {
+                    content: attr(data-after);
+                    position: absolute;
+                    color: $active;
+                    bottom: 2px;
+                    left: 0;
+                    font-size: 2.2rem;
+                  }
+                }
                 &::before, &::after {
                   margin-top: -10px;
                   display: inline-block;
@@ -106,6 +130,9 @@ mat-tab-group {
               ul {
                 list-style: circle inside!important;
                 padding-inline-start: .5rem;
+                li::marker {
+                  color: $active;
+                }
               }
             }
 
