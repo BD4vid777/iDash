@@ -56,7 +56,6 @@ async ngOnDestroy() {
         this.interval = undefined
         break;
       case 'stop':
-        if (!this.interval) return
         this.saveTodoTimeSpent()
         break;
     }
@@ -64,6 +63,7 @@ async ngOnDestroy() {
 
   saveTodoTimeSpent() {
     clearInterval(this.interval)
+    this.interval = undefined
     this.triggerData.timeSpent = this.timeCounter
     this.todosService.editTodo(
       this.triggerData.uid,

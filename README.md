@@ -1,5 +1,5 @@
 # iDash
-## pre-release 1.5.4
+## pre-release 1.5.5
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/BD4vid777/iDash)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/759d8e57-2256-44ba-bee2-d15eb47bd742/deploy-status)](https://idash-pre-release-v-1-5-0.netlify.app)
@@ -13,7 +13,7 @@
 
 This project is being created by [BD4vid777](https://github.com/BD4vid777) as a personal private dashboard project.
 
-### Actual version 1.5.4:
+### Actual version 1.5.5:
 - [x] Bookmarks - Dashboard
 - [x] Notes - Dashboard
 - [x] Todos - Dashboard
@@ -22,9 +22,10 @@ This project is being created by [BD4vid777](https://github.com/BD4vid777) as a 
 - [x] Notifications
 - [x] Fullscreen Mode
 - [x] Todos Update with TimeKeeper - Dashboard
+- [x] Welcome screen - Dashboard
 
-### Next version 1.5.5:
-- [ ] Welcome screen - Dashboard
+### Next version 1.6.0:
+- [ ] Mobile View
 
 ### Future version 2.x.x:
 - [ ] Todos Page

@@ -52,11 +52,11 @@
             If available on market apps have to many unnecessary options for You, iDash has 5 <span data-after="simple">simple</span> tools dedicated to streamline your workflow at ease!
           </p>
           <ul>
-            <li>Bookmarks - Quick Links</li>
-            <li>Notes - Simple Note Editor to keep your ideas</li>
             <li>Todos - Intuitive tool for your daily tasks</li>
-            <li>Time Keeper - Keep track of yor time</li>
+            <li>Notes - Simple Note Editor to keep your ideas</li>
+            <li>Time Keeper - Keep track of your todos time</li>
             <li>Budget - Keep track of your finances</li>
+            <li>Bookmarks - Quick Links at glance</li>
           </ul>
         </section>
         <aside>
@@ -97,12 +97,23 @@
           <mat-icon>fiber_manual_record</mat-icon>
         </ng-template>
       </ng-template>
-      <h3>Todos & TimeKeeper</h3>
-      <mat-divider></mat-divider>
-      <p class="quote">
-        With iDash you can organize your time, keep track of your budget, manage your day-to-day task and plan your far-reaching goals. It's never been easier!
-      </p>
-      <p>Something here about it</p>
+      <div class="tab-content">
+        <section>
+          <h3>Todos & TimeKeeper</h3>
+          <mat-divider></mat-divider>
+          <p class="quote">
+            Writing a plan down gives a chance for review, makes it substantial and strenghts your <span
+            data-after="goals" [style.width]="'85px'">goals</span>. This is what Todos are for!
+          </p>
+          <p class="quote">
+            Additionally you can keep track of your time spent on <span data-after="planning" [style.width]="'130px'">planning</span> with Time
+            Keeper to optimize your performance
+          </p></section>
+        <aside>
+          <img ngSrc="assets/welcome_webp/Welcome_2.webp" alt="Quick look at todos and TimeKeeper" height="1080"
+               width="1920">
+        </aside>
+      </div>
     </mat-tab>
     <mat-tab #tab5>
       <ng-template mat-tab-label>
@@ -113,9 +124,23 @@
           <mat-icon>fiber_manual_record</mat-icon>
         </ng-template>
       </ng-template>
-      <h3>Budget</h3>
-      <mat-divider></mat-divider>
-      <p>Something here about it</p>
+      <div class="tab-content">
+        <section>
+          <h3>Budget</h3>
+          <mat-divider></mat-divider>
+          <p class="quote">
+            It's very important to keep track on <span data-after="finances" [style.width]="'125px'">finances</span> and actually plan your private budget. Now you can do it in 3 easy steps:
+          </p>
+          <ul>
+            <li>Set Income</li>
+            <li>Set Expenses</li>
+            <li>Keep up with monthly balance</li>
+          </ul>
+        </section>
+        <aside>
+          <img ngSrc="assets/welcome_webp/Welcome_3.webp" alt="Budget Tool" height="1431" width="2392">
+        </aside>
+      </div>
     </mat-tab>
     <mat-tab #tab6>
       <ng-template mat-tab-label>
@@ -131,9 +156,14 @@
           <h3>Feature Upgrades</h3>
           <mat-divider></mat-divider>
           <p class="quote">
-            With iDash you can organize your time, keep track of your budget, manage your day-to-day task and plan your far-reaching goals. It's never been easier!
+             That's not all! We are constantly working on new features and upgrades to make your <span data-after="experience" [style.width]="'165px'">experience</span> even better!
           </p>
-          <p>Something here about it</p>
+          <ul>
+            <li>Dedicated Pages for: Todos, Notes and Budget</li>
+            <li>Google Login with mail integration and data storage</li>
+            <li>Mobile App</li>
+            <li>Personalization</li>
+          </ul>
         </section>
         <aside>
           <img ngSrc="https://images.unsplash.com/photo-1532102235608-dc8fc689c9ab" alt="Photo by: 'https://unsplash.com/@new_data_services' from Unsplash" height="1080" width="1920">
