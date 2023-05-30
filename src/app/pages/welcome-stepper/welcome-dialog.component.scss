@@ -83,7 +83,30 @@ mat-tab-group {
             }
 
             section {
+              p.quote {
+                font-style: italic;
+                font-size: 1.2rem;
+                position: relative;
+                line-height: 30px;
+                padding: $padding-primary;
+                margin-block: 1rem;
+                &::before, &::after {
+                  margin-top: -10px;
+                  display: inline-block;
+                  font-size: 2rem
+                }
+                &::before {
+                  content: open-quote;
+                }
+                &::after {
+                  content: close-quote;
+                }
+              }
 
+              ul {
+                list-style: circle inside!important;
+                padding-inline-start: .5rem;
+              }
             }
 
             aside {

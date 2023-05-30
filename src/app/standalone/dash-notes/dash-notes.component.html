@@ -9,7 +9,7 @@
   <div *ngFor="let note of latestNotes" class="id-note-dash-container id-flex-spc bg-blur padding-secondary">
     <div>
       <span class="material-symbols-outlined" matTooltip="{{ note.createdAt | date: 'dd/MM/YY, HH:mm' }}" matTooltipClass="id-tooltip">event</span>
-      {{note.title}}
+      <p class="note-title">{{note.title}}</p>
     </div>
     <div>
       <span

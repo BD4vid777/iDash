@@ -28,6 +28,7 @@ import {
 } from "@angular/material/snack-bar";
 import { TimeKeeperComponent } from "./standalone/time-keeper/time-keeper.component";
 import { ClockComponent } from "./standalone/clock/clock.component";
+import { NgOptimizedImage } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { ClockComponent } from "./standalone/clock/clock.component";
     UnderConstructionComponent,
     IdSnackNotificationComponent,
     TimeKeeperComponent,
-    ClockComponent
+    ClockComponent,
+    NgOptimizedImage
   ],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},

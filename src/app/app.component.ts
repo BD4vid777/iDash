@@ -53,18 +53,18 @@ export class AppComponent implements OnInit {
     this.userDataFromStorage = this.localStorageService.getUserDataFromStorage()
     this.bgPhoto = this.userDataFromStorage.userBackground
     if (this.userDataFromStorage.showWelcomeMsg) {
-      this.matDialog.open(WelcomeDialogComponent, {
-        width: '60vw',
-        height: '60vh',
-        enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
-        exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
-        panelClass: DIALOG_QUESTION_CLASS,
-        disableClose: false,
-        data: {
-          dialogTitle: 'Welcome to iDash!',
-          showWelcomeMsg: this.userDataFromStorage.showWelcomeMsg
-        }
-      })
+      // this.matDialog.open(WelcomeDialogComponent, {
+      //   width: '60vw',
+      //   height: '60vh',
+      //   enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
+      //   exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
+      //   panelClass: DIALOG_QUESTION_CLASS,
+      //   disableClose: false,
+      //   data: {
+      //     dialogTitle: 'Welcome to iDash!',
+      //     showWelcomeMsg: this.userDataFromStorage.showWelcomeMsg
+      //   }
+      // })
     }
 
     this.route.events.subscribe((event) => {

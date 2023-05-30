@@ -314,6 +314,13 @@ option {
 
 footer {
 
+  img {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .dash-info, .photo-info {
     position: absolute;
     bottom: 10px;
