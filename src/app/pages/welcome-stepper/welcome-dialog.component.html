@@ -2,66 +2,127 @@
 <span class="material-symbols-outlined close-btn" (click)="closeDialog()">close</span>
 <mat-dialog-content class="id-scrollbar" [style.height.%]="'100'">
 
-  <mat-tab-group headerPosition="below">
-    <mat-tab>
+  <mat-tab-group headerPosition="below" [@.disabled]="true" [disableRipple]="true">
+    <mat-tab #tab1>
       <ng-template mat-tab-label>
-        <mat-icon>circle</mat-icon>
+        <ng-container *ngIf="tab1.isActive else notActive">
+          <mat-icon>fiber_smart_record</mat-icon>
+        </ng-container>
+        <ng-template #notActive>
+          <mat-icon>fiber_manual_record</mat-icon>
+        </ng-template>
       </ng-template>
-      <h3>Explore Your Personal WEB Dashboard</h3>
-      <mat-divider></mat-divider>
-      <ul>
-        <li>Simple - CRUD - Create, Read, Update, Delete</li>
-        <li>Personal - keep data on your browser</li>
-        <li>Secure - no data is sent to the server</li>
-        <li>Fast - no server round trips</li>
-        <li>Free - no ads, no tracking</li>
-      </ul>
+      <div class="tab-content">
+        <section>
+          <h3>Explore Your Personal WEB Dashboard</h3>
+          <mat-divider></mat-divider>
+          <ul>
+            <li>Simple - CRUD - Create, Read, Update, Delete</li>
+            <li>Personal - keep data on your browser</li>
+            <li>Secure - no data is sent to the server</li>
+            <li>Fast - no server round trips</li>
+            <li>Free - no ads, no tracking</li>
+          </ul>
+        </section>
+        <aside>
+          <img ngSrc="https://images.unsplash.com/photo-1507652955-f3dcef5a3be5" alt="Photo by: 'https://unsplash.com/@srz' from Unsplash" height="1080" width="1920">
+        </aside>
+      </div>
     </mat-tab>
-    <mat-tab>
+    <mat-tab #tab2>
       <ng-template mat-tab-label>
-        <mat-icon>circle</mat-icon>
+        <ng-container *ngIf="tab2.isActive else notActive">
+          <mat-icon>fiber_smart_record</mat-icon>
+        </ng-container>
+        <ng-template #notActive>
+          <mat-icon>fiber_manual_record</mat-icon>
+        </ng-template>
       </ng-template>
-      <h3>Tools - only useful ones</h3>
-      <mat-divider></mat-divider>
-      <ul>
-        <li>Bookmarks - Quick Links</li>
-        <li>Notes - Simple Note Editor to keep your ideas</li>
-        <li>Todos - Intuitive tool for your daily tasks</li>
-        <li>Time Keeper - Keep track of yor time</li>
-        <li>Budget - Keep track of your finances</li>
-      </ul>
+      <div class="tab-content">
+        <section>
+          <h3>Tools - only useful ones</h3>
+          <mat-divider></mat-divider>
+          <ul>
+            <li>Bookmarks - Quick Links</li>
+            <li>Notes - Simple Note Editor to keep your ideas</li>
+            <li>Todos - Intuitive tool for your daily tasks</li>
+            <li>Time Keeper - Keep track of yor time</li>
+            <li>Budget - Keep track of your finances</li>
+          </ul>
+        </section>
+        <aside>
+          <img ngSrc="assets/welcome_webp/Dashboard_page.webp" alt="Dashboard page view" height="1431" width="2392">
+        </aside>
+      </div>
     </mat-tab>
-    <mat-tab>
+    <mat-tab #tab3>
       <ng-template mat-tab-label>
-        <mat-icon>circle</mat-icon>
+        <ng-container *ngIf="tab3.isActive else notActive">
+          <mat-icon>fiber_smart_record</mat-icon>
+        </ng-container>
+        <ng-template #notActive>
+          <mat-icon>fiber_manual_record</mat-icon>
+        </ng-template>
       </ng-template>
-      <h3>Bookmarks & Notes</h3>
-      <mat-divider></mat-divider>
-      <p>Something here about it</p>
+      <div class="tab-content">
+        <section>
+          <h3>Bookmarks & Notes</h3>
+          <mat-divider></mat-divider>
+          <ul>
+            <li>Bookmarks - Set Quick Access Links at glance</li>
+            <li>Notes - Keep your thoughts organized</li>
+          </ul>
+        </section>
+        <aside>
+          <img ngSrc="https://images.unsplash.com/photo-1512758017271-d7b84c2113f1" alt="Photo by: 'https://unsplash.com/@epicantus' from Unsplash" height="1080" width="1920">
+        </aside>
+      </div>
     </mat-tab>
-    <mat-tab>
+    <mat-tab #tab4>
       <ng-template mat-tab-label>
-        <mat-icon>circle</mat-icon>
+        <ng-container *ngIf="tab4.isActive else notActive">
+          <mat-icon>fiber_smart_record</mat-icon>
+        </ng-container>
+        <ng-template #notActive>
+          <mat-icon>fiber_manual_record</mat-icon>
+        </ng-template>
       </ng-template>
       <h3>Todos & TimeKeeper</h3>
       <mat-divider></mat-divider>
       <p>Something here about it</p>
     </mat-tab>
-    <mat-tab>
+    <mat-tab #tab5>
       <ng-template mat-tab-label>
-        <mat-icon>circle</mat-icon>
+        <ng-container *ngIf="tab5.isActive else notActive">
+          <mat-icon>fiber_smart_record</mat-icon>
+        </ng-container>
+        <ng-template #notActive>
+          <mat-icon>fiber_manual_record</mat-icon>
+        </ng-template>
       </ng-template>
       <h3>Budget</h3>
       <mat-divider></mat-divider>
       <p>Something here about it</p>
     </mat-tab>
-    <mat-tab>
+    <mat-tab #tab6>
       <ng-template mat-tab-label>
-        <mat-icon>circle</mat-icon>
+        <ng-container *ngIf="tab6.isActive else notActive">
+          <mat-icon>fiber_smart_record</mat-icon>
+        </ng-container>
+        <ng-template #notActive>
+          <mat-icon>fiber_manual_record</mat-icon>
+        </ng-template>
       </ng-template>
-      <h3>Feature Upgrades</h3>
-      <mat-divider></mat-divider>
-      <p>Something here about it</p>
+      <div class="tab-content">
+        <section>
+          <h3>Feature Upgrades</h3>
+          <mat-divider></mat-divider>
+          <p>Something here about it</p>
+        </section>
+        <aside>
+          <img ngSrc="https://images.unsplash.com/photo-1532102235608-dc8fc689c9ab" alt="Photo by: 'https://unsplash.com/@new_data_services' from Unsplash" height="1080" width="1920">
+        </aside>
+      </div>
     </mat-tab>
   </mat-tab-group>
 

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { StorageDataService } from "../../shared/storage-data.service";
@@ -10,7 +10,7 @@ import { MatDividerModule } from "@angular/material/divider";
 @Component({
   selector: 'id-welcome-stepper',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, ReactiveFormsModule, MatTabsModule, MatIconModule, MatDividerModule],
+  imports: [CommonModule, MatDialogModule, ReactiveFormsModule, MatTabsModule, MatIconModule, MatDividerModule, NgOptimizedImage],
   templateUrl: './welcome-dialog.component.html',
   styleUrls: ['./welcome-dialog.component.scss']
 })
