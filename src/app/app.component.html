@@ -44,8 +44,8 @@
       <li class="material-symbols-outlined" routerLink="budget" routerLinkActive="active" [matTooltip]="'Budget'" matTooltipPosition="right" matTooltipClass="id-tooltip">account_balance_wallet</li>
     </ul>
   </nav>
-  <main>
-    <router-outlet></router-outlet>
+  <main [@routeAnimations]="prepareRoute(outlet)">
+    <router-outlet #outlet='outlet'></router-outlet>
   </main>
   <footer>
     <div class="dash-info"><a href="https://github.com/BD4vid777/iDash" target="_blank">iDash(pre-release 1.5.4)</a>, 2023 - created by <a href="https://www.linkedin.com/in/dawidbudzinski/" target="_blank">Dawid Budziński</a></div>
