@@ -1,57 +1,76 @@
-<div
-  class="dashboard-main-container"
-  [ngStyle]="{'background-image': 'url(' + bgPhoto.photoLink + ')'}"
->
-  <id-time-keeper *ngIf="triggerData"
-    [triggerData]="triggerData"
-  ></id-time-keeper>
-  <id-clock class="not-dashboard" *ngIf="!isDashboard"></id-clock>
+<ng-container *ngIf="!isMobile else mobileNotAvailable">
+  <div
+    class="dashboard-main-container"
+    [ngStyle]="{'background-image': 'url(' + bgPhoto.photoLink + ')'}"
+  >
+    <id-time-keeper *ngIf="triggerData"
+                    [triggerData]="triggerData"
+    ></id-time-keeper>
+    <id-clock class="not-dashboard" *ngIf="!isDashboard"></id-clock>
 
-  <div class="background-refresh bg-blur">
-    <div class="background-header">
-      <p>Change Background Photo</p>
-      <span class="material-symbols-outlined">photo_frame</span>
-    </div>
-    <div class="background-options">
+    <div class="background-refresh bg-blur">
+      <div class="background-header">
+        <p>Change Background Photo</p>
+        <span class="material-symbols-outlined">photo_frame</span>
+      </div>
+      <div class="background-options">
       <span
         *ngFor="let bg of bgArray; let i = index"
         [ngStyle]="{'background-image': 'url(' + bg.photoLink + ')'}"
         (click)="changeBackground(bg.photoLink, bg.photoAuthor, bg.photoIndex)"
       ></span>
+      </div>
+      <span class="material-symbols-outlined reset-image"
+            (click)="resetBackground()"
+            [matTooltip]="'Reset background'" matTooltipPosition="right" matTooltipClass="id-tooltip"
+      >reset_image</span>
     </div>
-    <span class="material-symbols-outlined reset-image"
-     (click)="resetBackground()"
-     [matTooltip]="'Reset background'" matTooltipPosition="right" matTooltipClass="id-tooltip"
-    >reset_image</span>
+    <div
+      class="full-page bg-blur"
+      (click)="fullscreenToggle()"
+      [matTooltip]="fullscreen ? 'Exit Fullscreen' : 'Go Fullscreen'"
+      matTooltipPosition="left"
+      matTooltipClass="id-tooltip"
+    >
+      <span class="material-symbols-outlined">{{fullscreen ? 'fullscreen_exit' : 'fullscreen'}}</span>
+    </div>
+    <nav class="bg-blur">
+      <span class="material-symbols-outlined" routerLink="user-settings" routerLinkActive="active"
+            [matTooltip]="'User login UNAVAILABLE in current version'" matTooltipPosition="right"
+            matTooltipClass="id-tooltip" [style.cursor]="'default'">account_circle</span>
+      <mat-divider></mat-divider>
+      <span class="material-symbols-outlined" routerLink="dashboard" routerLinkActive="active" [matTooltip]="'iD Home'"
+            matTooltipPosition="right" matTooltipClass="id-tooltip">dashboard</span>
+      <mat-divider></mat-divider>
+      <ul class="nav-buttons">
+        <li class="material-symbols-outlined" routerLink="todos" routerLinkActive="active" [matTooltip]="'Todos'"
+            matTooltipPosition="right" matTooltipClass="id-tooltip">fact_check
+        </li>
+        <li class="material-symbols-outlined" routerLink="notes" routerLinkActive="active" [matTooltip]="'Notes'"
+            matTooltipPosition="right" matTooltipClass="id-tooltip">text_snippet
+        </li>
+        <li class="material-symbols-outlined" routerLink="budget" routerLinkActive="active" [matTooltip]="'Budget'"
+            matTooltipPosition="right" matTooltipClass="id-tooltip">account_balance_wallet
+        </li>
+      </ul>
+    </nav>
+    <main [@routeAnimations]="prepareRoute(outlet)">
+      <router-outlet #outlet='outlet'></router-outlet>
+    </main>
+    <footer>
+      <div class="dash-info"><a href="https://github.com/BD4vid777/iDash" target="_blank">iDash(pre-release 1.5.5)</a>,
+        2023 - created by <a href="https://www.linkedin.com/in/dawidbudzinski/" target="_blank">Dawid Budziński</a>
+      </div>
+      <img ngSrc="assets/logo.png" alt="iDash Logo" height="25" width="25">
+      <div class="photo-info" [innerHTML]="bgPhoto.photoAuthor"></div>
+    </footer>
   </div>
-  <div
-    class="full-page bg-blur"
-    (click)="fullscreenToggle()"
-    [matTooltip]="fullscreen ? 'Exit Fullscreen' : 'Go Fullscreen'"
-    matTooltipPosition="left"
-    matTooltipClass="id-tooltip"
-  >
-    <span class="material-symbols-outlined">{{fullscreen ? 'fullscreen_exit' : 'fullscreen'}}</span>
+</ng-container>
+<ng-template #mobileNotAvailable>
+  <div class="mobile-not-available">
+    <p>Mobile version is not available yet.</p>
+    <img ngSrc="assets/logo.png" alt="logo" width="150" height="150">
+    <p>Please use app on desktop.</p>
   </div>
-  <nav class="bg-blur">
-    <span class="material-symbols-outlined" routerLink="user-settings" routerLinkActive="active" [matTooltip]="'User login UNAVAILABLE in current version'" matTooltipPosition="right" matTooltipClass="id-tooltip" [style.cursor]="'default'">account_circle</span>
-    <mat-divider></mat-divider>
-    <span class="material-symbols-outlined" routerLink="dashboard" routerLinkActive="active" [matTooltip]="'iD Home'" matTooltipPosition="right" matTooltipClass="id-tooltip">dashboard</span>
-    <mat-divider></mat-divider>
-    <ul class="nav-buttons">
-      <li class="material-symbols-outlined" routerLink="todos" routerLinkActive="active" [matTooltip]="'Todos'" matTooltipPosition="right" matTooltipClass="id-tooltip">fact_check</li>
-      <li class="material-symbols-outlined" routerLink="notes" routerLinkActive="active" [matTooltip]="'Notes'" matTooltipPosition="right" matTooltipClass="id-tooltip">text_snippet</li>
-      <li class="material-symbols-outlined" routerLink="budget" routerLinkActive="active" [matTooltip]="'Budget'" matTooltipPosition="right" matTooltipClass="id-tooltip">account_balance_wallet</li>
-    </ul>
-  </nav>
-  <main [@routeAnimations]="prepareRoute(outlet)">
-    <router-outlet #outlet='outlet'></router-outlet>
-  </main>
-  <footer>
-    <div class="dash-info"><a href="https://github.com/BD4vid777/iDash" target="_blank">iDash(pre-release 1.5.5)</a>, 2023 - created by <a href="https://www.linkedin.com/in/dawidbudzinski/" target="_blank">Dawid Budziński</a></div>
-    <img ngSrc="assets/logo.png" alt="iDash Logo" height="25" width="25">
-    <div class="photo-info" [innerHTML]="bgPhoto.photoAuthor"></div>
-  </footer>
-</div>
-
+</ng-template>
 

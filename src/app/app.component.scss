@@ -1,1 +1,10 @@
-
+.mobile-not-available {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  gap: 1rem;
+}
