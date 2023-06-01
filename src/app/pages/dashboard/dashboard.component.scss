@@ -11,6 +11,9 @@
 
   id-bookmarks {
     opacity: 0;
+    &.isMobile {
+      opacity: 1;
+    }
   }
 
   &:hover {
@@ -32,6 +35,10 @@
 
     height: 50%;
     width: 100%;
+
+    &.isMobile {
+      opacity: 1;
+    }
 
     .standalones {
       height: 100%;

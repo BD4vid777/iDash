@@ -15,7 +15,7 @@
           <mat-icon>fiber_manual_record</mat-icon>
         </ng-template>
       </ng-template>
-      <div class="tab-content">
+      <div class="tab-content id-scrollbar" [class.isMobile]="isMobile">
         <section>
           <h3>Explore Your Personal Dashboard</h3>
           <mat-divider></mat-divider>
@@ -44,7 +44,7 @@
           <mat-icon>fiber_manual_record</mat-icon>
         </ng-template>
       </ng-template>
-      <div class="tab-content">
+      <div class="tab-content id-scrollbar" [class.isMobile]="isMobile">
         <section>
           <h3>Dedicated Tools</h3>
           <mat-divider></mat-divider>
@@ -73,15 +73,15 @@
           <mat-icon>fiber_manual_record</mat-icon>
         </ng-template>
       </ng-template>
-      <div class="tab-content">
+      <div class="tab-content id-scrollbar" [class.isMobile]="isMobile">
         <section>
           <h3>Bookmarks & Notes</h3>
           <mat-divider></mat-divider>
           <p class="quote">
-            Thanks to Bookmarks you can set your <span data-after="quick" data-width="104">quick</span> access links and have the most important things around
+            Thanks to Bookmarks you can set your <span data-after="quick" [style.width.px]="isMobile ? 55 : 104">quick</span> access links and have the most important things around
             </p>
           <p class="quote">
-            Notes gives you opportunity to keep your thoughts <span data-after="organized" [style.width]="'150px'">organized</span> in one place with instant access</p>
+            Notes gives you opportunity to keep your thoughts <span data-after="organized" [style.width.px]="isMobile ? 105 : 150">organized</span> in one place with instant access</p>
         </section>
         <aside>
           <img ngSrc="assets/welcome_webp/Welcome_1.webp" alt="Quick look at bookmarks and notes" height="1080" width="1920">
@@ -97,16 +97,16 @@
           <mat-icon>fiber_manual_record</mat-icon>
         </ng-template>
       </ng-template>
-      <div class="tab-content">
+      <div class="tab-content id-scrollbar" [class.isMobile]="isMobile">
         <section>
           <h3>Todos & TimeKeeper</h3>
           <mat-divider></mat-divider>
           <p class="quote">
             Writing a plan down gives a chance for review, makes it substantial and strenghts your <span
-            data-after="goals" [style.width]="'85px'">goals</span>. This is what Todos are for!
+            data-after="goals" [style.width.px]="isMobile ? 60 : 85">goals</span>. This is what Todos are for!
           </p>
           <p class="quote">
-            Additionally you can keep track of your time spent on <span data-after="planning" [style.width]="'130px'">planning</span> with Time
+            Additionally you can keep track of your time spent on <span data-after="planning" [style.width.px]="isMobile ? 90 : 130">planning</span> with Time
             Keeper to optimize your performance
           </p></section>
         <aside>
@@ -124,12 +124,12 @@
           <mat-icon>fiber_manual_record</mat-icon>
         </ng-template>
       </ng-template>
-      <div class="tab-content">
+      <div class="tab-content id-scrollbar" [class.isMobile]="isMobile">
         <section>
           <h3>Budget</h3>
           <mat-divider></mat-divider>
           <p class="quote">
-            It's very important to keep track on <span data-after="finances" [style.width]="'125px'">finances</span> and actually plan your private budget. Now you can do it in 3 easy steps:
+            It's very important to keep track on <span data-after="finances" [style.width.px]="isMobile ? 90 : 125">finances</span> and actually plan your private budget. Now you can do it in 3 easy steps:
           </p>
           <ul>
             <li>Set Income</li>
@@ -151,12 +151,12 @@
           <mat-icon>fiber_manual_record</mat-icon>
         </ng-template>
       </ng-template>
-      <div class="tab-content">
+      <div class="tab-content id-scrollbar" [class.isMobile]="isMobile">
         <section>
           <h3>Feature Upgrades</h3>
           <mat-divider></mat-divider>
           <p class="quote">
-             That's not all! We are constantly working on new features and upgrades to make your <span data-after="experience" [style.width]="'165px'">experience</span> even better!
+             That's not all! We are constantly working on new features and upgrades to make your <span data-after="experience" [style.width.px]="isMobile ? 115 : 165">experience</span> even better!
           </p>
           <ul>
             <li>Dedicated Pages for: Todos, Notes and Budget</li>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { WINDOW } from "../../shared/window.token";
 
 @Component({
   selector: 'id-dashboard',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
 
+  public window: any = inject(WINDOW)
+  public isMobile: boolean = this.window.navigator.userAgentData.mobile
 }

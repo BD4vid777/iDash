@@ -14,6 +14,7 @@ export interface IUserStorageData {
 
 export interface IBackground {
   photoLink: string,
+  photoLinkMobile: string,
   photoAuthor: string,
   photoIndex: number
 }

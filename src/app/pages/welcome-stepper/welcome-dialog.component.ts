@@ -6,6 +6,7 @@ import { StorageDataService } from "../../shared/storage-data.service";
 import { MatIconModule } from "@angular/material/icon";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatDividerModule } from "@angular/material/divider";
+import { WINDOW } from "../../shared/window.token";
 
 @Component({
   selector: 'id-welcome-stepper',
@@ -19,6 +20,9 @@ export class WelcomeDialogComponent {
   private dialogRef: MatDialogRef<{dialogTitle: string, showWelcomeMsg: boolean}> = inject(MatDialogRef<WelcomeDialogComponent>)
   private data: {dialogTitle: string, showWelcomeMsg: boolean} = inject(MAT_DIALOG_DATA)
   private fb: FormBuilder = inject(FormBuilder)
+
+  public window: any = inject(WINDOW)
+  public isMobile: boolean = this.window.navigator.userAgentData.mobile
 
   private storageService = inject(StorageDataService)
 

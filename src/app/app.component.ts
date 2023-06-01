@@ -1,4 +1,4 @@
-import { Component, Inject, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   backgroundImages,
   DIALOG_QUESTION_ANIMATION_ENTER,
@@ -43,23 +43,19 @@ export class AppComponent implements OnInit {
   public timeKeeperService = inject(TimeKeeperService)
   matDialog = inject(MatDialog)
   public route = inject(Router)
+  public window: any = inject(WINDOW)
+  public isMobile: boolean = this.window.navigator.userAgentData.mobile
+
   triggerData: ITodo | undefined
 
-  public isMobile: boolean = false
-
-  constructor(@Inject(WINDOW) private window: any) {
-    console.log('Window: ', this.window.navigator.userAgentData.mobile)
-    this.isMobile = this.window.navigator.userAgentData.mobile
-  }
-
   ngOnInit() {
-    if (this.isMobile) return
+    //if (this.isMobile) return
     this.userDataFromStorage = this.localStorageService.getUserDataFromStorage()
     this.bgPhoto = this.userDataFromStorage.userBackground
     if (this.userDataFromStorage.showWelcomeMsg) {
       this.matDialog.open(WelcomeDialogComponent, {
-        width: '60vw',
-        height: '60vh',
+        width: this.isMobile ? '95vw' : '60vw',
+        height: this.isMobile ? '80vh' : '60vh',
         enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
         exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
         panelClass: DIALOG_QUESTION_CLASS,
@@ -82,9 +78,10 @@ export class AppComponent implements OnInit {
     })
   }
 
-  changeBackground(photoLink: string, photoAuthor: string, photoIndex: number) {
+  changeBackground(photoLink: string, photoLinkMobile: string, photoAuthor: string, photoIndex: number) {
     this.bgPhoto = {
       photoLink: photoLink,
+      photoLinkMobile: photoLinkMobile,
       photoAuthor: photoAuthor,
       photoIndex: photoIndex
     }
@@ -96,7 +93,7 @@ export class AppComponent implements OnInit {
   }
 
   resetBackground() {
-    this.changeBackground(this.bgPrimary.photoLink, this.bgPrimary.photoAuthor, this.bgPrimary.photoIndex)
+    this.changeBackground(this.bgPrimary.photoLink, this.bgPrimary.photoLinkMobile,this.bgPrimary.photoAuthor, this.bgPrimary.photoIndex)
   }
 
   fullscreenToggle() {
