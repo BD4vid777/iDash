@@ -13,6 +13,7 @@ import {
 import { SimpleQuestionDialogComponent } from "../../dialogs/simple-question-dialog/simple-question-dialog.component";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { NotePreviewDialogComponent } from "../../dialogs/note-preview-dialog/note-preview-dialog.component";
+import { WINDOW } from "../../shared/window.token";
 
 @Component({
   selector: 'id-dash-notes',
@@ -27,6 +28,9 @@ export class DashNotesComponent implements OnInit {
 
   notesService = inject(NotesService)
   matDialog = inject(MatDialog)
+
+  public window: any = inject(WINDOW)
+  public isMobile: boolean = this.window.navigator.userAgentData.mobile
 
   ngOnInit() {
     this.setLatestNotes()
@@ -43,7 +47,7 @@ export class DashNotesComponent implements OnInit {
 
   openAddNoteDialog() {
     let addDialog = this.matDialog.open(AddEditNoteDialogComponent, {
-      width: DIALOG_QUESTION_WIDTH,
+      width: this.isMobile ? '95vw' : DIALOG_QUESTION_WIDTH,
       enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
       exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
       panelClass: DIALOG_QUESTION_CLASS,
@@ -70,7 +74,7 @@ export class DashNotesComponent implements OnInit {
 
   openEditNoteDialog(note: INote) {
     let editDialog = this.matDialog.open(AddEditNoteDialogComponent, {
-      width: DIALOG_QUESTION_WIDTH,
+      width: this.isMobile ? '95vw' : DIALOG_QUESTION_WIDTH,
       enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
       exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
       panelClass: DIALOG_QUESTION_CLASS,
@@ -96,7 +100,7 @@ export class DashNotesComponent implements OnInit {
 
   openDeleteNoteDialog(note: INote) {
     let deleteDialog = this.matDialog.open(SimpleQuestionDialogComponent, {
-      width: DIALOG_QUESTION_WIDTH,
+      width: this.isMobile ? '95vw' : DIALOG_QUESTION_WIDTH,
       enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
       exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
       panelClass: DIALOG_QUESTION_CLASS,
@@ -120,7 +124,7 @@ export class DashNotesComponent implements OnInit {
 
   showNotePreview(note: INote) {
     let previewDialog = this.matDialog.open(NotePreviewDialogComponent, {
-      width: DIALOG_QUESTION_WIDTH,
+      width: this.isMobile ? '95vw' : DIALOG_QUESTION_WIDTH,
       enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
       exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
       panelClass: DIALOG_QUESTION_CLASS,

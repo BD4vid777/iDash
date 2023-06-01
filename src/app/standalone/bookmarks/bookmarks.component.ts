@@ -13,6 +13,7 @@ import {
 import {
   AddEditBookmarkDialogComponent
 } from "../../dialogs/add-edit-bookmark-dialog/add-edit-bookmark-dialog.component";
+import { WINDOW } from "../../shared/window.token";
 
 
 @Component({
@@ -28,13 +29,16 @@ export class BookmarksComponent implements OnInit {
   bookmarksService = inject(BookmarksService)
   matDialog = inject(MatDialog)
 
+  public window: any = inject(WINDOW)
+  public isMobile: boolean = this.window.navigator.userAgentData.mobile
+
   ngOnInit() {
     this.bookmarks = this.bookmarksService.getBookmarks()
   }
 
   openAddBookmarkDialog() {
     let addDialog = this.matDialog.open(AddEditBookmarkDialogComponent, {
-      width: DIALOG_QUESTION_WIDTH,
+      width: this.isMobile ? '95vw' : DIALOG_QUESTION_WIDTH,
       enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
       exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
       panelClass: DIALOG_QUESTION_CLASS,
@@ -61,7 +65,7 @@ export class BookmarksComponent implements OnInit {
 
   openEditBookmarkDialog(tile: IBookmark) {
     let editDialog = this.matDialog.open(AddEditBookmarkDialogComponent, {
-      width: DIALOG_QUESTION_WIDTH,
+      width: this.isMobile ? '95vw' : DIALOG_QUESTION_WIDTH,
       enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
       exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
       panelClass: DIALOG_QUESTION_CLASS,
@@ -87,7 +91,7 @@ export class BookmarksComponent implements OnInit {
 
   openDeleteBookmarkDialog(tile: IBookmark ) {
     let deleteDialog = this.matDialog.open(SimpleQuestionDialogComponent, {
-      width: DIALOG_QUESTION_WIDTH,
+      width: this.isMobile ? '95vw' : DIALOG_QUESTION_WIDTH,
       enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
       exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
       panelClass: DIALOG_QUESTION_CLASS,

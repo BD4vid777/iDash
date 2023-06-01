@@ -38,6 +38,10 @@
 
     &.isMobile {
       opacity: 1;
+      margin-top: unset;
+      flex-direction: column;
+      height: unset;
+      margin-bottom: 1rem;
     }
 
     .standalones {
@@ -45,6 +49,7 @@
       width: 100%;
       flex-grow: 1;
       overflow: hidden;
+      min-height: 350px;
     }
   }
 }

@@ -15,6 +15,7 @@ import {
 import { AddEditTodoDialogComponent } from "../../dialogs/add-edit-todo-dialog/add-edit-todo-dialog.component";
 import { TodoPreviewDialogComponent } from "../../dialogs/todo-preview-dialog/todo-preview-dialog.component";
 import { TimeKeeperService } from "../../shared/time-keeper.service";
+import { WINDOW } from "../../shared/window.token";
 
 @Component({
   selector: 'id-dash-todos',
@@ -30,6 +31,9 @@ export class DashTodosComponent implements OnInit {
   private timeKeeperService = inject(TimeKeeperService)
   todosService = inject(TodosService)
   matDialog = inject(MatDialog)
+
+  public window: any = inject(WINDOW)
+  public isMobile: boolean = this.window.navigator.userAgentData.mobile
 
   timeKeeperTodoUidRunning: string = ''
 
@@ -47,7 +51,7 @@ export class DashTodosComponent implements OnInit {
 
   openAddTodoDialog() {
     let addDialog = this.matDialog.open(AddEditTodoDialogComponent, {
-      width: DIALOG_EDIT_ADD_TODO_WIDTH,
+      width: this.isMobile ? '95vw' : DIALOG_EDIT_ADD_TODO_WIDTH,
       enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
       exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
       panelClass: DIALOG_QUESTION_CLASS,
@@ -80,7 +84,7 @@ export class DashTodosComponent implements OnInit {
 
   openEditTodoDialog(todo: ITodo) {
     let editDialog = this.matDialog.open(AddEditTodoDialogComponent, {
-      width: DIALOG_EDIT_ADD_TODO_WIDTH,
+      width: this.isMobile ? '95vw' : DIALOG_EDIT_ADD_TODO_WIDTH,
       enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
       exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
       panelClass: DIALOG_QUESTION_CLASS,
@@ -113,7 +117,7 @@ export class DashTodosComponent implements OnInit {
 
   showTodoPreview(todo: ITodo) {
     let previewDialog = this.matDialog.open(TodoPreviewDialogComponent, {
-      width: DIALOG_QUESTION_WIDTH,
+      width: this.isMobile ? '95vw' : DIALOG_QUESTION_WIDTH,
       enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
       exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
       panelClass: DIALOG_QUESTION_CLASS,
@@ -134,7 +138,7 @@ export class DashTodosComponent implements OnInit {
 
   openDeleteTodoDialog(todo: ITodo) {
     let deleteDialog = this.matDialog.open(SimpleQuestionDialogComponent, {
-      width: DIALOG_QUESTION_WIDTH,
+      width: this.isMobile ? '95vw' : DIALOG_QUESTION_WIDTH,
       enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
       exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
       panelClass: DIALOG_QUESTION_CLASS,
@@ -159,7 +163,7 @@ export class DashTodosComponent implements OnInit {
   updateTodoStatus(todo: ITodo) {
     if (!todo.completed && todo.progress != 100) {
       let completeQuestionDialog = this.matDialog.open(SimpleQuestionDialogComponent, {
-        width: DIALOG_QUESTION_WIDTH,
+        width: this.isMobile ? '95vw' : DIALOG_QUESTION_WIDTH,
         enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
         exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
         panelClass: DIALOG_QUESTION_CLASS,

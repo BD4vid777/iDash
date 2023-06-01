@@ -13,6 +13,7 @@ import {
   DIALOG_QUESTION_WIDTH
 } from "../../utils/internal-data";
 import { AddEditBudgetDialogComponent } from "../../dialogs/add-edit-budget-dialog/add-edit-budget-dialog.component";
+import { WINDOW } from "../../shared/window.token";
 
 @Component({
   selector: 'id-dash-budget',
@@ -30,6 +31,9 @@ export class DashBudgetComponent implements OnInit {
 
   budgetService = inject(BudgetService)
   matDialog = inject(MatDialog)
+
+  public window: any = inject(WINDOW)
+  public isMobile: boolean = this.window.navigator.userAgentData.mobile
 
   ngOnInit() {
     this.setBudgetData()
@@ -53,7 +57,7 @@ export class DashBudgetComponent implements OnInit {
 
   addValue(type: 'income' | 'expense') {
     let addDialog = this.matDialog.open(AddEditBudgetDialogComponent, {
-      width: DIALOG_QUESTION_WIDTH,
+      width: this.isMobile ? '95vw' : DIALOG_QUESTION_WIDTH,
       enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
       exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
       panelClass: DIALOG_QUESTION_CLASS,
@@ -81,7 +85,7 @@ export class DashBudgetComponent implements OnInit {
 
   openEditBudgetDialog(item: IBudgetValue) {
     let editDialog = this.matDialog.open(AddEditBudgetDialogComponent, {
-      width: DIALOG_QUESTION_WIDTH,
+      width: this.isMobile ? '95vw' : DIALOG_QUESTION_WIDTH,
       enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
       exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
       panelClass: DIALOG_QUESTION_CLASS,
@@ -109,7 +113,7 @@ export class DashBudgetComponent implements OnInit {
 
   openDeleteBudgetDialog(item: IBudgetValue) {
     let deleteDialog = this.matDialog.open(SimpleQuestionDialogComponent, {
-      width: DIALOG_QUESTION_WIDTH,
+      width: this.isMobile ? '95vw' : DIALOG_QUESTION_WIDTH,
       enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
       exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
       panelClass: DIALOG_QUESTION_CLASS,

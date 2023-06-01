@@ -372,6 +372,12 @@ option {
 
   }
 
+  main {
+    margin-top: unset!important;
+    max-width: 95vw;
+    height: calc(100vh - 11.5rem)!important;
+  }
+
   footer {
     height: 3.5rem;
     position: absolute;
