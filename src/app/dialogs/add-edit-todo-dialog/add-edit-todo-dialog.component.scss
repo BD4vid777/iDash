@@ -19,4 +19,35 @@
   }
 }
 
+form {
+  container-name: formContainer;
+  container-type: inline-size;
+}
+
+@container formContainer (width < 800px) {
+  form {
+    & > div:nth-child(2) {
+      flex-wrap: wrap;
+      row-gap: 2rem;
+
+      .id-form-control {
+        width: calc(50% - 2rem)!important;
+      }
+    }
+  }
+}
+
+@container formContainer (width < 500px) {
+  form {
+    & > div:nth-child(2), & > div:nth-child(3) {
+      flex-wrap: wrap;
+      row-gap: 2rem;
+
+      .id-form-control {
+        width: 100%!important;
+      }
+    }
+  }
+}
+
 

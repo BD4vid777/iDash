@@ -46,9 +46,11 @@ export class AppComponent implements OnInit {
   public window: any = inject(WINDOW)
   public isMobile: boolean = this.window.navigator.userAgentData.mobile
 
+
   triggerData: ITodo | undefined
 
   ngOnInit() {
+    console.log("Mobile: ", this.window.navigator.userAgentData.mobile)
     //if (this.isMobile) return
     this.userDataFromStorage = this.localStorageService.getUserDataFromStorage()
     this.bgPhoto = this.userDataFromStorage.userBackground
