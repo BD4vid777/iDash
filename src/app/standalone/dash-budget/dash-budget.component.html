@@ -1,9 +1,9 @@
 <id-title-header
   [route]="'/budget'"
-  [title]="'Budget'"
+  [title]="'Budget' + (currentMonth ? ' - ' + currentMonth : '')"
   [counter]="monthlyBudgetBalance"
   [counterColor]="monthlyBudgetBalance > 0 ? '#00c851' : '#f5a623'"
-  [counterTooltip]="currentMonth + ' budget balance'"
+  [counterTooltip]="'Budget balance'"
 ></id-title-header>
 
 <div class="dash-box-wrapper id-scrollbar">

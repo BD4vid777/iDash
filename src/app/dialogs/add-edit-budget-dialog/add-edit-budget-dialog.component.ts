@@ -1,12 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, formatDate } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import { BudgetService } from "../../shared/budget.service";
 import { BUDGET_CATEGORIES, TODO_PRIORITIES } from "../../utils/internal-data";
 import { MatOptionModule } from "@angular/material/core";
 import { MatSelectModule } from "@angular/material/select";
-import { debounceTime } from "rxjs";
 
 @Component({
   selector: 'id-add-edit-budget-dialog',
@@ -25,7 +23,7 @@ export class AddEditBudgetDialogComponent {
     title: FormControl<string>,
     value: FormControl<number>,
     content: FormControl<string>,
-    createdAt: FormControl<Date>,
+    createdAt: FormControl<Date | string>,
     createdBy: FormControl<string>,
     typeOfValue: FormControl<'income' | 'expense'>,
     tag: FormControl<string>,
@@ -50,7 +48,7 @@ export class AddEditBudgetDialogComponent {
       title: this.fb.nonNullable.control(this.type == 'add' ? '' : this.title, [Validators.required]),
       value: this.fb.nonNullable.control(this.type == 'add' ? 0.00 : this.value, [Validators.required]),
       content: this.fb.nonNullable.control(this.type == 'add' ? '' : this.content),
-      createdAt: this.fb.nonNullable.control(this.type == 'add' ? new Date() : this.createdAt),
+      createdAt: this.fb.nonNullable.control(this.type == 'add' ? new Date() : formatDate(this.createdAt, 'yyyy-MM-dd', 'en-GB')),
       createdBy: this.fb.nonNullable.control(this.type == 'add' ? '' : this.createdBy),
       typeOfValue: this.fb.nonNullable.control(this.typeOfValue),
       tag: this.fb.nonNullable.control(this.type == 'add' ? '' : this.tag),

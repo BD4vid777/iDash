@@ -37,22 +37,29 @@ export class DashBudgetComponent implements OnInit {
 
   ngOnInit() {
     this.setBudgetData()
-    this.setMonthlyBudgetBalance()
   }
 
   setBudgetData() {
     this.budgetData = this.budgetService.getBudgetData()
-    this.budgetIncomeData = this.budgetData.filter(budgetValue => budgetValue.type == 'income')
-    this.budgetExpenseData = this.budgetData.filter(budgetValue => budgetValue.type == 'expense')
-    this.setMonthlyBudgetBalance()
+    let currentMonth = new Date().getMonth()
+    this.budgetIncomeData = this.budgetData.filter(budgetValue => budgetValue.type == 'income' && new Date(budgetValue.createdAt).getMonth() === currentMonth)
+    this.budgetExpenseData = this.budgetData.filter(budgetValue => budgetValue.type == 'expense' && new Date(budgetValue.createdAt).getMonth() === currentMonth)
+    this.setMonthlyBudgetBalance(currentMonth)
   }
 
-  setMonthlyBudgetBalance() {
-    let currentMonth = new Date().getMonth()
+  setMonthlyBudgetBalance(currentMonth: number) {
     let currentMonthBudgetData = this.budgetData.filter(budgetValue => new Date(budgetValue.createdAt).getMonth() === currentMonth)
 
+    let getBalance = (budgetValue: IBudgetValue) => {
+      if (budgetValue.type == 'income') {
+        return budgetValue.value
+      } else {
+        return -budgetValue.value
+      }
+    }
+
     this.monthlyBudgetBalance = 0
-    this.monthlyBudgetBalance = currentMonthBudgetData.reduce((acc, budgetValue) => budgetValue.type == 'income' ? acc + budgetValue.value : acc - budgetValue.value, 0)
+    this.monthlyBudgetBalance = currentMonthBudgetData.reduce((acc, budgetValue) => acc + getBalance(budgetValue), 0)
   }
 
   addValue(type: 'income' | 'expense') {
@@ -95,7 +102,7 @@ export class DashBudgetComponent implements OnInit {
         title: item.title,
         value: item.value,
         content: item.content,
-        createdAt: new Date(),
+        createdAt: item.createdAt,
         createdBy: item.createdBy,
         typeOfValue: item.type,
         tag: item.tag,
