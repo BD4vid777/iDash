@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>
+  <img ngSrc="assets/logo.png" alt="iDash Logo" height="25" width="25">
+  {{dialogTitle}}
+</h2>
+<span class="material-symbols-outlined close-btn" (click)="closeDialog()">close</span>
+<mat-dialog-content class="id-scrollbar" [style.height.%]="'100'">
+  <div class="game-container bg-blur">
+    <ng-container *ngFor="let tile of tiles; let i = index">
+      <div class="game-tile" [ngClass]="{'cell': tile !== 0}" [style.background-color]="tileColors(tile)">
+        <span *ngIf="tile !== 0">{{tile}}</span>
+      </div>
+    </ng-container>
+  </div>
+
+
+
+</mat-dialog-content>
+<mat-dialog-actions class="dash-game-actions">
+  <button
+    class="btn btn-yes"
+    (click)="moveLeft()"
+  >Left</button>
+  <button
+    class="btn btn-yes"
+    (click)="moveRight()"
+  >Right</button>
+  <button
+    class="btn btn-yes"
+    (click)="newGame()"
+  >New Game</button>
+  <button
+    class="btn btn-no"
+    (click)="closeDialog()"
+  >Close</button>
+</mat-dialog-actions>

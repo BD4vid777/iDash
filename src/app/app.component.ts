@@ -13,6 +13,7 @@ import { TimeKeeperService } from "./shared/time-keeper.service";
 import { MatDialog } from "@angular/material/dialog";
 import { WelcomeDialogComponent } from "./pages/welcome-stepper/welcome-dialog.component";
 import { animate, style, transition, trigger } from "@angular/animations";
+import { DashGameComponent } from "./standalone/dash-game/dash-game.component";
 
 @Component({
   selector: 'app-root',
@@ -108,5 +109,17 @@ export class AppComponent implements OnInit {
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet.isActivated && outlet.activatedRoute.snapshot.url;
+  }
+
+  openGame() {
+    this.matDialog.open(DashGameComponent, {
+      enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
+      exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
+      panelClass: DIALOG_QUESTION_CLASS,
+      disableClose: false,
+      data: {
+        dialogTitle: 'Welcome to iDash 2048!'
+      }
+    })
   }
 }

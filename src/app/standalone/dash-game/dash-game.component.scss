@@ -1,0 +1,77 @@
+@import "../../../app/styles/variables.scss";
+
+:host {
+  font-size: 20px;
+  font-family: 'Rajdhani', sans-serif;
+  line-height: 1.2;
+  display: block;
+  height: inherit;
+  max-height: calc(100% - 110px);
+
+  > * {
+    font-family: inherit;
+    line-height: inherit;
+    font-weight: 600;
+  }
+}
+
+h2 {
+  display: flex;
+  align-items: center;
+  padding-top: 5px;
+
+  img {
+    margin-right: 1rem;
+  }
+}
+
+.game-container {
+  display: grid;
+  grid-template-columns: repeat(4, clamp(50px, 18vmin, 90px));
+  grid-template-rows: repeat(4, clamp(50px, 18vmin, 90px));
+  grid-gap: 1vmin;
+  padding: 1vmin;
+  width: max-content;
+  border-radius: 5px;
+
+  .game-tile {
+    background-color: $light-grey;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+
+    &.cell {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: hsl(0, 0%, 10%);
+      background-color: hsl(219, 83%, 90%);
+      font-size: 5vmin ;
+      font-weight: 600;
+      border-radius: 5px;
+      animation: showTile .2s ease-in-out;
+      transition: .2s ease-in;
+    }
+  }
+
+
+}
+
+@keyframes showTile {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+.dash-game-actions {
+  display: flex;
+  gap: $gap-primary;
+  justify-content: flex-end;
+  padding-inline: 24px;
+}
