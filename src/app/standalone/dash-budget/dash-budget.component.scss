@@ -1,6 +1,7 @@
 @import "../../styles/variables.scss";
 
 .budget-balance-container {
+  container: budgetContainer / inline-size;
   .budget-actions, .budget-lists {
     display: flex;
     gap: $gap-double;
@@ -112,4 +113,15 @@
   }
 
 
+}
+
+
+@container budgetContainer (width < 400px) {
+  .budget-lists {
+    flex-direction: column;
+    gap: $gap-primary!important;
+    .budget-income, .budget-expenses {
+      width: 100%!important;
+    }
+  }
 }

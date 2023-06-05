@@ -45,7 +45,8 @@ export class NotesService {
   editNote(uid: string, title: string, content: string) {
     const note = this.notes.find(note => note.uid === uid)
     if (!note) return
-    Object.assign(note, { title, content })
+    let createdAt = new Date()
+    Object.assign(note, { title, content, createdAt })
     this.snack.openFromComponent(IdSnackNotificationComponent, {
       data: {
         message: 'Note edited successfully!',

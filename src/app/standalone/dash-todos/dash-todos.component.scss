@@ -28,7 +28,12 @@
     flex-direction: column;
     margin-right: auto;
     width: calc(100% - 205px);
-    div:last-child {
+    div:first-of-type {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    div.due-date {
       font-size: .8rem;
     }
   }

@@ -38,12 +38,23 @@
     font-size: 1.2rem;
   }
 
+  &.bookmark-mobile {
+    color: $primary-white;
+  }
+
   &.hidden-text {
     gap: unset;
     p {
       max-width: 0;
       max-height: 0;
       overflow: hidden;
+    }
+
+    &.mobile {
+      p {
+        max-width: max-content;
+        max-height: max-content;
+      }
     }
 
     &:hover {

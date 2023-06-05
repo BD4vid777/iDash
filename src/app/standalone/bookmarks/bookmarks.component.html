@@ -1,6 +1,6 @@
 <div class="bookmarks-wrapper">
-  <div class="bookmarks-container id-scrollbar">
-    <a class="bookmark-tile bg-blur" *ngFor="let tile of bookmarks" [href]="tile.src" [target]="tile.target">
+  <div class="bookmarks-container id-scrollbar" [ngStyle]="isMobile ? {'min-height': 'unset'} : {'min-height': '90px'}">
+    <a class="bookmark-tile bg-blur" *ngFor="let tile of bookmarks" [href]="tile.src" [target]="tile.target" [class.isMobile]="isMobile">
       <img [src]="getFavicon(tile.src)" [alt]="tile.title" checkImg>
       <p
          [matTooltip]="tile.title"
@@ -16,7 +16,7 @@
   </div>
   <button
     class="btn"
-    [ngClass]="bookmarks.length == 0 ? '' : 'hidden-text'"
+    [ngClass]="isMobile ? 'bookmark-mobile' : bookmarks.length == 0 ? '' : 'hidden-text'"
     (click)="openAddBookmarkDialog()"
   >
     <span class="material-symbols-outlined">add</span>

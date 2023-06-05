@@ -20,7 +20,7 @@
       {{todo.completed ? 'select_check_box' : 'check_box_outline_blank'}}</span>
     <div class="todo-title-due">
       <div>{{todo.title}}</div>
-      <div *ngIf="todo.dueDate">
+      <div class="due-date" *ngIf="todo.dueDate">
         {{todo.dueDate | date: 'dd/MM/YY, HH:mm'}}
       </div>
       <progress
@@ -70,7 +70,7 @@
 
 <button
   class="btn btn-dashboard-box"
-  [ngClass]="todos.length == 0 ? 'first-note-todo' : 'hidden-text'"
+  [ngClass]="isMobile ? 'hidden-text mobile' : todos.length == 0 ? 'first-note-todo' : 'hidden-text'"
   (click)="openAddTodoDialog()"
 >
   <span class="material-symbols-outlined">add</span>

@@ -7,7 +7,7 @@
     <id-time-keeper *ngIf="triggerData"
                     [triggerData]="triggerData"
     ></id-time-keeper>
-    <id-clock class="not-dashboard" *ngIf="!isDashboard"></id-clock>
+    <id-clock class="not-dashboard" *ngIf="!isDashboard && !isMobile"></id-clock>
 
     <div class="background-refresh bg-blur">
       <div class="background-header">
