@@ -25,6 +25,9 @@ export class DashGameComponent {
   public dialogTitle = this.data.dialogTitle
   tiles: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
 
+  public score: number = 0
+  public highScore: number = 0
+
   listenForClicks = () => {
     document.addEventListener('keydown', (event) => {
       if (event.key === 'ArrowRight') {
@@ -103,6 +106,16 @@ export class DashGameComponent {
     }
   }
 
+  checkIfWin() {
+    for (let i = 0; i < this.tiles.length; i++) {
+      if (this.tiles[i] == 2048) {
+        window.alert('You Win!')
+        this.stopListeningForClicks()
+        setTimeout(() => this.newGame(), 3000)
+      }
+    }
+  }
+
   setNewTile() {
     let randomIndex = Math.floor(Math.random() * 16)
     while(this.tiles[randomIndex] != 0) {
@@ -132,6 +145,7 @@ export class DashGameComponent {
         this.tiles[i + 3] = newRow[3]
       }
     }
+    this.combineRow()
     this.setNewTile()
   }
 
@@ -155,6 +169,7 @@ export class DashGameComponent {
         this.tiles[i + 3] = newRow[3]
       }
     }
+    this.combineRow()
     this.setNewTile()
   }
 
@@ -176,6 +191,7 @@ export class DashGameComponent {
       this.tiles[i + 8] = newColumn[2]
       this.tiles[i + 12] = newColumn[3]
     }
+    this.combineColumn()
     this.setNewTile()
   }
 
@@ -197,7 +213,38 @@ export class DashGameComponent {
       this.tiles[i + 8] = newColumn[2]
       this.tiles[i + 12] = newColumn[3]
     }
+    this.combineColumn()
     this.setNewTile()
+  }
+
+  combineRow() {
+    for (let i = 0; i < 15; i++) {
+      if (this.tiles[i] === this.tiles[i + 1]) {
+        let combinedTotal = this.tiles[i] + this.tiles[i + 1]
+        this.tiles[i] = combinedTotal
+        this.tiles[i + 1] = 0
+        this.score += combinedTotal
+        if (this.score > this.highScore) {
+          this.highScore = this.score
+        }
+      }
+    }
+    this.checkIfWin()
+  }
+
+  combineColumn() {
+    for (let i = 0; i < 12; i++) {
+      if (this.tiles[i] === this.tiles[i + 4]) {
+        let combinedTotal = this.tiles[i] + this.tiles[i + 4]
+        this.tiles[i] = combinedTotal
+        this.tiles[i + 4] = 0
+        this.score += combinedTotal
+        if (this.score > this.highScore) {
+          this.highScore = this.score
+        }
+      }
+    }
+    this.checkIfWin()
   }
 
   closeDialog() {
@@ -207,17 +254,17 @@ export class DashGameComponent {
   tileColors(tile: any): string {
     let color = 'hsl(219, 83%'
     switch(tile){
-      case 2: color += ', 85%)'; break
-      case 4: color += ', 80%)'; break
-      case 8: color += ', 75%)'; break
-      case 16: color += ', 70%)'; break
-      case 32: color += ', 65%)'; break
-      case 64: color += ', 60%)'; break
-      case 128: color += ', 55%)'; break
-      case 256: color += ', 50%)'; break
-      case 512: color += ', 45%)'; break
-      case 1024: color += ', 40%)'; break
-      case 2048: color += ', 35%)'; break
+      case 2: color += ', 95%)'; break
+      case 4: color += ', 88%)'; break
+      case 8: color += ', 80%)'; break
+      case 16: color += ', 72%)'; break
+      case 32: color += ', 64%)'; break
+      case 64: color += ', 56%)'; break
+      case 128: color += ', 48%)'; break
+      case 256: color += ', 40%)'; break
+      case 512: color += ', 32%)'; break
+      case 1024: color += ', 24%)'; break
+      case 2048: color += ', 18%)'; break
       default: color += 'rgba(221, 221, 221, 0.7)'; break
     }
     return color

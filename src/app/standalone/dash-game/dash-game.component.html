@@ -6,7 +6,13 @@
 <mat-dialog-content class="id-scrollbar" [style.height.%]="'100'">
   <div class="game-container bg-blur">
     <ng-container *ngFor="let tile of tiles; let i = index">
-      <div class="game-tile" [ngClass]="{'cell': tile !== 0}" [style.background-color]="tileColors(tile)">
+      <div
+        class="game-tile"
+        [ngClass]="{'cell': tile !== 0}"
+        [style.background-color]="tileColors(tile)"
+        [style.color]="tile < 128 ? 'rgba(0, 0, 0, 0.9)' : 'rgba(255, 255, 255, 0.9)'"
+        [style.font-size]="isMobile ? '20px' : '4vmin'"
+      >
         <span *ngIf="tile !== 0">{{tile}}</span>
       </div>
     </ng-container>
