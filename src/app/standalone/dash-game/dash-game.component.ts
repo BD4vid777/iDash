@@ -32,6 +32,11 @@ export class DashGameComponent implements OnInit {
 
   public hideHowToPlay: boolean = true
 
+  private touchStartX: number = 0
+  private touchEndX: number = 0
+  private touchStartY: number = 0
+  private touchEndY: number = 0
+
   ngOnInit() {
     this.highScore = this.storageService.getUserData().highScore
   }
@@ -49,22 +54,38 @@ export class DashGameComponent implements OnInit {
         this.moveUp()
       }
     })
-    document.addEventListener('swiped-left', (event) => {
-      if (this.isGameOver) return
-      this.moveLeft()
+
+    let gameTouch = document.getElementById('game-touch')
+    if (!gameTouch) return
+
+    gameTouch.addEventListener('touchstart', (event: any) => {
+      this.touchStartX = event.touches[0].clientX
+      this.touchStartY = event.touches[0].clientY
     })
-    document.addEventListener('swiped-right', (event) => {
-      if (this.isGameOver) return
-      this.moveRight()
+
+    gameTouch.addEventListener('touchend', (event: any) => {
+      this.touchEndX = event.changedTouches[0].clientX
+      this.touchEndY = event.changedTouches[0].clientY
+      this.handleSwipe()
     })
-    document.addEventListener('swiped-up', (event) => {
-      if (this.isGameOver) return
-      this.moveUp()
-    })
-    document.addEventListener('swiped-down', (event) => {
-      if (this.isGameOver) return
-      this.moveDown()
-    })
+  }
+
+  handleSwipe() {
+    let xDiff = this.touchEndX - this.touchStartX
+    let yDiff = this.touchEndY - this.touchStartY
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+      if (xDiff > 0) {
+        this.moveRight()
+      } else {
+        this.moveLeft()
+      }
+    } else {
+      if (yDiff > 0) {
+        this.moveDown()
+      } else {
+        this.moveUp()
+      }
+    }
   }
 
   stopListeningForClicks = () => {
@@ -79,18 +100,19 @@ export class DashGameComponent implements OnInit {
         this.moveUp()
       }
     }, false)
-    document.removeEventListener('swiped-left', (event) => {
-      this.moveLeft()
-    }, false)
-    document.removeEventListener('swiped-right', (event) => {
-      this.moveRight()
-    }, false)
-    document.removeEventListener('swiped-up', (event) => {
-      this.moveUp()
-    }, false)
-    document.removeEventListener('swiped-down', (event) => {
-      this.moveDown()
-    }, false)
+
+    let gameTouch = document.getElementById('game-touch')
+    if (!gameTouch) return
+
+    gameTouch.removeEventListener('touchstart', () => {
+      this.touchStartX = 0
+      this.touchStartY = 0
+    })
+
+    gameTouch.removeEventListener('touchend', () => {
+      this.touchEndX = 0
+      this.touchEndY = 0
+    })
   }
 
   newGame() {
@@ -272,7 +294,7 @@ export class DashGameComponent implements OnInit {
   }
 
   combineRow(direction: 'left' | 'right') {
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 16; i++) {
       if (direction === 'right') {
         if (this.tiles[i] === this.tiles[i + 1]) {
           let combinedTotal = this.tiles[i] + this.tiles[i + 1]
@@ -300,7 +322,7 @@ export class DashGameComponent implements OnInit {
   }
 
   combineColumn(direction: 'up' | 'down') {
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 16; i++) {
       if (direction === 'down') {
         if (this.tiles[i] === this.tiles[i + 4]) {
           let combinedTotal = this.tiles[i] + this.tiles[i + 4]
