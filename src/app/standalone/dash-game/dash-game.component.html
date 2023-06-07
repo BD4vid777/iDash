@@ -4,30 +4,61 @@
 </h2>
 <span class="material-symbols-outlined close-btn" (click)="closeDialog()">close</span>
 <mat-dialog-content class="id-scrollbar" [style.height.%]="'100'">
-  <div class="game-container bg-blur">
-    <ng-container *ngFor="let tile of tiles; let i = index">
-      <div
-        class="game-tile"
-        [ngClass]="{'cell': tile !== 0}"
-        [style.background-color]="tileColors(tile)"
-        [style.color]="tile < 128 ? 'rgba(0, 0, 0, 0.9)' : 'rgba(255, 255, 255, 0.9)'"
-        [style.font-size]="isMobile ? '20px' : '4vmin'"
-      >
-        <span *ngIf="tile !== 0">{{tile}}</span>
-      </div>
-    </ng-container>
+  <div class="game-header">
+    <div class="game-score">
+      <span class="material-symbols-outlined">leaderboard</span>
+      <span>Highscore: {{highScore}}</span>
+    </div>
+    <div class="game-score">
+      <span class="material-symbols-outlined">scoreboard</span>
+      <span>Score: {{score}}</span>
+    </div>
   </div>
-
-
-
+  <div class="game-container bg-blur">
+    <ng-container *ngIf="hideHowToPlay; else showHowToPlay">
+      <div
+        *ngIf="isGameOver"
+        class="game-message bg-blur"
+        [style.background-color]="gameMsg === 'Game Over' ? 'rgba(234, 52, 75, 0.6)!important' : gameMsg === 'You Win!' ? 'rgba(0, 200, 81, 0.6)!important' : 'rgba(69, 128, 238, 0.6)!important'"
+        [ngStyle]="gameMsg === 'Start Game' ? {'cursor': 'pointer', 'pointer-events': 'auto', 'font-size': '3em'} : {'cursor': 'default', 'pointer-events': 'none'}"
+        (click)="newGame()">
+        {{gameMsg}}
+      </div>
+      <ng-container *ngFor="let tile of tiles; let i = index">
+        <div
+          class="game-tile"
+          [ngClass]="{'cell': tile !== 0}"
+          [style.background-color]="tileColors(tile)"
+          [style.color]="tile < 128 ? 'rgba(0, 0, 0, 0.9)' : 'rgba(255, 255, 255, 0.9)'"
+          [style.font-size]="isMobile ? '20px' : '4vmin'"
+        >
+          <span *ngIf="tile !== 0">{{tile}}</span>
+        </div>
+      </ng-container>
+    </ng-container>
+    <ng-template #showHowToPlay>
+      <div class="how-container">
+        <h1>How to play 2048:</h1>
+        <ul>
+          <li><strong>{{isMobile ? 'Swipe' : 'Use your arrow keys'}}</strong> to move all tiles.</li>
+          <li>When two tiles with the same number touch, they <strong>merge into one!</strong></li>
+          <li>Join the numbers and get to the <strong>2048 tile to Win!</strong></li>
+        </ul>
+        <img ngSrc="assets/misc/2048.webp" alt="2048 game view" height="470" width="426">
+      </div>
+    </ng-template>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions class="dash-game-actions">
-  <button
-    class="btn btn-yes"
-    (click)="newGame()"
-  >New Game</button>
-  <button
-    class="btn btn-no"
-    (click)="closeDialog()"
-  >Close</button>
+  <div (click)="toggleHowToPlay()"><span class="material-symbols-outlined">psychology_alt</span>{{hideHowToPlay ? 'Show how To Play' : 'Hide how to Play'}}</div>
+  <div>
+    <button
+      class="btn btn-info"
+      [disabled]="isGameOver"
+      (click)="newGame()">Reset</button>
+    <button
+      class="btn btn-no"
+      (click)="closeDialog()"
+    >Close</button>
+  </div>
 </mat-dialog-actions>

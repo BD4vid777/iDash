@@ -27,9 +27,14 @@ export class DashGameComponent {
 
   public score: number = 0
   public highScore: number = 0
+  public isGameOver: boolean = true
+  public gameMsg: string = 'Start Game'
+
+  public hideHowToPlay: boolean = true
 
   listenForClicks = () => {
     document.addEventListener('keydown', (event) => {
+      if (this.isGameOver) return
       if (event.key === 'ArrowRight') {
         this.moveRight()
       } else if (event.key === 'ArrowLeft') {
@@ -41,15 +46,19 @@ export class DashGameComponent {
       }
     })
     document.addEventListener('swiped-left', (event) => {
+      if (this.isGameOver) return
       this.moveLeft()
     })
     document.addEventListener('swiped-right', (event) => {
+      if (this.isGameOver) return
       this.moveRight()
     })
     document.addEventListener('swiped-up', (event) => {
+      if (this.isGameOver) return
       this.moveUp()
     })
     document.addEventListener('swiped-down', (event) => {
+      if (this.isGameOver) return
       this.moveDown()
     })
   }
@@ -65,22 +74,25 @@ export class DashGameComponent {
       } else if (event.key === 'ArrowUp') {
         this.moveUp()
       }
-    })
+    }, false)
     document.removeEventListener('swiped-left', (event) => {
       this.moveLeft()
-    })
+    }, false)
     document.removeEventListener('swiped-right', (event) => {
       this.moveRight()
-    })
+    }, false)
     document.removeEventListener('swiped-up', (event) => {
       this.moveUp()
-    })
+    }, false)
     document.removeEventListener('swiped-down', (event) => {
       this.moveDown()
-    })
+    }, false)
   }
 
   newGame() {
+    this.gameMsg = ''
+    this.isGameOver = false
+    this.score = 0
     this.tiles = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
     let randomIndex = Math.floor(Math.random() * 16)
     let randomIndex2 = Math.floor(Math.random() * 16)
@@ -100,23 +112,31 @@ export class DashGameComponent {
       }
     }
     if (zeros === 0) {
-      window.alert('Game Over')
-      this.stopListeningForClicks()
-      setTimeout(() => this.newGame(), 3000)
+      this.prepareNewGame('Game Over')
     }
   }
 
   checkIfWin() {
     for (let i = 0; i < this.tiles.length; i++) {
       if (this.tiles[i] == 2048) {
-        window.alert('You Win!')
-        this.stopListeningForClicks()
-        setTimeout(() => this.newGame(), 3000)
+        this.prepareNewGame('You Win!')
       }
     }
   }
 
+  prepareNewGame(msg: string) {
+    this.isGameOver = true
+    this.gameMsg = msg
+    this.stopListeningForClicks()
+    setTimeout(() => {
+      this.score = 0
+      this.tiles = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
+      this.gameMsg = 'Start Game'
+    }, 3000)
+  }
+
   setNewTile() {
+    if (this.isGameOver) return
     let randomIndex = Math.floor(Math.random() * 16)
     while(this.tiles[randomIndex] != 0) {
       randomIndex = Math.floor(Math.random() * 16)
@@ -126,6 +146,34 @@ export class DashGameComponent {
   }
 
   moveRight() {
+    this.setRight()
+    this.combineRow('right')
+    this.setRight()
+    this.setNewTile()
+  }
+
+  moveLeft() {
+    this.setLeft()
+    this.combineRow('left')
+    this.setLeft()
+    this.setNewTile()
+  }
+
+  moveDown() {
+    this.setDown()
+    this.combineColumn('down')
+    this.setDown()
+    this.setNewTile()
+  }
+
+  moveUp() {
+    this.setUp()
+    this.combineColumn('up')
+    this.setUp()
+    this.setNewTile()
+  }
+
+  setRight() {
     for (let i = 0; i < 16; i++) {
       if (i % 4 === 0) {
         let totalOne = this.tiles[i]
@@ -145,11 +193,9 @@ export class DashGameComponent {
         this.tiles[i + 3] = newRow[3]
       }
     }
-    this.combineRow()
-    this.setNewTile()
   }
 
-  moveLeft() {
+  setLeft() {
     for (let i = 0; i < 16; i++) {
       if (i % 4 === 0) {
         let totalOne = this.tiles[i]
@@ -169,11 +215,9 @@ export class DashGameComponent {
         this.tiles[i + 3] = newRow[3]
       }
     }
-    this.combineRow()
-    this.setNewTile()
   }
 
-  moveUp() {
+  setUp() {
     for (let i = 0; i < 4; i++) {
       let totalOne = this.tiles[i]
       let totalTwo = this.tiles[i + 4]
@@ -191,11 +235,9 @@ export class DashGameComponent {
       this.tiles[i + 8] = newColumn[2]
       this.tiles[i + 12] = newColumn[3]
     }
-    this.combineColumn()
-    this.setNewTile()
   }
 
-  moveDown() {
+  setDown() {
     for (let i = 0; i < 4; i++) {
       let totalOne = this.tiles[i]
       let totalTwo = this.tiles[i + 4]
@@ -213,36 +255,60 @@ export class DashGameComponent {
       this.tiles[i + 8] = newColumn[2]
       this.tiles[i + 12] = newColumn[3]
     }
-    this.combineColumn()
-    this.setNewTile()
   }
 
-  combineRow() {
+  combineRow(direction: 'left' | 'right') {
     for (let i = 0; i < 15; i++) {
-      if (this.tiles[i] === this.tiles[i + 1]) {
-        let combinedTotal = this.tiles[i] + this.tiles[i + 1]
-        this.tiles[i] = combinedTotal
-        this.tiles[i + 1] = 0
-        this.score += combinedTotal
-        if (this.score > this.highScore) {
-          this.highScore = this.score
+      if (direction === 'right') {
+        if (this.tiles[i] === this.tiles[i + 1]) {
+          let combinedTotal = this.tiles[i] + this.tiles[i + 1]
+          this.tiles[i + 1] = combinedTotal
+          this.tiles[i] = 0
+          this.score += combinedTotal
+          if (this.score > this.highScore) {
+            this.highScore = this.score
+          }
+        }
+      } else {
+        if (this.tiles[i] === this.tiles[i - 1]) {
+          let combinedTotal = this.tiles[i] + this.tiles[i - 1]
+          this.tiles[i - 1] = combinedTotal
+          this.tiles[i] = 0
+          this.score += combinedTotal
+          if (this.score > this.highScore) {
+            this.highScore = this.score
+          }
         }
       }
+
     }
     this.checkIfWin()
   }
 
-  combineColumn() {
+  combineColumn(direction: 'up' | 'down') {
     for (let i = 0; i < 12; i++) {
-      if (this.tiles[i] === this.tiles[i + 4]) {
-        let combinedTotal = this.tiles[i] + this.tiles[i + 4]
-        this.tiles[i] = combinedTotal
-        this.tiles[i + 4] = 0
-        this.score += combinedTotal
-        if (this.score > this.highScore) {
-          this.highScore = this.score
+      if (direction === 'down') {
+        if (this.tiles[i] === this.tiles[i + 4]) {
+          let combinedTotal = this.tiles[i] + this.tiles[i + 4]
+          this.tiles[i + 4] = combinedTotal
+          this.tiles[i] = 0
+          this.score += combinedTotal
+          if (this.score > this.highScore) {
+            this.highScore = this.score
+          }
+        }
+      } else {
+        if (this.tiles[i] === this.tiles[i - 4]) {
+          let combinedTotal = this.tiles[i] + this.tiles[i - 4]
+          this.tiles[i - 4] = combinedTotal
+          this.tiles[i] = 0
+          this.score += combinedTotal
+          if (this.score > this.highScore) {
+            this.highScore = this.score
+          }
         }
       }
+
     }
     this.checkIfWin()
   }
@@ -268,5 +334,9 @@ export class DashGameComponent {
       default: color += 'rgba(221, 221, 221, 0.7)'; break
     }
     return color
+  }
+
+  toggleHowToPlay() {
+    this.hideHowToPlay = !this.hideHowToPlay
   }
 }

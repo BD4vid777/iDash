@@ -16,6 +16,17 @@
 
 }
 
+ul {
+  list-style: circle inside!important;
+  padding-inline-start: .5rem;
+  li strong {
+    font-weight: 600;
+  }
+  li::marker {
+    color: $active;
+  }
+}
+
 .btn {
   display: flex;
   gap: $gap-secondary;
@@ -66,7 +77,7 @@
     }
   }
 
-  &.btn-no, &.btn-yes {
+  &.btn-no, &.btn-yes, &.btn-info {
     opacity: .7;
     min-width: 50px;
     font-size: 1rem;
@@ -80,6 +91,10 @@
 
   &.btn-yes {
     background-color: $success;
+  }
+
+  &.btn-info {
+    background-color: $active-dark;
   }
 
   &:hover {

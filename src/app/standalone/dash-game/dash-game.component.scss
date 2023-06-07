@@ -25,6 +25,26 @@ h2 {
   }
 }
 
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $padding-primary $padding-double;
+  background-color: $light-grey;
+  border-radius: 5px 5px 0 0;
+  width: calc(100% - 2vmin);
+  margin: auto;
+
+  .game-score {
+    display: flex;
+    align-items: flex-end;
+    gap: $gap-primary;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: $primary-black;
+  }
+}
+
 .game-container {
   display: grid;
   grid-template-columns: repeat(4, clamp(50px, 18vmin, 90px));
@@ -33,6 +53,51 @@ h2 {
   padding: 1vmin;
   width: max-content;
   border-radius: 5px;
+  position: relative;
+  z-index: 1;
+
+  .how-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-primary;
+    padding: 3vmin;
+
+    position: absolute;
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: $primary-black;
+    }
+
+    ul li {
+      font-size: .9rem;
+      font-weight: 400;
+    }
+
+    img {
+      width: 50%;
+      margin: auto;
+    }
+  }
+
+  .game-message {
+    position: absolute;
+    z-index: 10;
+    padding: 10px;
+    margin: auto;
+    width: max-content;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    color: $primary-white;
+    font-size: 2em;
+    top: 50%;
+    left: 50%;
+    animation: showMsg .5s ease-in-out;
+    transition: .5s ease-in;
+  }
 
   .game-tile {
     background-color: $light-grey;
@@ -56,6 +121,15 @@ h2 {
 
 }
 
+@keyframes showMsg  {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes showTile {
   0% {
     transform: scale(0);
@@ -71,6 +145,22 @@ h2 {
 .dash-game-actions {
   display: flex;
   gap: $gap-primary;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding-inline: 24px;
+
+  div:first-of-type {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 18px;
+    align-items: stretch;
+    cursor: pointer;
+    span {
+      font-size: 1.2rem;
+    }
+  }
+
+  div:last-of-type {
+    display: flex;
+    gap: 0.5rem;
+  }
 }
