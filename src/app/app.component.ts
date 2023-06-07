@@ -14,6 +14,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { WelcomeDialogComponent } from "./pages/welcome-stepper/welcome-dialog.component";
 import { animate, style, transition, trigger } from "@angular/animations";
 import { DashGameComponent } from "./standalone/dash-game/dash-game.component";
+import { UserSettingsComponent } from "./standalone/user-settings/user-settings.component";
 
 @Component({
   selector: 'app-root',
@@ -119,6 +120,20 @@ export class AppComponent implements OnInit {
       disableClose: false,
       data: {
         dialogTitle: 'Welcome to iDash 2048!'
+      }
+    })
+  }
+
+  openUserSettings() {
+    this.matDialog.open(UserSettingsComponent, {
+      width: this.isMobile ? '95vw' : '60vw',
+      height: this.isMobile ? '80vh' : '60vh',
+      enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
+      exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
+      panelClass: DIALOG_QUESTION_CLASS,
+      disableClose: false,
+      data: {
+        dialogTitle: 'User Settings'
       }
     })
   }

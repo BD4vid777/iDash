@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>
+  <img ngSrc="assets/logo.png" alt="iDash Logo" height="25" width="25">
+  {{dialogTitle}}
+</h2>
+<span class="material-symbols-outlined close-btn" (click)="closeDialog()">close</span>
+<mat-dialog-content class="id-scrollbar" [style.height.%]="'100'">
+  TEST
+</mat-dialog-content>
+<mat-dialog-actions class="settings-actions">
+  <button
+    class="btn btn-no"
+    (click)="closeDialog()"
+  >Close</button>
+</mat-dialog-actions>
+

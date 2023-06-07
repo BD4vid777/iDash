@@ -1,0 +1,33 @@
+@import "../../../app/styles/variables.scss";
+
+:host {
+  font-size: 20px;
+  font-family: 'Rajdhani', sans-serif;
+  line-height: 1.2;
+  display: block;
+  height: inherit;
+  max-height: calc(100% - 110px);
+
+  > * {
+    font-family: inherit;
+    line-height: inherit;
+    font-weight: 600;
+  }
+}
+
+h2 {
+  display: flex;
+  align-items: center;
+  padding-top: 5px;
+
+  img {
+    margin-right: 1rem;
+  }
+}
+
+.settings-actions {
+  display: flex;
+  gap: $gap-primary;
+  justify-content: flex-end;
+  padding-inline: 24px;
+}
