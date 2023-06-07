@@ -51,9 +51,9 @@ export class StorageDataService {
     ]
 
     let tmpUserBudget: IBudgetValue[] = [
-      new BudgetValue('Quick Eat', 126, 'McDonalds', new Date(), '', 'expense', BUDGET_CATEGORIES[0]),
-      new BudgetValue('Shopping', 126, 'Grocery Market', new Date(), '', 'expense', BUDGET_CATEGORIES[0]),
-      new BudgetValue('Invoice Payment', 500, 'Dev Services', new Date(), 'Boring Company', 'income', BUDGET_CATEGORIES[6]),
+      new BudgetValue('Lunch', 140, 'Restaurant', new Date(), '', 'expense', BUDGET_CATEGORIES[0]),
+      new BudgetValue('Shopping', 80, 'Grocery Market', new Date(), '', 'expense', BUDGET_CATEGORIES[0]),
+      new BudgetValue('Paycheck', 500, 'Dev Services', new Date(), 'Boring Company', 'income', BUDGET_CATEGORIES[6]),
     ]
 
     return {
