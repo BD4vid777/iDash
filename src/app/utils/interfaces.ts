@@ -9,7 +9,8 @@ export interface IUserStorageData {
   userBudget: IBudgetValue[],
   userBackground: IBackground,
   showWelcomeMsg: boolean,
-  homePageQuestion: boolean
+  homePageQuestion: boolean,
+  highScore: number
 }
 
 export interface IBackground {

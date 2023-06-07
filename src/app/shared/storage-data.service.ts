@@ -67,7 +67,8 @@ export class StorageDataService {
       userBudget: tmpUserBudget,
       userBackground: this.bgPrimary,
       showWelcomeMsg: true,
-      homePageQuestion: true
+      homePageQuestion: true,
+      highScore: 0
     }
   }
 }

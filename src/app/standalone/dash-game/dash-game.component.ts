@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { WINDOW } from "../../shared/window.token";
@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from "@angular/forms";
   templateUrl: './dash-game.component.html',
   styleUrls: ['./dash-game.component.scss']
 })
-export class DashGameComponent {
+export class DashGameComponent implements OnInit {
 
   private dialogRef: MatDialogRef<{dialogTitle: string}> = inject(MatDialogRef<DashGameComponent>)
   private data: {dialogTitle: string} = inject(MAT_DIALOG_DATA)
@@ -31,6 +31,10 @@ export class DashGameComponent {
   public gameMsg: string = 'Start Game'
 
   public hideHowToPlay: boolean = true
+
+  ngOnInit() {
+    this.highScore = this.storageService.getUserData().highScore
+  }
 
   listenForClicks = () => {
     document.addEventListener('keydown', (event) => {
@@ -124,7 +128,17 @@ export class DashGameComponent {
     }
   }
 
+  setHighScore() {
+    let userData = this.storageService.getUserData()
+    userData.highScore = this.highScore
+    this.storageService.setUserData(userData)
+  }
+
   prepareNewGame(msg: string) {
+    if (this.score >= this.highScore) {
+      this.highScore = this.score
+      this.setHighScore()
+    }
     this.isGameOver = true
     this.gameMsg = msg
     this.stopListeningForClicks()
