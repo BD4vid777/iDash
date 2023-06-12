@@ -4,7 +4,34 @@
 </h2>
 <span class="material-symbols-outlined close-btn" (click)="closeDialog()">close</span>
 <mat-dialog-content class="id-scrollbar" [style.height.%]="'100'">
-  TEST
+  <form [formGroup]='settingsForm' class="id-flex-col id-spc-btw id-gap-small h-100">
+
+    <ng-container *ngIf="loggedInUser else notLoggedIn">
+      loggedIn
+    </ng-container>
+    <ng-template #notLoggedIn>
+      <div class="id-form-control id-flex-spc id-gap-small">
+        <img ngSrc="assets/misc/btn_google_signin_dark_normal_web.png" alt="Google Login" height="46" width="191">
+        <p>Save settings on Google Drive, use them on other devices and unlock additional features.</p>
+      </div>
+
+    </ng-template>
+
+    <div class="id-form-control checkbox">
+      <input
+        id="welcomeMsg"
+        type="checkbox"
+        formControlName="showWelcomeMsg"
+        class="id-checkbox"
+        (change)="changeWelcomeMsgStatus()">
+      <label for="welcomeMsg" class="id-checkbox-label">Show Welcome Screen on start</label>
+    </div>
+
+
+
+
+
+  </form>
 </mat-dialog-content>
 <mat-dialog-actions class="settings-actions">
   <button

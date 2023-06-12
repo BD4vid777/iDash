@@ -131,13 +131,17 @@ export class DashGameComponent implements OnInit {
   }
 
   checkIfGameOver() {
+    let availableMoves = 0
     let zeros = 0
     for (let i = 0; i < this.tiles.length; i++) {
       if (this.tiles[i] == 0) {
         zeros++
       }
+      if (this.tiles[i] == this.tiles[i + 1] || this.tiles[i] == this.tiles[i + 4]) {
+        availableMoves++
+      }
     }
-    if (zeros === 0) {
+    if (zeros === 0 && availableMoves === 0) {
       this.prepareNewGame('Game Over')
     }
   }
@@ -178,35 +182,35 @@ export class DashGameComponent implements OnInit {
       randomIndex = Math.floor(Math.random() * 16)
     }
     this.tiles[randomIndex] = 2
-    setTimeout(() => this.checkIfGameOver(), 100)
+    setTimeout(() => this.checkIfGameOver(), 0)
   }
 
   moveRight() {
     this.setRight()
     this.combineRow('right')
     this.setRight()
-    this.setNewTile()
+    setTimeout(() => this.setNewTile(), 0)
   }
 
   moveLeft() {
     this.setLeft()
     this.combineRow('left')
     this.setLeft()
-    this.setNewTile()
+    setTimeout(() => this.setNewTile(), 0)
   }
 
   moveDown() {
     this.setDown()
     this.combineColumn('down')
     this.setDown()
-    this.setNewTile()
+    setTimeout(() => this.setNewTile(), 0)
   }
 
   moveUp() {
     this.setUp()
     this.combineColumn('up')
     this.setUp()
-    this.setNewTile()
+    setTimeout(() => this.setNewTile(), 0)
   }
 
   setRight() {

@@ -126,14 +126,15 @@ export class AppComponent implements OnInit {
 
   openUserSettings() {
     this.matDialog.open(UserSettingsComponent, {
-      width: this.isMobile ? '95vw' : '60vw',
+      width: this.isMobile ? '95vw' : '60vh',
       height: this.isMobile ? '80vh' : '60vh',
       enterAnimationDuration: DIALOG_QUESTION_ANIMATION_ENTER,
       exitAnimationDuration: DIALOG_QUESTION_ANIMATION_EXIT,
       panelClass: DIALOG_QUESTION_CLASS,
       disableClose: false,
       data: {
-        dialogTitle: 'User Settings'
+        dialogTitle: 'User Settings',
+        showWelcomeMsg: this.userDataFromStorage.showWelcomeMsg
       }
     })
   }

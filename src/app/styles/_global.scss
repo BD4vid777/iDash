@@ -188,6 +188,10 @@ progress {
 }
 
 .id-form-control {
+  &.checkbox {
+    display: flex;
+    align-items: center;
+  }
   #time_spent {
     display: flex;
     gap: .5rem;
@@ -241,6 +245,10 @@ progress {
 .id-flex-col {
   display: flex;
   flex-direction: column;
+
+  &.id-spc-btw {
+    justify-content: space-between;
+  }
 
   &.id-justify-start {
     justify-content: flex-start;
@@ -302,6 +310,18 @@ progress {
     &-xtra-big {
       gap: $gap-quadruple;
     }
+  }
+}
+
+.h {
+  &-100 {
+    height: 100%!important;
+  }
+  &-75 {
+    height: 75%!important;
+  }
+  &-50 {
+    height: 50%!important;
   }
 }
 

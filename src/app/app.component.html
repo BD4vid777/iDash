@@ -34,14 +34,14 @@
     <span class="material-symbols-outlined">{{fullscreen ? 'fullscreen_exit' : 'fullscreen'}}</span>
   </div>
   <nav class="bg-blur">
-    <span class="material-symbols-outlined" (click)="openUserSettings()"
-          [matTooltip]="'User settings'" matTooltipPosition="right"
-          matTooltipClass="id-tooltip" [style.cursor]="'default'">account_circle</span>
-    <mat-divider [vertical]="isMobile"></mat-divider>
-    <span class="material-symbols-outlined" routerLink="dashboard" routerLinkActive="active" [matTooltip]="'iD Home'"
-          matTooltipPosition="right" matTooltipClass="id-tooltip">dashboard</span>
-    <mat-divider [vertical]="isMobile"></mat-divider>
     <ul class="nav-buttons">
+      <li class="material-symbols-outlined" (click)="openUserSettings()"
+            [matTooltip]="'User settings'" matTooltipPosition="right"
+            matTooltipClass="id-tooltip">account_circle</li>
+      <mat-divider [vertical]="isMobile"></mat-divider>
+      <li class="material-symbols-outlined" routerLink="dashboard" routerLinkActive="active" [matTooltip]="'iD Home'"
+            matTooltipPosition="right" matTooltipClass="id-tooltip">dashboard</li>
+      <mat-divider [vertical]="isMobile"></mat-divider>
       <li class="material-symbols-outlined" routerLink="todos" routerLinkActive="active" [matTooltip]="'Todos'"
           matTooltipPosition="right" matTooltipClass="id-tooltip">fact_check
       </li>
