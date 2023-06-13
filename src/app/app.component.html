@@ -35,9 +35,23 @@
   </div>
   <nav class="bg-blur">
     <ul class="nav-buttons">
-      <li class="material-symbols-outlined" (click)="openUserSettings()"
+      <li  *ngIf="!loggedInUser else loggedInPhoto" class="material-symbols-outlined" (click)="openUserSettings()"
             [matTooltip]="'User settings'" matTooltipPosition="right"
             matTooltipClass="id-tooltip">account_circle</li>
+      <ng-template #loggedInPhoto>
+        <li (click)="openUserSettings()"
+            [matTooltip]="'User settings'"
+            matTooltipPosition="right"
+            matTooltipClass="id-tooltip">
+          <img
+            *ngIf="user"
+            [style.border-radius.%]="50"
+            ngSrc="{{user.photoUrl}}"
+            alt="{{user.firstName}} photo"
+            height="24"
+            width="24">
+        </li>
+      </ng-template>
       <mat-divider [vertical]="isMobile"></mat-divider>
       <li class="material-symbols-outlined" routerLink="dashboard" routerLinkActive="active" [matTooltip]="'iD Home'"
             matTooltipPosition="right" matTooltipClass="id-tooltip">dashboard</li>

@@ -16,6 +16,8 @@ import { animate, style, transition, trigger } from "@angular/animations";
 import { DashGameComponent } from "./standalone/dash-game/dash-game.component";
 import { UserSettingsComponent } from "./standalone/user-settings/user-settings.component";
 import { GoogleSignInService } from "./shared/google-sign-in.service";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { SocialUser } from "@abacritt/angularx-social-login";
 
 @Component({
   selector: 'app-root',
@@ -52,8 +54,27 @@ export class AppComponent implements OnInit {
   public window: any = inject(WINDOW)
   public isMobile: boolean = this.window.navigator.userAgentData.mobile
 
+  public user: SocialUser | null = null
+  public loggedInUser = false
 
   triggerData: ITodo | undefined
+
+  constructor() {
+    this.loginService.getUser().pipe(takeUntilDestroyed()).subscribe(user => {
+      this.user = user
+      this.loggedInUser = user != null
+    })
+
+    this.route.events.pipe(takeUntilDestroyed()).subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.isDashboard = event.urlAfterRedirects == '/dashboard';
+      }
+    })
+
+    this.timeKeeperService.getTimeKeeper().pipe(takeUntilDestroyed()).subscribe((data) => {
+      this.triggerData = data
+    })
+  }
 
   ngOnInit() {
     //console.log("Mobile: ", this.window.navigator.userAgentData.mobile)
@@ -74,16 +95,6 @@ export class AppComponent implements OnInit {
         }
       })
     }
-
-    this.route.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.isDashboard = event.urlAfterRedirects == '/dashboard';
-      }
-    })
-
-    this.timeKeeperService.getTimeKeeper().subscribe((data) => {
-      this.triggerData = data
-    })
   }
 
   changeBackground(photoLink: string, photoLinkMobile: string, photoAuthor: string, photoIndex: number) {

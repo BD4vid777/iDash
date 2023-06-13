@@ -25,6 +25,18 @@ h2 {
   }
 }
 
+.sign-out-container {
+  div:first-of-type {
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  div:last-of-type {
+
+  }
+}
+
 .settings-actions {
   display: flex;
   gap: $gap-primary;
