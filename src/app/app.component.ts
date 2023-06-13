@@ -15,6 +15,7 @@ import { WelcomeDialogComponent } from "./pages/welcome-stepper/welcome-dialog.c
 import { animate, style, transition, trigger } from "@angular/animations";
 import { DashGameComponent } from "./standalone/dash-game/dash-game.component";
 import { UserSettingsComponent } from "./standalone/user-settings/user-settings.component";
+import { GoogleSignInService } from "./shared/google-sign-in.service";
 
 @Component({
   selector: 'app-root',
@@ -31,6 +32,9 @@ import { UserSettingsComponent } from "./standalone/user-settings/user-settings.
 })
 export class AppComponent implements OnInit {
   public title: string = 'iDash';
+
+  private loginService = inject(GoogleSignInService)
+
   public isDashboard: boolean = false;
 
   private userDataFromStorage!: IUserStorageData

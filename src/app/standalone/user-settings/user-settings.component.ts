@@ -5,11 +5,13 @@ import { StorageDataService } from "../../shared/storage-data.service";
 import { WINDOW } from "../../shared/window.token";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { IUserStorageData } from "../../utils/interfaces";
+import { GoogleSignInService } from "../../shared/google-sign-in.service";
+import { GoogleSigninButtonModule, SocialAuthService, SocialUser } from "@abacritt/angularx-social-login";
 
 @Component({
   selector: 'id-user-settings',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, NgOptimizedImage, ReactiveFormsModule],
+  imports: [CommonModule, MatDialogModule, NgOptimizedImage, ReactiveFormsModule, GoogleSigninButtonModule],
   templateUrl: './user-settings.component.html',
   styleUrls: ['./user-settings.component.scss']
 })
@@ -20,6 +22,9 @@ export class UserSettingsComponent implements OnInit {
   private fb: FormBuilder = inject(FormBuilder)
 
   private storageService = inject(StorageDataService)
+  private loginService = inject(GoogleSignInService)
+
+  public user: SocialUser | null = null
 
   public window: any = inject(WINDOW)
   public isMobile: boolean = this.window.navigator.userAgentData.mobile
@@ -33,6 +38,11 @@ export class UserSettingsComponent implements OnInit {
   }>
 
   ngOnInit() {
+    this.loginService.getUser().subscribe(user => {
+      this.user = user
+      this.loggedInUser = user != null
+    })
+
     this.settingsForm = this.fb.nonNullable.group({
       showWelcomeMsg: this.fb.nonNullable.control(this.data.showWelcomeMsg)
     })
@@ -46,5 +56,9 @@ export class UserSettingsComponent implements OnInit {
 
   closeDialog() {
     this.dialogRef.close(false)
+  }
+
+  logOut() {
+    this.loginService.logOut()
   }
 }

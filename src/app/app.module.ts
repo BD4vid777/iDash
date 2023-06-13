@@ -30,6 +30,12 @@ import { TimeKeeperComponent } from "./standalone/time-keeper/time-keeper.compon
 import { ClockComponent } from "./standalone/clock/clock.component";
 import { NgOptimizedImage } from "@angular/common";
 
+import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import {
+  GoogleLoginProvider
+} from '@abacritt/angularx-social-login';
+import { environment } from "../environments/environment";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,7 +84,8 @@ import { NgOptimizedImage } from "@angular/common";
     IdSnackNotificationComponent,
     TimeKeeperComponent,
     ClockComponent,
-    NgOptimizedImage
+    NgOptimizedImage,
+    SocialLoginModule
   ],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},
@@ -90,7 +97,24 @@ import { NgOptimizedImage } from "@angular/common";
         panelClass: ['id-snack-notification']
     }
     },
-    {provide: MatSnackBarRef, useValue: {}}
+    {provide: MatSnackBarRef, useValue: {}},
+    {provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: true,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(environment.googleClientId,
+              {
+                scopes: 'https://www.googleapis.com/auth/gmail.readonly'
+              })
+          }
+        ],
+        onError: (err: any) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig
+    }
   ],
   bootstrap: [AppComponent]
 })
