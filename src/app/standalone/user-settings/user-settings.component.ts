@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { StorageDataService } from "../../shared/storage-data.service";
@@ -6,7 +6,7 @@ import { WINDOW } from "../../shared/window.token";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { IUserStorageData } from "../../utils/interfaces";
 import { GoogleSignInService } from "../../shared/google-sign-in.service";
-import { GoogleSigninButtonModule, SocialAuthService, SocialUser } from "@abacritt/angularx-social-login";
+import { GoogleSigninButtonModule, SocialUser } from "@abacritt/angularx-social-login";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { MatDividerModule } from "@angular/material/divider";
 
@@ -19,11 +19,12 @@ import { MatDividerModule } from "@angular/material/divider";
 })
 export class UserSettingsComponent {
 
-  private dialogRef: MatDialogRef<{dialogTitle: string, showWelcomeMsg: boolean, showGmailList: boolean}> = inject(MatDialogRef<UserSettingsComponent>)
+  private dialogRef: MatDialogRef<{dialogTitle: string, showWelcomeMsg: boolean, showGmailList: boolean, showCalendarList: boolean}> = inject(MatDialogRef<UserSettingsComponent>)
   private data: {
     dialogTitle: string,
     showWelcomeMsg: boolean,
-    showGmailList: boolean
+    showGmailList: boolean,
+    showCalendarList: boolean
   } = inject(MAT_DIALOG_DATA)
   private fb: FormBuilder = inject(FormBuilder)
 
@@ -41,19 +42,22 @@ export class UserSettingsComponent {
 
   public settingsForm!: FormGroup<{
     showWelcomeMsg: FormControl<boolean>,
-    showGmailList: FormControl<boolean>
+    showGmailList: FormControl<boolean>,
+    showCalendarList: FormControl<boolean>
   }>
 
   constructor() {
     this.settingsForm = this.fb.nonNullable.group({
       showWelcomeMsg: this.fb.nonNullable.control(this.data.showWelcomeMsg),
-      showGmailList: this.fb.nonNullable.control({value: this.data.showGmailList, disabled: !this.loggedInUser})
+      showGmailList: this.fb.nonNullable.control({value: this.data.showGmailList, disabled: !this.loggedInUser}),
+      showCalendarList: this.fb.nonNullable.control({value: this.data.showCalendarList, disabled: !this.loggedInUser})
     })
 
     this.loginService.getUser().pipe(takeUntilDestroyed()).subscribe(user => {
       this.user = user
       this.loggedInUser = user != null
       this.loggedInUser ? this.settingsForm.controls.showGmailList.enable() : this.settingsForm.controls.showGmailList.disable()
+      this.loggedInUser ? this.settingsForm.controls.showCalendarList.enable() : this.settingsForm.controls.showCalendarList.disable()
     })
   }
 
@@ -72,6 +76,10 @@ export class UserSettingsComponent {
   }
 
   toggleShowGMail() {
+    //TODO: Implement this feature
+  }
+
+  toggleShowCalendar() {
     //TODO: Implement this feature
   }
 }

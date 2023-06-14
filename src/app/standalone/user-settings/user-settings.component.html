@@ -42,6 +42,15 @@
     </div>
     <div class="id-form-control checkbox">
       <input
+        id="calendar"
+        type="checkbox"
+        formControlName="showCalendarList"
+        class="id-checkbox"
+        (change)="toggleShowCalendar()">
+      <label for="calendar" class="id-checkbox-label">Show calendar on home screen</label>
+    </div>
+    <div class="id-form-control checkbox">
+      <input
         id="welcomeMsg"
         type="checkbox"
         formControlName="showWelcomeMsg"

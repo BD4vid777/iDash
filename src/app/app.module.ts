@@ -106,7 +106,11 @@ import { environment } from "../environments/environment";
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(environment.googleClientId,
               {
-                scopes: 'https://www.googleapis.com/auth/gmail.readonly'
+                scopes: [
+                  'https://www.googleapis.com/auth/gmail.readonly',
+                  'https://www.googleapis.com/auth/calendar.readonly',
+                  'https://www.googleapis.com/auth/drive'
+                ]
               })
           }
         ],

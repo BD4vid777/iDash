@@ -1,6 +1,6 @@
-import { inject, Injectable, OnInit } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { GoogleLoginProvider, SocialAuthService, SocialUser } from "@abacritt/angularx-social-login";
+import { SocialAuthService, SocialUser } from "@abacritt/angularx-social-login";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
 @Injectable({
@@ -15,17 +15,8 @@ export class GoogleSignInService {
 
   constructor() {
     this.authService.authState.pipe(takeUntilDestroyed()).subscribe((user) => {
-      // console.log('GoogleSignInService: user', user)
       this.user$.next(user)
-      //if (user != null) this.getAuthToken()
     })
-  }
-
-  getAuthToken() {
-    this.authService.getAccessToken(GoogleLoginProvider.PROVIDER_ID)
-      .then(token => {
-        console.log('GoogleSignInService: token', token)
-      })
   }
 
   logOut() {
