@@ -149,7 +149,10 @@ export class AppComponent implements OnInit {
       disableClose: false,
       data: {
         dialogTitle: 'User Settings',
-        showWelcomeMsg: this.userDataFromStorage.showWelcomeMsg
+        showWelcomeMsg: this.userDataFromStorage.showWelcomeMsg,
+        showGmailList: this.userDataFromStorage.showGmailList,
+        showCalendarList: this.userDataFromStorage.showCalendarList,
+        showWeatherWidget: this.userDataFromStorage.showWeatherWidget
       }
     })
   }

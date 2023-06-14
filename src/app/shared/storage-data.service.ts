@@ -67,6 +67,9 @@ export class StorageDataService {
       userBudget: tmpUserBudget,
       userBackground: this.bgPrimary,
       showWelcomeMsg: true,
+      showCalendarList: false,
+      showGmailList: false,
+      showWeatherWidget: false,
       homePageQuestion: true,
       highScore: 0
     }

@@ -3,66 +3,98 @@
   {{dialogTitle}}
 </h2>
 <span class="material-symbols-outlined close-btn" (click)="closeDialog()">close</span>
-<mat-dialog-content class="id-scrollbar" [style.height.%]="'100'">
-  <form [formGroup]='settingsForm' class="id-flex-col id-gap-small h-100">
-
-    <ng-container *ngIf="loggedInUser && user else notLoggedIn">
-      <div (click)="logOut()" class="sign-out-container id-form-control id-flex-spc id-gap-small">
-        <div class="id-flex id-gap-small">
-          <img ngSrc="{{user.photoUrl}}" alt="{{user.firstName}} photo" height="50" width="50">
-          <div>
-            <h4>Signed in as: {{user.name}}</h4>
-            <p>{{user.email}}</p>
-          </div>
-        </div>
-        <div class="id-flex id-gap-small">
-          <span class="material-symbols-outlined">logout</span>
-          <p>Sign Out</p>
+<mat-dialog-content class="id-scrollbar id-flex-col id-spc-btw" [style.height.%]="'100'">
+  <ng-container *ngIf="loggedInUser && user else notLoggedIn">
+    <div (click)="logOut()" class="sign-out-container id-form-control id-flex-spc id-gap-small">
+      <div class="id-flex id-gap-small">
+        <img ngSrc="{{user.photoUrl}}" alt="{{user.firstName}} photo" height="32" width="32">
+        <div>
+          <h4>Signed in as: {{user.name}}</h4>
+          <p>{{user.email}}</p>
         </div>
       </div>
-    </ng-container>
-    <ng-template #notLoggedIn>
-      <div class="id-form-control id-flex-spc id-gap-small">
-        <asl-google-signin-button type="icon" size="medium" theme="filled_blue"></asl-google-signin-button>
-        <p>Sign In with your Google Account and save settings on your Google Drive, use them on other devices and unlock additional features.</p>
+      <div class="id-flex id-gap-small">
+        <span class="material-symbols-outlined">logout</span>
+        <p>Sign Out</p>
       </div>
+    </div>
+  </ng-container>
+  <ng-template #notLoggedIn>
+    <div class="id-form-control id-flex-spc id-gap-small">
+      <asl-google-signin-button type="icon" size="medium" theme="filled_blue"></asl-google-signin-button>
+      <p>Sign In with your Google Account and save settings on your Google Drive, use them on other devices and unlock additional features.</p>
+    </div>
 
-    </ng-template>
+  </ng-template>
 
+  <form [formGroup]='settingsForm' class="id-flex-col id-gap-small">
     <mat-divider></mat-divider>
 
+    <div class="id-form-control settings-head">
+      Enable/Disable
+    </div>
     <div class="id-form-control checkbox">
       <input
         id="gmail"
         type="checkbox"
         formControlName="showGmailList"
-        class="id-checkbox"
+        class="id-checkbox settings"
         (change)="toggleShowGMail()">
-      <label for="gmail" class="id-checkbox-label">Show gmail on home screen</label>
+      <label for="gmail" class="id-checkbox-label">Gmail on dashboard</label>
     </div>
     <div class="id-form-control checkbox">
       <input
         id="calendar"
         type="checkbox"
         formControlName="showCalendarList"
-        class="id-checkbox"
+        class="id-checkbox settings"
         (change)="toggleShowCalendar()">
-      <label for="calendar" class="id-checkbox-label">Show calendar on home screen</label>
+      <label for="calendar" class="id-checkbox-label">Calendar on dashboard</label>
+    </div>
+    <div class="id-form-control checkbox">
+      <input
+        id="weather"
+        type="checkbox"
+        formControlName="showWeatherWidget"
+        class="id-checkbox settings"
+        (change)="toggleWeatherWidget()">
+      <label for="weather" class="id-checkbox-label">Weather widget on Dashboard</label>
     </div>
     <div class="id-form-control checkbox">
       <input
         id="welcomeMsg"
         type="checkbox"
         formControlName="showWelcomeMsg"
-        class="id-checkbox"
+        class="id-checkbox settings"
         (change)="changeWelcomeMsgStatus()">
-      <label for="welcomeMsg" class="id-checkbox-label">Show Welcome Screen on start</label>
+      <label for="welcomeMsg" class="id-checkbox-label">Welcome Screen on start</label>
     </div>
-
-
+    <mat-divider></mat-divider>
   </form>
+
+  <section class="about-idash">
+    <h4>
+      About iDash
+    </h4>
+    <p>
+      It is a private dashboard in your browser. Simple, customizable app that you can use to
+      keep track of your daily tasks, events, weather and more.
+    </p>
+    <p>
+      It stores data in your browser's local storage or on your Google Drive if you are logged in.
+      It uses Google APIs to fetch data from your Google account.
+    </p>
+    <p>
+      Created and maintained by <a href="https://www.linkedin.com/in/dawidbudzinski/" target="_blank">Dawid Budziński</a>.
+      If you like iDash, you can support the project via Buy Me a Coffee (Become a member or donate once).
+    </p>
+  </section>
+
 </mat-dialog-content>
 <mat-dialog-actions class="settings-actions">
+  <a href="https://www.buymeacoffee.com/codearcher" target="_blank">
+    <img ngSrc="assets/misc/yellow-button.png" alt="Support project" height="30" width="109">
+  </a>
   <button
     class="btn btn-no"
     (click)="closeDialog()"

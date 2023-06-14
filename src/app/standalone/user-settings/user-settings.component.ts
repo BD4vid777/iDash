@@ -19,12 +19,20 @@ import { MatDividerModule } from "@angular/material/divider";
 })
 export class UserSettingsComponent {
 
-  private dialogRef: MatDialogRef<{dialogTitle: string, showWelcomeMsg: boolean, showGmailList: boolean, showCalendarList: boolean}> = inject(MatDialogRef<UserSettingsComponent>)
+  private dialogRef: MatDialogRef<{
+    dialogTitle: string,
+    showWelcomeMsg: boolean,
+    showGmailList: boolean,
+    showCalendarList: boolean,
+    showWeatherWidget: boolean
+  }> = inject(MatDialogRef<UserSettingsComponent>)
+
   private data: {
     dialogTitle: string,
     showWelcomeMsg: boolean,
     showGmailList: boolean,
-    showCalendarList: boolean
+    showCalendarList: boolean,
+    showWeatherWidget: boolean
   } = inject(MAT_DIALOG_DATA)
   private fb: FormBuilder = inject(FormBuilder)
 
@@ -43,14 +51,16 @@ export class UserSettingsComponent {
   public settingsForm!: FormGroup<{
     showWelcomeMsg: FormControl<boolean>,
     showGmailList: FormControl<boolean>,
-    showCalendarList: FormControl<boolean>
+    showCalendarList: FormControl<boolean>,
+    showWeatherWidget: FormControl<boolean>
   }>
 
   constructor() {
     this.settingsForm = this.fb.nonNullable.group({
       showWelcomeMsg: this.fb.nonNullable.control(this.data.showWelcomeMsg),
       showGmailList: this.fb.nonNullable.control({value: this.data.showGmailList, disabled: !this.loggedInUser}),
-      showCalendarList: this.fb.nonNullable.control({value: this.data.showCalendarList, disabled: !this.loggedInUser})
+      showCalendarList: this.fb.nonNullable.control({value: this.data.showCalendarList, disabled: !this.loggedInUser}),
+      showWeatherWidget: this.fb.nonNullable.control(this.data.showWeatherWidget)
     })
 
     this.loginService.getUser().pipe(takeUntilDestroyed()).subscribe(user => {
@@ -80,6 +90,10 @@ export class UserSettingsComponent {
   }
 
   toggleShowCalendar() {
+    //TODO: Implement this feature
+  }
+
+  toggleWeatherWidget() {
     //TODO: Implement this feature
   }
 }

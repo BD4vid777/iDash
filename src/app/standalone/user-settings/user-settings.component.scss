@@ -25,6 +25,10 @@ h2 {
   }
 }
 
+form mat-divider {
+  margin-block: .7rem!important;
+}
+
 .sign-out-container {
   div:first-of-type {
     img {
@@ -37,9 +41,42 @@ h2 {
   }
 }
 
+.about-idash {
+  padding: .5rem;
+  p {
+    font-size: .8rem;
+    padding-top: 0.5rem;
+
+    a {
+      color: $active;
+      text-decoration: none;
+      transition: $smooth;
+      &:hover {
+        color: $active-dark;
+      }
+    }
+  }
+}
+
 .settings-actions {
   display: flex;
   gap: $gap-primary;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   padding-inline: 24px;
+
+  a {
+    display: flex;
+    align-items: center;
+    transition: $smooth;
+
+    img {
+      border-radius: 5px;
+      box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.3), -3px -3px 10px -5px rgba(255, 255, 255, 0.3);
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
 }

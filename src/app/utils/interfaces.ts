@@ -9,6 +9,9 @@ export interface IUserStorageData {
   userBudget: IBudgetValue[],
   userBackground: IBackground,
   showWelcomeMsg: boolean,
+  showGmailList: boolean;
+  showCalendarList: boolean,
+  showWeatherWidget: boolean,
   homePageQuestion: boolean,
   highScore: number
 }

@@ -91,6 +91,9 @@ h1, h2, h3, p, li, ul, ol {
   height: 18px!important;
   width: 18px!important;
   padding: 1px!important;
+  &.settings {
+    margin-inline: .8rem;
+  }
 }
 
 .id-checkbox-label {

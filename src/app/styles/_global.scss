@@ -188,9 +188,14 @@ progress {
 }
 
 .id-form-control {
-  &.checkbox {
+  &.checkbox, &.settings-head {
     display: flex;
     align-items: center;
+  }
+  &.settings-head {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: .5rem;
   }
   #time_spent {
     display: flex;
@@ -243,7 +248,7 @@ progress {
 }
 
 .id-flex-col {
-  display: flex;
+  display: flex!important;
   flex-direction: column;
 
   &.id-spc-btw {
