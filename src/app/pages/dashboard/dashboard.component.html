@@ -1,4 +1,4 @@
-<main class="content-wrapper" [class.id-scrollbar]="isMobile">
+<main class="content-wrapper id-scrollbar" [class.id-scrollbar]="isMobile">
   <id-clock *ngIf="!isMobile" [isDashboard]="true"></id-clock>
   <id-bookmarks [ngClass]="isMobile ? 'isMobile' : ''"></id-bookmarks>
   <div class="dashboard-standalones" [ngClass]="isMobile ? 'isMobile' : ''">

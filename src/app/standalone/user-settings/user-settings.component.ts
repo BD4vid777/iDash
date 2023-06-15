@@ -42,7 +42,7 @@ export class UserSettingsComponent {
   public user: SocialUser | null = null
 
   public window: any = inject(WINDOW)
-  public isMobile: boolean = this.window.navigator.userAgentData.mobile
+  public isMobile: boolean = !!this.window.navigator.userAgentData.mobile
 
   public dialogTitle = this.data.dialogTitle
 
