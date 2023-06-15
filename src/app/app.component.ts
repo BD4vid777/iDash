@@ -45,13 +45,13 @@ export class AppComponent implements OnInit {
   matDialog = inject(MatDialog)
   public route = inject(Router)
   public window: any = inject(WINDOW)
-  public isMobile: boolean = !!this.window.navigator.userAgentData.mobile
+  public isMobile: boolean = this.window.navigator.userAgentData ? this.window.navigator.userAgentData.mobile : this.window.navigator.userAgent.includes('Mobile')
 
 
   triggerData: ITodo | undefined
 
   ngOnInit() {
-    //console.log("Mobile: ", this.window.navigator.userAgentData.mobile)
+    //console.log("Mobile: ", public isMobile: boolean = this.window.navigator.userAgentData ? this.window.navigator.userAgentData.mobile : this.window.navigator.userAgent.includes('Mobile'))
     //if (this.isMobile) return
     this.userDataFromStorage = this.localStorageService.getUserDataFromStorage()
     this.bgPhoto = this.userDataFromStorage.userBackground
