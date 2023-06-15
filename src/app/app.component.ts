@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
   matDialog = inject(MatDialog)
   public route = inject(Router)
   public window: any = inject(WINDOW)
-  public isMobile: boolean = this.window.navigator.userAgentData.mobile
+  public isMobile: boolean = !!this.window.navigator.userAgentData.mobile
 
 
   triggerData: ITodo | undefined

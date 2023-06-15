@@ -20,7 +20,7 @@ export class DashGameComponent implements OnInit {
   private storageService = inject(StorageDataService)
 
   public window: any = inject(WINDOW)
-  public isMobile: boolean = this.window.navigator.userAgentData.mobile
+  public isMobile: boolean = !!this.window.navigator.userAgentData.mobile
 
   public dialogTitle = this.data.dialogTitle
   tiles: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]

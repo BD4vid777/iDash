@@ -30,7 +30,7 @@ export class DashNotesComponent implements OnInit {
   matDialog = inject(MatDialog)
 
   public window: any = inject(WINDOW)
-  public isMobile: boolean = this.window.navigator.userAgentData.mobile
+  public isMobile: boolean = !!this.window.navigator.userAgentData.mobile
 
   ngOnInit() {
     this.setLatestNotes()
