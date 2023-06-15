@@ -22,7 +22,7 @@ export class WelcomeDialogComponent {
   private fb: FormBuilder = inject(FormBuilder)
 
   public window: any = inject(WINDOW)
-  public isMobile: boolean = !!this.window.navigator.userAgentData.mobile
+  public isMobile: boolean = this.window.navigator.userAgentData ? this.window.navigator.userAgentData.mobile : this.window.navigator.userAgent.includes('Mobile')
 
   private storageService = inject(StorageDataService)
 

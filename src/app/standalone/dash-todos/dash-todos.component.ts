@@ -33,7 +33,7 @@ export class DashTodosComponent implements OnInit {
   matDialog = inject(MatDialog)
 
   public window: any = inject(WINDOW)
-  public isMobile: boolean = !!this.window.navigator.userAgentData.mobile
+  public isMobile: boolean = this.window.navigator.userAgentData ? this.window.navigator.userAgentData.mobile : this.window.navigator.userAgent.includes('Mobile')
 
   timeKeeperTodoUidRunning: string = ''
 
