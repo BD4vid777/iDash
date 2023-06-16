@@ -104,7 +104,7 @@ import { environment } from "../environments/environment";
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(environment.googleClientId,
+            provider: new GoogleLoginProvider(environment.GOOGLE_CLIENT_ID,
               {
                 scopes: [
                   'https://www.googleapis.com/auth/gmail.readonly',
