@@ -4,6 +4,7 @@
 >
   <id-time-keeper *ngIf="triggerData"
                   [triggerData]="triggerData"
+                  [ngStyle]="isMobile ? {'margin-inline': '1rem', width: 'calc(100% - 2rem)', top: '5rem', left: 0} : {}"
   ></id-time-keeper>
   <id-clock class="not-dashboard" *ngIf="!isDashboard && !isMobile"></id-clock>
 
@@ -67,7 +68,7 @@
       </li>
     </ul>
   </nav>
-  <main [@routeAnimations]="prepareRoute(outlet)">
+  <main [@routeAnimations]="prepareRoute(outlet)" [style.margin-top]="triggerData && isMobile ? '3rem!important' : 'unset' ">
     <router-outlet #outlet='outlet'></router-outlet>
   </main>
   <footer [class.bg-blur]="isMobile">

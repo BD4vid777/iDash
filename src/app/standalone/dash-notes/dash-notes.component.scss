@@ -4,6 +4,8 @@
   padding: $padding-secondary;
   align-items: flex-start;
   transition: $smooth;
+  overflow: hidden;
+  position: relative;
 
   &:hover {
     transform: scale(1.03);
