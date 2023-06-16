@@ -25,6 +25,7 @@
       justify-content: flex-start;
       padding: $padding-secondary;
       overflow: hidden;
+      position: relative;
       transition: $smooth;
 
       &:hover {
