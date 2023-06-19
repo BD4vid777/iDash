@@ -35,6 +35,9 @@ import {
   GoogleLoginProvider
 } from '@abacritt/angularx-social-login';
 import { environment } from "../environments/environment";
+import { WeatherWidgetComponent } from "./standalone/weather-widget/weather-widget.component";
+import { GmailWidgetComponent } from "./standalone/gmail-widget/gmail-widget.component";
+import { GcalendarWidgetComponent } from "./standalone/gcalendar-widget/gcalendar-widget.component";
 
 @NgModule({
   declarations: [
@@ -85,7 +88,10 @@ import { environment } from "../environments/environment";
     TimeKeeperComponent,
     ClockComponent,
     NgOptimizedImage,
-    SocialLoginModule
+    SocialLoginModule,
+    WeatherWidgetComponent,
+    GmailWidgetComponent,
+    GcalendarWidgetComponent
   ],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},
@@ -109,7 +115,7 @@ import { environment } from "../environments/environment";
                 scopes: [
                   'https://www.googleapis.com/auth/gmail.readonly',
                   'https://www.googleapis.com/auth/calendar.readonly',
-                  'https://www.googleapis.com/auth/drive'
+                  'https://www.googleapis.com/auth/drive.file'
                 ]
               })
           }

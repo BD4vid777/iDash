@@ -1,4 +1,9 @@
 <main class="content-wrapper id-scrollbar" [class.id-scrollbar]="isMobile">
+  <div class="widgets-container" *ngIf="userWidgets.showCalendarList || userWidgets.showGmailList || userWidgets.showWeatherWidget">
+    <id-weather-widget *ngIf="userWidgets.showWeatherWidget"></id-weather-widget>
+    <id-gmail-widget *ngIf="userWidgets.showGmailList"></id-gmail-widget>
+    <id-gcalendar-widget *ngIf="userWidgets.showCalendarList"></id-gcalendar-widget>
+  </div>
   <id-clock *ngIf="!isMobile" [isDashboard]="true"></id-clock>
   <id-bookmarks [ngClass]="isMobile ? 'isMobile' : ''"></id-bookmarks>
   <div class="dashboard-standalones" [ngClass]="isMobile ? 'isMobile' : ''">

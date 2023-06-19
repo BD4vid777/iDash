@@ -86,14 +86,20 @@ export class UserSettingsComponent {
   }
 
   toggleShowGMail() {
-    //TODO: Implement this feature
+    let userData: IUserStorageData = this.storageService.getUserData()
+    userData.showGmailList = !userData.showGmailList
+    this.storageService.setUserData(userData)
   }
 
   toggleShowCalendar() {
-    //TODO: Implement this feature
+    let userData: IUserStorageData = this.storageService.getUserData()
+    userData.showCalendarList = !userData.showCalendarList
+    this.storageService.setUserData(userData)
   }
 
   toggleWeatherWidget() {
-    //TODO: Implement this feature
+    let userData: IUserStorageData = this.storageService.getUserData()
+    userData.showWeatherWidget = !userData.showWeatherWidget
+    this.storageService.setUserData(userData)
   }
 }

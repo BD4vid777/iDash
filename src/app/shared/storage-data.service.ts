@@ -4,6 +4,7 @@ import { BUDGET_CATEGORIES, DEFAULT_TODO_CONTENT, primaryBG, USER_DATA_STORAGE_K
 import { Bookmark } from "./bookmarks.service";
 import { Board, Todo } from "./todos.service";
 import { BudgetValue } from "./budget.service";
+import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,12 @@ export class StorageDataService {
 
   public userDataStorageKey: string = USER_DATA_STORAGE_KEY
   private userDataFromStorage!: IUserStorageData
+  private userData$: BehaviorSubject<IUserStorageData | undefined> = new BehaviorSubject<IUserStorageData | undefined>(undefined)
   private bgPrimary: IBackground = primaryBG
 
   setUserData(data: IUserStorageData) {
     this.userDataFromStorage = data
+    this.userData$.next(this.userDataFromStorage)
     localStorage.setItem(this.userDataStorageKey, JSON.stringify(this.userDataFromStorage))
   }
 
@@ -24,9 +27,11 @@ export class StorageDataService {
 
     if (!userData) {
       this.userDataFromStorage = this.setDefaultData()
+      this.userData$.next(this.userDataFromStorage)
       localStorage.setItem(this.userDataStorageKey, JSON.stringify(this.userDataFromStorage))
     } else {
       this.userDataFromStorage = JSON.parse(userData)
+      this.userData$.next(this.userDataFromStorage)
     }
 
     return this.userDataFromStorage
@@ -34,6 +39,10 @@ export class StorageDataService {
 
   getUserData() {
     return this.userDataFromStorage
+  }
+
+  getUserDataAsObservable() {
+    return this.userData$.asObservable()
   }
 
   setDefaultData(): IUserStorageData {

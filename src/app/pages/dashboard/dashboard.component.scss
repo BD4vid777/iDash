@@ -6,8 +6,18 @@
   align-items: center;
   height: 100%;
   width: 100%;
+  position: relative;
 
   gap: $gap-primary;
+
+  .widgets-container {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $gap-primary;
+  }
 
   id-bookmarks {
     opacity: 0;

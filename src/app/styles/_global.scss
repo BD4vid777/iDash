@@ -145,6 +145,24 @@ ul {
   }
 }
 
+.square-btn {
+  padding: $padding-primary;
+  height: 44px;
+  cursor: pointer;
+
+  &.small {
+    padding: 0;
+    height: 30px;
+    width: 30px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    span {
+      font-size: 1rem;
+    }
+  }
+}
+
 .active {
   color: $active;
   position: relative;
