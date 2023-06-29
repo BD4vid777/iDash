@@ -69,6 +69,7 @@ export class UserSettingsComponent {
       this.loggedInUser ? this.settingsForm.controls.showGmailList.enable() : this.settingsForm.controls.showGmailList.disable()
       this.loggedInUser ? this.settingsForm.controls.showCalendarList.enable() : this.settingsForm.controls.showCalendarList.disable()
     })
+
   }
 
   changeWelcomeMsgStatus() {

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { GoogleSignInService } from "../../shared/google-sign-in.service";
 
 @Component({
   selector: 'id-gmail-widget',
@@ -10,7 +11,10 @@ import { CommonModule } from '@angular/common';
 })
 export class GmailWidgetComponent {
 
+  private loginService = inject(GoogleSignInService)
+
   showGMail() {
     // TODO: implement this method - show in new window
+    this.loginService.getUserMails()
   }
 }

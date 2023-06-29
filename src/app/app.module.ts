@@ -45,7 +45,7 @@ import { GcalendarWidgetComponent } from "./standalone/gcalendar-widget/gcalenda
     TodosComponent,
     NotesComponent,
     BudgetComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

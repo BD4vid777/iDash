@@ -59,7 +59,11 @@ export class AppComponent implements OnInit {
 
   triggerData: ITodo | undefined
 
+
+
+
   constructor() {
+
     this.loginService.getUser().pipe(takeUntilDestroyed()).subscribe(user => {
       this.user = user
       this.loggedInUser = user != null
@@ -95,6 +99,8 @@ export class AppComponent implements OnInit {
         }
       })
     }
+
+
   }
 
   changeBackground(photoLink: string, photoLinkMobile: string, photoAuthor: string, photoIndex: number) {
